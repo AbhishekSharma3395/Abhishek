@@ -1,0 +1,1124 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.factories;
+using iTextSharp.text.pdf;
+using iTextSharp;
+using iTextSharp.text.pdf.draw;
+using System.Configuration;
+using System.Data.SqlClient;
+
+namespace Allforms.pages
+{
+    public partial class admin : System.Web.UI.Page
+    {
+        string sql = "";classes con = new classes(); DataTable dt = new DataTable();
+        SqlConnection cb = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["admission"].ConnectionString);
+        SqlCommand cmd = new SqlCommand();
+        SqlDataAdapter da = new SqlDataAdapter();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
+            {
+                if (Session["dtUser"] != null)
+                {
+                    //string form2 = Request.QueryString["admission"].ToString();
+                    //Get_list(form2); Get_status(form2);
+                    
+                }
+                else
+                {
+                    Response.Redirect("~/pages/default.aspx");
+                }
+                
+            }
+        }
+
+        //PU_BSTC_OnlineForm    PU_BED_OnlineForm      [PAHERU].BA_BedForm    [PAHERU].BSC_BedForm
+        protected void Update_list_bed()
+        {
+            string types = "ADMISSION";
+            string sql = "select * from pacificapp_onlinereg";
+            DataTable dts = SelectQuery_shiv(sql);
+            if (dts.Rows.Count > 0) 
+            {    
+                for (int i = 0; i < dts.Rows.Count; i++)
+                {
+                    string Caddress = dts.Rows[i]["Addressline1"].ToString() + " " + dts.Rows[i]["Addressline12"].ToString();
+                    string Paddress = dts.Rows[i]["Addressline2"].ToString() + " " + dts.Rows[i]["Addressline22"].ToString();
+                    string dob1 = dts.Rows[i]["dob"].ToString();
+                    string xiiyear = dts.Rows[i]["srsecyearofpassing"].ToString();
+                    string xiimax = dts.Rows[i]["srsecmaxmarks"].ToString();
+                    string xyear = dts.Rows[i]["secyearofpassing"].ToString();
+                    string xmax = dts.Rows[i]["secmaxmarks"].ToString();
+                    string xiiobtmax = dts.Rows[i]["srsecobtmarks"].ToString();
+                    string pmobile = dts.Rows[i]["mobileno2"].ToString(); 
+                    string ppincode = dts.Rows[i]["pincode1"].ToString();
+                    string cmobile = dts.Rows[i]["mobileno1"].ToString();
+                    string cpincode = dts.Rows[i]["pincode1"].ToString();
+                    string ugboard = dts.Rows[i]["uguniboard"].ToString();
+                    string formnos = dts.Rows[i]["id"].ToString();
+                    string dsubmission = dts.Rows[i]["submission_date"].ToString();
+                    if (dob1 != "")
+                    {
+                        try
+                        {
+                            dob = Convert.ToDateTime(Convert.ToDateTime(dob1).ToString("yyyy/MM/dd"));
+                            sql = "update tbl_reg set dob='" + Convert.ToDateTime(dob).ToString("yyyy/MM/dd") + "' where cemail='" + dts.Rows[i]["email1"].ToString() + "' and forms='"+ types + "'";
+                            con.ExecuteQuery(sql);
+                        }
+                        catch { }
+                    }
+                    if (dsubmission != "")
+                    {
+                        try
+                        {
+                            t_date = Convert.ToDateTime(Convert.ToDateTime(dsubmission).ToString("yyyy/MM/dd"));
+                            sql = "update tbl_reg set date='" + Convert.ToDateTime(t_date).ToString("yyyy/MM/dd") + "',t_date='" + Convert.ToDateTime(t_date).ToString("yyyy/MM/dd") + "' where cemail='" + dts.Rows[i]["email1"].ToString() + "' and forms='" + types + "'";
+                            con.ExecuteQuery(sql);
+                        }
+                        catch { }
+                    }
+                    sql = "Select * from tbl_reg where cemail = '" + dts.Rows[i]["email1"].ToString() + "' and forms='" + types + "'";
+                    DataTable dtv = con.select(sql);
+                    if (dtv.Rows.Count > 0)
+                    {
+
+                        sql = "update tbl_reg set caddress='" + Caddress + "',paddress='" + Paddress + "',xyear='" + xyear + "',xmax='" + xmax + "',xiiyear='" + xiiyear + "',xiimax='" + xiimax + "',xiiobt='" + xiiobtmax + "',cmobile='" + cmobile + "',pmobile='" + pmobile + "',cpincode='" + cpincode + "',ppincode='" + ppincode + "',ugboard='" + ugboard + "',formno='"+formnos+"' where cemail='" + dts.Rows[i]["email1"].ToString() + "' and forms='" + types + "'";
+                        con.ExecuteQuery(sql);
+                    }
+                }
+            }
+        }
+        protected void Update_list_Admission()
+        {
+            string types = "ADMISSION";
+            string sql = "select * from pacificapp_onlinereg";
+            DataTable dts = SelectQuery_shiv(sql);
+            if (dts.Rows.Count > 0)
+            {
+                for (int i = 0; i < dts.Rows.Count; i++)
+                {
+                    string Caddress = dts.Rows[i]["C_Address1"].ToString() + " " + dts.Rows[i]["C_Address2"].ToString();
+                    string Paddress = dts.Rows[i]["P_Address1"].ToString() + " " + dts.Rows[i]["P_Address2"].ToString();
+                    string dob1 = dts.Rows[i]["Dateofbirth"].ToString();
+                    string xiiyear = dts.Rows[i]["xiiyop"].ToString();
+                    string xiimax = dts.Rows[i]["xiimaxmarks"].ToString();
+                    string xyear = dts.Rows[i]["xyop"].ToString();
+                    string xmax = dts.Rows[i]["xmaxmarks"].ToString();
+                    string xiiobtmax = dts.Rows[i]["xiiobtmarks"].ToString();
+                    string pmobile = dts.Rows[i]["p_mobileno"].ToString();
+                    string ppincode = dts.Rows[i]["p_pincode"].ToString();
+                    string cmobile = dts.Rows[i]["c_mobileno"].ToString();
+                    string cpincode = dts.Rows[i]["c_pincode"].ToString();
+                    string ugboard = dts.Rows[i]["ugboard"].ToString();
+                    string formnos = dts.Rows[i]["formnumber"].ToString();
+                    string dsubmission = dts.Rows[i]["submission_date"].ToString();
+                    if (dob1 != "")
+                    {
+                        try
+                        {
+                            dob = Convert.ToDateTime(Convert.ToDateTime(dob1).ToString("yyyy/MM/dd"));
+                            sql = "update tbl_reg set dob='" + Convert.ToDateTime(dob).ToString("yyyy/MM/dd") + "' where cemail='" + dts.Rows[i]["c_email"].ToString() + "' and forms='" + types + "'";
+                            con.ExecuteQuery(sql);
+                        }
+                        catch { }
+                    }
+                    if (dsubmission != "")
+                    {
+                        try
+                        {
+                            t_date = Convert.ToDateTime(Convert.ToDateTime(dsubmission).ToString("yyyy/MM/dd"));
+                            sql = "update tbl_reg set date='" + Convert.ToDateTime(t_date).ToString("yyyy/MM/dd") + "',t_date='" + Convert.ToDateTime(t_date).ToString("yyyy/MM/dd") + "' where cemail='" + dts.Rows[i]["c_email"].ToString() + "' and forms='" + types + "'";
+                            con.ExecuteQuery(sql);
+                        }
+                        catch { }
+                    }
+                    sql = "Select * from tbl_reg where cemail = '" + dts.Rows[i]["c_email"].ToString() + "' and forms='" + types + "'";
+                    DataTable dtv = con.select(sql);
+                    if (dtv.Rows.Count > 0)
+                    {
+
+                        sql = "update tbl_reg set caddress='" + Caddress + "',paddress='" + Paddress + "',xyear='" + xyear + "',xmax='" + xmax + "',xiiyear='" + xiiyear + "',xiimax='" + xiimax + "',xiiobt='" + xiiobtmax + "',cmobile='" + cmobile + "',pmobile='" + pmobile + "',cpincode='" + cpincode + "',ppincode='" + ppincode + "',ugboard='" + ugboard + "',formno='" + formnos + "' where cemail='" + dts.Rows[i]["c_email"].ToString() + "' and forms='" + types + "'";
+                        con.ExecuteQuery(sql);
+                    }
+                }
+            }
+        }
+        public DataTable SelectQuery_shiv(string sql)
+        {
+            if (cb.State == ConnectionState.Closed)
+            {
+                cb.Open();
+            }
+            da.SelectCommand = cmd;
+            cmd.Connection = cb;
+            cmd.CommandText = sql;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return (dt);
+        }
+
+        DateTime dob; DateTime t_date;
+        
+        protected void Get_status(string frms)
+        {
+            string countT, countYT, countTT, countSS;
+            //sql = "SELECT count(*) FROM tbl_reg WHERE DATEDIFF(day, tbl_reg.Date , GETDATE()) = 1";
+            // dt = con.SelectQuery(sql);
+            //countYT = Convert.ToString(dt.Rows[0].ItemArray[0]);
+            //Button2.Text = "Yesterday : " + countYT;
+            
+               string sql = "select count(id) from tbl_reg WHERE DAY([Date])=DAY(getdate())AND MONTH([Date]) = MONTH(GETDATE()) AND YEAR([Date]) = Year(GETDATE()) and forms='" + frms + "'";
+                if(ddlsession.SelectedValue!="0")
+                {
+                    sql+=" and sesid = '" + ddlsession.SelectedValue + "'";
+                }
+                dt = con.SelectQuery(sql);
+                btntoday.Text = Convert.ToString(dt.Rows[0].ItemArray[0]);
+                string sql2 = "select count(id) from tbl_reg where forms='" + frms + "'";
+                if (ddlsession.SelectedValue != "0")
+                {
+                sql2 += " and sesid = '" + ddlsession.SelectedValue + "'";
+                }
+                dt = con.SelectQuery(sql2);
+                countTT = Convert.ToString(dt.Rows[0].ItemArray[0]);
+                btncomplete.Text = countTT;
+               string sql3 = "select count(id) from tbl_reg where T_status='SUCCESS' and forms='" + frms + "'";
+                if (ddlsession.SelectedValue != "0")
+                {
+                    sql3 += " and sesid = '" + ddlsession.SelectedValue + "'";
+                }
+                dt = con.SelectQuery(sql3);
+                countSS = Convert.ToString(dt.Rows[0].ItemArray[0]);
+                btnsucess.Text = countSS;
+            
+        }
+
+        protected void Get_list(string frms)
+        {
+            sql = "Select * from tbl_reg where forms='" + frms + "'";
+            if (txtemail.Text != "")
+            {
+                sql += " and cemail='"+txtemail.Text.ToLower().Trim()+"'";
+            }
+            if(ddlsession.SelectedValue!="0")
+            {
+                sql += " and sesid='" + ddlsession.SelectedValue.ToLower().Trim() + "'";
+            }
+            if (txtmobile.Text != "")
+            {
+                sql += " and cmobile='" + txtmobile.Text.Trim() + "'";
+            } 
+            sql += " order by "+ddlshort.SelectedValue+" ";
+            DataTable dt = con.SelectQuery(sql);
+            if(dt.Rows.Count >0)
+            {
+                Gvdetail.DataSource = dt;Gvdetail.DataBind();
+            }
+            else
+            {
+                Gvdetail.DataSource = null; Gvdetail.DataBind();
+            }
+        }
+
+        protected void Gvdetail_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string payid = DataBinder.Eval(e.Row.DataItem, "T_Status").ToString();
+                Panel pnlstatus = e.Row.FindControl("divrates") as Panel;
+                if (payid.ToUpper().Trim()!= "SUCCESS")
+                pnlstatus.Attributes.Add("class", "progress-bar bg-danger");
+                else
+                pnlstatus.Attributes.Add("class", "progress-bar bg-success");
+            }
+        }
+
+        protected void lnkprint_Click(object sender, EventArgs e)
+        {
+            int Row_Id = ((GridViewRow)((LinkButton)sender).Parent.Parent).RowIndex;
+            string fromid = Gvdetail.DataKeys[Row_Id]["formno"].ToString();
+            string id = Gvdetail.DataKeys[Row_Id]["id"].ToString();
+            pdfPrint(id);
+        }
+        string Formsnew = "";
+        public void pdfPrint(string fromid)
+        {
+            try
+            {
+                DataTable studentERP = new DataTable();
+                studentERP = con.select("Select * from tbl_reg where id='" + fromid + "'");
+                Formsnew = studentERP.Rows[0]["forms"].ToString();
+                foreach (DataRow row in studentERP.Rows)
+                {
+                    foreach (DataColumn col in studentERP.Columns)
+                    {
+                        if (row.IsNull(col) && col.DataType == typeof(string))
+                            row.SetField(col, "________");
+                    }
+                }
+                DataTable subjects = new DataTable();
+                var document = new Document(PageSize.A4, 36, 36, 18, 18);
+                var output = new MemoryStream();
+                var writer = PdfWriter.GetInstance(document, output);
+                document.Open();
+                string ARIALUNI_TFF = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIALUNI.TTF");
+                BaseFont bf = BaseFont.CreateFont(ARIALUNI_TFF, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                Font HindiFont = new Font(bf, 10, Font.NORMAL);
+                var titleFont = FontFactory.GetFont("calibri", 12, iTextSharp.text.Font.BOLD);
+                var tableHeaderFont = FontFactory.GetFont("calibri", 11, iTextSharp.text.Font.BOLD);
+                var tableFont = FontFactory.GetFont("calibri", 9, iTextSharp.text.Font.NORMAL);
+                var _bodyFont = FontFactory.GetFont("calibri", 9, iTextSharp.text.Font.NORMAL);
+                var _bodyFont2 = FontFactory.GetFont("calibri", 10, iTextSharp.text.Font.NORMAL);
+                var _bodyFontRed = FontFactory.GetFont("calibri", 11, iTextSharp.text.Font.BOLD, BaseColor.RED);
+                var _bodyFontUnderLined = FontFactory.GetFont("calibri", 10, iTextSharp.text.Font.NORMAL);
+                var _bodyFontBold = FontFactory.GetFont("calibri", 10, iTextSharp.text.Font.BOLD);
+                _bodyFontUnderLined.SetStyle(4);
+                if (studentERP.Rows.Count > 0)
+                {
+                    string name = "";
+                    foreach (DataRow row in studentERP.Rows)
+                    {
+                        name = (string)row["name"];
+                        document.NewPage();
+                        PdfPCell cell;
+                        Chunk chunk;
+                        Phrase Pharse;
+                        Paragraph paragraph;
+                        //TOP
+                        PdfPTable table = new PdfPTable(3);
+                        table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100; table.HorizontalAlignment = 1;
+
+                        table.AddCell(PhraseCell("", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell("", _bodyFont, PdfPCell.ALIGN_CENTER));
+                        table.AddCell(PhraseCell("APPLICATION NO : " + row.Field<string>("formno"), _bodyFont, PdfPCell.ALIGN_RIGHT));
+                        table.SpacingAfter = 10f;
+                        document.Add(table);
+
+                        //Application Header
+                        table = new PdfPTable(1);
+                        table.WidthPercentage = 100; table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
+
+                        table.AddCell(PhraseCell("PACIFIC ACADEMEY OF HIGHER EDUCATION AND RESEARCH UNIVERSITY, UDAIPUR", titleFont, PdfPCell.ALIGN_CENTER));
+                        document.Add(table);
+
+                        table = new PdfPTable(2);
+                        float[] widths = { 8, 100 }; table.SetWidths(widths); table.WidthPercentage = 100;
+                        table.HorizontalAlignment = 1;
+                        table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                        PdfPCell logo = new PdfPCell();
+                        logo.Border = 0;
+                        iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath("/Img/pacific-logo.png"));
+                        logo.AddElement(image);
+                        logo.HorizontalAlignment = 2;
+                        table.AddCell(logo);
+                        table.AddCell(PhraseCell("APPLICATION FOR " + Formsnew + " " + row.Field<string>("sesid") + "", titleFont, PdfPCell.ALIGN_CENTER));
+                        document.Add(table);
+                        //Application Header ENDS
+                        //Fields
+                        table = new PdfPTable(3);
+                        float[] photoWidth = { 35, 60, 10 }; table.SetWidths(photoWidth); table.WidthPercentage = 100;
+                        table.HorizontalAlignment = 1;
+                        table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER;
+                        if (row["pphoto"].ToString() != string.Empty && row["pphoto"].ToString() != "")
+                        {
+                            image = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath(row["pphoto"].ToString()));
+                        }
+                        else
+                        {
+                            image = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath("/Img/nophoto.jpg"));
+                        }
+
+                        cell = new PdfPCell(image); cell.Border = 0; cell.Rowspan = 3; cell.FixedHeight = 30f;
+                        table.AddCell(PhraseCell("Faculty", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["faculty"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(cell);
+
+                        table.AddCell(PhraseCell("Candidate Name ", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["name"], _bodyFont, PdfPCell.ALIGN_LEFT));
+
+
+                        table.AddCell(PhraseCell("Father/Husband/Guardian Name", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["fname"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+
+
+                        table.AddCell(PhraseCell("Father/Husband/Guardian Occuption", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["foccution"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell("");
+
+                        table.AddCell(PhraseCell("Mother Name", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["mname"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+
+                        table.AddCell(PhraseCell("Mother Occuption", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["mOccuption"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+
+                        table.AddCell(PhraseCell("Date of Birth", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)((DateTime)row["dob"]).ToString("dd-MMMM-yyyy").ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+
+                        table.AddCell(PhraseCell("Maritial Status", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["Maritial"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+
+                        table.AddCell(PhraseCell("Gender", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["Gender"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+
+                        table.AddCell(PhraseCell("Categoty", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + (string)row["Category"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+                        string Handicappes = row["Handicapped"].ToString(); string Hostels = row["Hostel"].ToString(); string conviences = row["convience"].ToString();
+                        table.AddCell(PhraseCell("Hostel", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + Hostels.Replace("True", "YES").Replace("False", "NO"), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+
+                        table.AddCell(PhraseCell("Handicapped", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + Handicappes.Replace("True", "YES").Replace("False", "NO"), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+
+                        table.AddCell(PhraseCell("Conveyance", _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(PhraseCell(" : " + conviences.Replace("True", "YES").Replace("False", "NO"), _bodyFont, PdfPCell.ALIGN_LEFT));
+                        table.AddCell(" ");
+
+                        cell = PhraseCell("", tableHeaderFont, PdfPCell.ALIGN_LEFT);
+                        cell.Border = 0; cell.Colspan = 3;
+
+                        table.AddCell(cell);
+                        //======================contact =============================================
+                        Pharse = new Phrase();
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0; cell.Colspan = 3;
+                        cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                        cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+                        table.AddCell(cell);
+                        table.SpacingAfter = 8f;
+                        //Document
+                        document.Add(table);
+                        table = new PdfPTable(1);
+                        table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+                        Pharse = new Phrase();
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0;
+                        cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                        cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+                        table.AddCell(cell);
+                        cell = PhraseCell("STUDENT ACADEMIC INFORMATIONS", tableHeaderFont, PdfPCell.ALIGN_LEFT);
+                        cell.Border = 0;
+                        table.AddCell(cell);
+                        table.SpacingAfter = 3f;
+                        //Document
+                        document.Add(table);
+
+                        table = new PdfPTable(8);
+                        float[] schoolwidths = { 10, 30, 15, 10, 10, 10, 10, 10 };
+                        table.SetWidths(schoolwidths); table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+                        table.AddCell(PhraseCell("Exam", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell("School/College", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell("Uni./Board", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell("Subject", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell("Year", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell("Max. Marks", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell("Obt. Marks", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell("Div (%)", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+
+                        table.AddCell(PhraseCell("10th", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xth"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xboard"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xsubject"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xyear"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xmax"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xobt"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xdiv"].ToString().ToUpper() + " (" + (string)row["xper"] + "%)", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+
+                        table.AddCell(PhraseCell("12th", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xiith"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xiiboard"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xiisubject"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xiiyear"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xiimax"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xiiobt"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell((string)row["xiidiv"].ToString().ToUpper() + " (" + (string)row["xiiper"] + "%)", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+
+                        if (row["ugth"].ToString() == string.Empty && row["ugth"].ToString() != "")
+                        {
+                            table.AddCell(PhraseCell("U.G.", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["ugth"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["ugboard"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["ugsubject"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["ugyear"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["ugmax"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["ugobt"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["ugdiv"].ToString().ToUpper() + " (" + (string)row["ugper"] + "%)", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        }
+                        if (row["pgth"].ToString() == string.Empty && row["pgth"].ToString() != "")
+                        {
+
+                            table.AddCell(PhraseCell("P.G.", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["pgth"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["pgboard"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["pgsubject"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["pgyear"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["pgmax"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["pgobt"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["pgdiv"].ToString().ToUpper() + " (" + (string)row["pgper"] + "%)", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        }
+                        if (row["othth"].ToString() == string.Empty && row["othth"].ToString() != "")
+                        {
+                            table.AddCell(PhraseCell("OTH.", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["othth"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["othboard"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["othsubject"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["othyear"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["othmax"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["othobt"], _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["othdiv"].ToString().ToUpper() + " (" + (string)row["othper"] + "%)", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+
+                        }
+                        document.Add(table);
+                        table = new PdfPTable(1);
+                        table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+                        Pharse = new Phrase();
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0; cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE; cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+                        table.AddCell(cell);
+                        //===============================address==================================
+                        Pharse = new Phrase();
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0; cell.Colspan = 3;
+                        cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                        cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+                        table.AddCell(cell);
+                        table.SpacingAfter = 8f;
+                        //Document
+                        document.Add(table);
+                        table = new PdfPTable(1);
+                        table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+                        Pharse = new Phrase();
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0;
+                        cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                        cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+                        table.AddCell(cell);
+                        cell = PhraseCell("STUDENT ADDRESS INFORMATION", tableHeaderFont, PdfPCell.ALIGN_LEFT);
+                        cell.Border = 0;
+                        table.AddCell(cell);
+                        table.SpacingAfter = 3f;
+                        //Document
+                        document.Add(table);
+
+                        table = new PdfPTable(3);
+                        float[] schoolwidth = { 100, 0, 100 };
+                        table.SetWidths(schoolwidth); table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+                        table.AddCell(PhraseCell("CORRESPONANCE ADDRESS ", tableHeaderFont, PdfPCell.ALIGN_LEFT, "Black"));
+                        table.AddCell(PhraseCell("", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                        table.AddCell(PhraseCell("PERMANENT ADDRESS", tableHeaderFont, PdfPCell.ALIGN_LEFT, "Black"));
+                        table.AddCell(PhraseCell((string)row["caddress"].ToString().ToUpper() + " ," + row["ccity"].ToString().ToUpper() + " ," + row["cstate"].ToString().ToUpper() + " ,PINCODE : " + row["cpincode"].ToString() + " ," + row["ccountry"].ToString().ToUpper() + "\n\nM: " + row["cmobile"].ToString() + " ,P: " + row["cphone"].ToString() + "\n\n" + row["cemail"].ToString(), _bodyFont, PdfPCell.ALIGN_LEFT, "Black"));
+                        table.AddCell(PhraseCell("", _bodyFont, PdfPCell.ALIGN_LEFT, "Black"));
+                        table.AddCell(PhraseCell((string)row["paddress"].ToString().ToUpper() + " ," + row["pcity"].ToString().ToUpper() + " ," + row["pstate"].ToString().ToUpper() + " ,PINCODE : " + row["ppincode"].ToString() + " ," + row["pcountry"].ToString().ToUpper() + "\n\nM: " + row["pmobile"].ToString() + " ,P: " + row["pphone"].ToString() + "\n\n" + row["pemail"].ToString(), _bodyFont, PdfPCell.ALIGN_LEFT, "Black"));
+
+
+
+                        document.Add(table);
+                        table = new PdfPTable(1);
+                        table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+
+                        Pharse = new Phrase();
+
+
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0; cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE; cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+
+                        table.AddCell(cell);
+                        //========================Employee information=============================
+                        if (row["forms"].ToString() == "ADMISSION-FORMS")
+                        {
+                            Pharse = new Phrase();
+                            cell = new PdfPCell(Pharse);
+                            cell.Border = 0; cell.Colspan = 3;
+                            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                            cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+                            table.AddCell(cell);
+                            table.SpacingAfter = 8f;
+                            //Document
+                            document.Add(table);
+                            table = new PdfPTable(1);
+                            table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+                            Pharse = new Phrase();
+                            cell = new PdfPCell(Pharse);
+                            cell.Border = 0;
+                            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                            cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+                            table.AddCell(cell);
+                            cell = PhraseCell("EMPLOYEE INFORMATION (IF EMPLOYED)", tableHeaderFont, PdfPCell.ALIGN_LEFT);
+                            cell.Border = 0;
+                            table.AddCell(cell);
+                            table.SpacingAfter = 3f;
+                            //Document
+                            document.Add(table);
+
+                            table = new PdfPTable(5);
+                            float[] schoolwidth2 = { 10, 30, 30, 30, 30 };
+                            table.SetWidths(schoolwidth2); table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+                            table.AddCell(PhraseCell("Sr No", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell("Organization", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell("Duration", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell("Postion Reg./Temporary", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell("Nature of Duties", tableHeaderFont, PdfPCell.ALIGN_CENTER, "Black"));
+
+                            table.AddCell(PhraseCell("1.", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["emporg1"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["empdur1"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["emppost1"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["empduties1"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+
+                            table.AddCell(PhraseCell("2.", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["emporg2"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["empdur2"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["emppost2"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["empduties2"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+
+                            table.AddCell(PhraseCell("3.", _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["emporg3"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["empdur3"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["emppost3"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            table.AddCell(PhraseCell((string)row["empduties3"].ToString().ToUpper(), _bodyFont, PdfPCell.ALIGN_CENTER, "Black"));
+                            document.Add(table);
+                            table = new PdfPTable(1);
+                            table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+
+                            Pharse = new Phrase();
+
+
+                            cell = new PdfPCell(Pharse);
+                            cell.Border = 0; cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE; cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+
+                            table.AddCell(cell);
+                        }
+
+
+                        //===============================payment declaris===============================================
+                        table = new PdfPTable(1);
+                        table.HorizontalAlignment = 1; table.DefaultCell.Border = iTextSharp.text.Rectangle.NO_BORDER; table.WidthPercentage = 100;
+
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0; cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE; cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED;
+
+                        table.AddCell(cell);
+
+                        Pharse = new Phrase();
+                        _bodyFontUnderLined.SetStyle(5);
+                        chunk = new Chunk("DECLARATION BY THE CANDIDATE", _bodyFontUnderLined);
+                        chunk.setLineHeight(35); Pharse.Add(chunk);
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0; cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE; cell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+
+                        table.AddCell(cell);
+
+                        Pharse = new Phrase();
+                        chunk = new Chunk("I, ", _bodyFont);
+                        Pharse.Add(chunk);
+                        chunk = new Chunk((string)row["name"], _bodyFontBold);
+                        Pharse.Add(chunk);
+                        chunk = new Chunk(" hereby declared that the complete information  given by me in the application form is true and complete to the best of my knowledge.In case of detection of any incomplete or wrong information in the Examination Application Form, my application will be liable to be rejected.", _bodyFont2);
+                        chunk.setLineHeight(16);
+                        Pharse.Add(chunk);
+
+
+                        cell = new PdfPCell(Pharse);
+                        cell.Border = 0; cell.PaddingTop = 5f; cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE; cell.HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED; table.SpacingAfter = 3f; table.SpacingBefore = 3f;
+
+                        table.AddCell(cell);
+                        document.Add(table);
+
+                        //_bodyFontUnderLined.SetStyle(5);
+                        //chunk = new Chunk("DECLARATION", _bodyFontUnderLined);
+                        //chunk.setLineHeight(35);
+                        //paragraph = new Paragraph();
+                        //paragraph.Add(chunk); paragraph.SpacingBefore = 20f; paragraph.Alignment = PdfPCell.ALIGN_CENTER;
+                        //document.Add(paragraph);
+                        _bodyFontUnderLined.SetStyle(4);
+                        if (row["forms"].ToString() == "ADMISSION-FORMS")
+                        {
+                            chunk = new Chunk("I Declare that entire made by me in this Admission form and the document submitted by me with the admission form are tru in all respected and in any case, any information is found to be false, this shall entail automatic cancellation of my admission beside rendering me lible to such action, as the university mey deem proper.\nI note that my admission to the university and my continuance on it rools are subject to the provision/rules of the university ,issued from time to time.I shall abide by the rules of discipline and proper conduct.I am fully aware of the law regarding as well as the punishment and that if found guilty on this account i am liable to be punished appropriately. \n I Declare that i have read the prospctus carefully and understood that the dispute if any will be subject to jurisdiction, Udaipur, Rajasthan Only.", _bodyFont2);
+                            chunk.setLineHeight(20);
+                        }
+                        else
+                        {
+                            chunk = new Chunk("\n 1. I accept & agree to follow and able by the rules and regulations of the university.\n 2. I shall not indulge in any matter that comes under ragging with any fellow mate, staff or faculty member as individual or in a group.\n 3. Incase l am discovered disobeying the rules & regulations at anytime , university authority has the right to take a disciplinary action against me, which could either lea to the extent of rustication from the university authority in such matter.\n 4. I shall have no objection if any photograph/voice, while taking part in the university, appear; in any presentation of the university.\n 5. I shall abide by the examination rules.\n6.  I and my parents/guardian shall be responsible for the payment of all the fee & other charges/fines whenever demanded.\n 7.I shall not use mobile, modem, electric heater and such other items which are whenever prohibited by the university.\n 8. I hereby declare that Pacific University shall not be responsible for any mishappening on my part during the course of my study(on campus or off campus) in the University / Industrial Visits / Training / Tours / Transport etc.I and also my dependents or next of kin in such u case shall not claim my compensation for my damages or disability.", _bodyFont2);
+                            chunk.setLineHeight(20);
+                        }
+                        paragraph = new Paragraph();
+                        paragraph.Add(chunk); paragraph.SpacingBefore = 20f; paragraph.Alignment = PdfPCell.ALIGN_JUSTIFIED;
+                        document.Add(paragraph);
+
+                        chunk = new Chunk("\nI declare that I have deposited forms fees.\n", _bodyFontRed);
+                        chunk.setLineHeight(16);
+                        Pharse.Add(chunk);
+                        paragraph = new Paragraph();
+                        string datetime;
+                        if (row["T_date"].ToString() == string.Empty && row["T_date"].ToString() == "")
+                        {
+                            datetime = "________";
+                        }
+                        else
+                        {
+                            datetime = ((DateTime)row["T_date"]).ToString("dd/MM/yyyy");
+                        }
+
+                        chunk = new Chunk("Fee Rs. " + row["amount"].ToString() + " Received in Online transaction with ID : " + row["T_Id"].ToString() + " Dated : " + datetime.ToString(), _bodyFontBold);
+                        chunk.setLineHeight(16); paragraph.Add(chunk); paragraph.SpacingBefore = 30f; paragraph.Alignment = PdfPCell.ALIGN_JUSTIFIED;
+                        document.Add(paragraph);
+                        _bodyFontUnderLined.SetStyle(4);
+
+                        cell = new PdfPCell(image); cell.Border = 0; cell.Rowspan = 3; cell.FixedHeight = 30f;
+                        if (row["psign"].ToString() != string.Empty && row["psign"].ToString() != "")
+                        {
+                            image = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath(row["psign"].ToString()));
+                        }
+                        else
+                        {
+                            image = iTextSharp.text.Image.GetInstance(HttpContext.Current.Server.MapPath("/Img/sign.png"));
+                        }
+
+                        image.Alignment = PdfPCell.ALIGN_RIGHT; image.ScaleAbsoluteHeight(35f); image.ScaleAbsoluteWidth(55f);
+
+                        document.Add(image);
+
+                        Chunk glue = new Chunk(new VerticalPositionMark());
+                        Paragraph p = new Paragraph("Date " + DateTime.Now.ToString("dd/MM/yyyy"));
+                        p.Add(new Chunk(glue)); p.Add("Signature of the Candidate");
+
+                        document.Add(p);
+                    }
+
+                    document.Close();
+                    Response.ContentType = "PUApplication/pdf";
+                    Response.AddHeader("Content-Disposition", string.Format("attachment;filename=" + name + ".pdf", ""));
+                    Response.BinaryWrite(output.ToArray());
+                }
+                else
+                {
+                    string temp3 = "Swal.fire('No record Found','warning')";
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "alert6", temp3, true);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                string temp2 = "Swal.fire({icon: 'warning',title: `" + ex.Message + "`,text: ' ',showConfirmButton: false,timer: 3000,showClass:{popup: 'animated slideInDown fast'},hideClass:{popup: 'animated fadeOut faster'}})";
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "alert4", temp2, true);
+            }
+        }
+        private static PdfPCell PhraseCell(string phrase, iTextSharp.text.Font fontname, int align, string color = null)
+        {
+            Phrase newPharse = new Phrase(phrase, fontname);
+            PdfPCell cell = new PdfPCell(newPharse);
+            if (string.IsNullOrEmpty(color))
+            {
+                cell.BorderColor = BaseColor.WHITE;
+            }
+            else
+            {
+                cell.BorderColor = BaseColor.BLACK;
+            }
+            cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+            cell.HorizontalAlignment = align;
+            cell.PaddingBottom = 4f;
+            cell.PaddingTop = 4f;
+            return cell;
+        }
+
+        protected void lnkemail_Click(object sender, EventArgs e)
+        {
+            string form2 = Request.QueryString["admission"].ToString();
+            Get_list(form2);
+        }
+
+        protected void lnkemobile_Click(object sender, EventArgs e)
+        {
+            string form2 = Request.QueryString["admission"].ToString();
+            Get_list(form2);
+        }
+       
+        protected void ddlsession_TextChanged(object sender, EventArgs e)
+        {
+            string form2 = Request.QueryString["admission"].ToString();
+            Get_list(form2); Get_status(form2);
+        }
+        protected void btnedit_Click(object sender, EventArgs e)
+        {
+            int rowid = ((GridViewRow)((LinkButton)sender).Parent.Parent).RowIndex;
+            string Id = Gvdetail.DataKeys[rowid]["id"].ToString();
+            ViewState["Cid"] =Id;
+            //string title = ""; string body = "";
+            //ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            mpshiv.Show();
+        }
+        protected void btnupdate_Click1(object sender, EventArgs e)
+        {
+            if (ViewState["Cid"] != null)
+            {
+                if (txttransid.Text != "" && txtdatess.Text!="")
+                {
+                    sql = "update tbl_reg set t_date='" + txtdatess.Text + "',t_id='" + txttransid.Text.ToUpper() + "',T_Status='SUCCESS' where id='" + ViewState["Cid"].ToString() + "'";
+                    con.ExecuteQuery(sql);
+                    string temp2s = "alertify.notify(`Transation-Id Updated`, 'success', 3, function(){  console.log('dismissed'); });";
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "alert4", temp2s, true);
+                    string form2 = Request.QueryString["admission"].ToString();
+                    Get_list(form2);
+                }
+                else
+                {
+                    mpshiv.Show();
+                }
+            }
+            else
+            {
+                string temp2s = "alertify.notify(`Closed Modal Popup.Again Edit Forms `, 'error', 3, function(){  console.log('dismissed'); });";
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "alert4", temp2s, true);
+            }
+        }
+
+        protected void btntoday_Click(object sender, EventArgs e)
+        {
+            string frms = Request.QueryString["admission"].ToString();
+            string sql = "select * from tbl_reg WHERE DAY([Date])=DAY(getdate())AND MONTH([Date]) = MONTH(GETDATE()) AND YEAR([Date]) = Year(GETDATE()) and forms='" + frms + "'";
+            if (ddlsession.SelectedValue != "0")
+            {
+                sql += " and sesid = '" + ddlsession.SelectedValue + "'";
+            }
+            dt = con.SelectQuery(sql);
+            if (dt.Rows.Count > 0)
+            {
+                Gvdetail.DataSource = dt; Gvdetail.DataBind();
+            }
+            else
+            {
+                Gvdetail.DataSource = null; Gvdetail.DataBind();
+            }
+
+        }
+
+        protected void btncomplete_Click(object sender, EventArgs e)
+        {
+            string form2 = Request.QueryString["admission"].ToString();
+            Get_list(form2); Get_status(form2);
+        }
+        protected void btnsucess_Click(object sender, EventArgs e)
+        {
+            string frms = Request.QueryString["admission"].ToString();
+            string sql3 = "select * from tbl_reg where T_status='SUCCESS' and forms='" + frms + "'";
+            if (ddlsession.SelectedValue != "0")
+            {
+                sql3 += " and sesid = '" + ddlsession.SelectedValue + "'";
+            }
+            dt = con.SelectQuery(sql3);
+            if (dt.Rows.Count > 0)
+            {
+                Gvdetail.DataSource = dt; Gvdetail.DataBind();
+            }
+            else
+            {
+                Gvdetail.DataSource = null; Gvdetail.DataBind();
+            }
+        }
+
+        protected void lnkExcel_Click(object sender, EventArgs e)
+        {
+            Excels();
+        }
+
+        protected void ddlshort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string form2 = Request.QueryString["admission"].ToString();
+            Get_list(form2);
+        }
+        protected void Excels()
+        {
+            if (Gvdetail.Rows.Count > 0)
+            {
+                string attachment = "attachment; filename=Phd_" + DateTime.Now + ".xls";
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", attachment);
+                Response.ContentType = "application/ms-excel";
+                StringWriter sw = new StringWriter();
+                HtmlTextWriter htw = new HtmlTextWriter(sw);
+                Gvdetail.RenderControl(htw);
+                Response.Write(sw.ToString());
+                Response.End();
+            }
+        }
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+        }
+    }
+
+
+}
+
+
+
+
+<%@ Page Title="admin" Language="C#" MasterPageFile="~/pages/forms.Master" AutoEventWireup="true" EnableEventValidation ="false" CodeBehind="admin.aspx.cs" Inherits="Allforms.pages.admin" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        .dot {
+            height: 40px;
+            width: 40px;
+            background-color: #dd0303;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            color: white;
+            display: inline;
+            padding: .2em .6em .3em;
+            font-size: 125%;
+            font-weight: 700;
+            line-height: 2.5;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25em;
+        }
+    </style>
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title" style="color: #007bff">Today</h4>
+                <div class="media">
+                    <i class="ti-user icon-lg text-info d-flex align-self-start mr-3"></i>
+                    <div class="media-body">
+                        <asp:LinkButton ID="btntoday" runat="server" CssClass="dot" OnClick="btntoday_Click" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body ">
+                <h4 class="card-title" style="color: #007bff">All</h4>
+                <div class="media">
+                    <i class="ti-user icon-lg text-danger align-self-start mr-3"></i>
+                    <div class="media-body">
+                        <asp:LinkButton ID="btncomplete" runat="server" CssClass="dot" OnClick="btncomplete_Click" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title" style="color: #007bff">Success</h4>
+                <div class="media">
+                    <i class="ti-user icon-lg text-success d-flex align-self-start mr-3"></i>
+                    <div class="media-body">
+                        <asp:LinkButton ID="btnsucess" runat="server" CssClass="dot" OnClick="btnsucess_Click" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title" style="color: #007bff">Download</h4>
+                <div class="media">
+                    <i class="ti-user icon-lg text-warning d-flex align-self-start mr-3"></i>
+                    <div class="media-body">
+                        <asp:LinkButton ID="lnkExcel" runat="server" CssClass="ti-export btn btn-warning" OnClick="lnkExcel_Click" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body ">
+                <h4 class="card-title" style="color: #6c7383">Search by Email</h4>
+                <div class="input-group">
+                    <div class="input-group-prepend hover-cursor" id="navbar-search-icons">
+                        <asp:TextBox ID="txtemail" runat="server" class="form-control" BorderStyle="Solid" BorderColor="#dce9f9" BorderWidth="2px" placeholder="Search Email-Id wise" aria-label="search" aria-describedby="search" />
+                        <asp:LinkButton ID="lnkemail" runat="server" CssClass="btn btn-info" OnClick="lnkemail_Click" Text="GO" />
+                    </div>
+
+                </div> 
+                 <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ErrorMessage="**Enter proper E-mail " ForeColor="Red" ControlToValidate="txtemail"  ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title" style="color: #6c7383">Search by Mobile</h4>
+                <div class="input-group">
+                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                        <asp:TextBox ID="txtmobile" runat="server" class="form-control" BorderStyle="Solid" BorderColor="#dce9f9" BorderWidth="2px" placeholder="Search Mobile wise" aria-label="search" aria-describedby="search" />
+                        <asp:LinkButton ID="lnkemobile" runat="server" CssClass="btn btn-info" OnClick="lnkemobile_Click" Text="GO" />
+                    </div>
+                </div> 
+                 <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ErrorMessage="**Enter a 10 digit number" ForeColor="Red" ControlToValidate="txtmobile" ValidationGroup="personal" ValidationExpression="[0-9]{10}"></asp:RegularExpressionValidator>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title" style="color: #6c7383">Search by Session</h4>
+                <div class="input-group">
+                    <asp:DropDownList ID="ddlsession" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="ddlsession_TextChanged">
+                        <asp:ListItem Value="2021">2022</asp:ListItem>
+                        <asp:ListItem Value="2021">2021</asp:ListItem>
+                        <asp:ListItem Value="2020">2020</asp:ListItem>
+                        <asp:ListItem Value="2019">2019</asp:ListItem>
+                        <asp:ListItem Value="2018">2018</asp:ListItem>
+                        <asp:ListItem Value="2017">2017</asp:ListItem>
+                        <asp:ListItem Value="0">All</asp:ListItem>
+                    </asp:DropDownList>
+
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title" style="color: #6c7383">Short by</h4>
+                <div class="input-group">
+                    <asp:DropDownList ID="ddlshort" runat="server" CssClass="form-control"  AutoPostBack="true" OnSelectedIndexChanged="ddlshort_SelectedIndexChanged">
+                        <asp:ListItem Value="Name asc">Name (A-Z)</asp:ListItem>
+                         <asp:ListItem Value="Name desc">Name (Z-A)</asp:ListItem>
+                        <asp:ListItem Value="Date asc">Date asc</asp:ListItem>
+                         <asp:ListItem Value="Date desc">Date desc</asp:ListItem>
+                        
+                    </asp:DropDownList>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Application Foms</h4>
+                <p class="card-description">
+                    View details of <code>.Application-forms</code>
+                </p>
+
+                <br />
+                <asp:HiddenField ID="hidIds" runat="server" />
+                <asp:Panel ID="pnlview" runat="server" ScrollBars="Vertical" Height="700px">
+                    <asp:GridView ID="Gvdetail" runat="server" DataKeyNames="id,formno" AutoGenerateColumns="false" CssClass="footable" OnRowDataBound="Gvdetail_RowDataBound" Width="220%">
+                        <Columns>
+                            <asp:TemplateField HeaderText="Print">
+                                <ItemTemplate>
+
+                                    <asp:LinkButton ID="lnkprint" runat="server" CssClass="ti-printer" OnClick="lnkprint_Click" />
+
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Sr No">
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Date">
+                                <ItemTemplate>
+                                    <%# Eval("date","{0:dd-MM-yy}") %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField HeaderText="Course" DataField="forms" />
+                            <asp:BoundField HeaderText="Name" DataField="name" />
+                            <asp:BoundField HeaderText="Father" DataField="fname" />
+                            <asp:BoundField HeaderText="Email" DataField="cemail" />
+                            <asp:BoundField HeaderText="Mobile" DataField="cmobile" />
+                            <asp:BoundField HeaderText="Session" DataField="sesid" />
+                            <asp:BoundField HeaderText="Amount" DataField="amount" />
+                            <asp:BoundField HeaderText="Payment" DataField="T_Status" />
+                            <asp:BoundField HeaderText="Trn-Id" DataField="T_Id" />
+
+                            <asp:TemplateField HeaderText="Status">
+                                <ItemTemplate>
+                                    <div class="progress" style="width: 30px">
+                                        <asp:Panel ID="divrates" runat="server" class="" role="progressbar" Style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></asp:Panel>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Edit">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnedit" runat="server" Text="Edit" OnClick="btnedit_Click" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            
+                        </Columns>
+                        <EmptyDataTemplate>
+                            
+                                <span class="dot">This Time no record found</span>
+                            
+                        </EmptyDataTemplate>
+                    </asp:GridView>
+                </asp:Panel>
+
+                <asp:ScriptManager runat="server" />
+                <cc1:ModalPopupExtender ID="mpshiv" BehaviorID="mpe" runat="server"
+                    PopupControlID="pnlPopup" TargetControlID="lnkDummy" BackgroundCssClass="modalBackground" CancelControlID="btnHide">
+                </cc1:ModalPopupExtender>
+                <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup" Style="display: none;">
+                    <asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card" style="background: #e4e6e9">
+                            <div class="card-body">
+                                <asp:ImageButton ID="btnHide" ImageUrl="~/Img/Deactivate.png" runat="server" />
+                                <p class="card-description">
+                                    <h4 class="card-title">New Transation Id</h4>
+                                    Add Transation <code>with date</code>
+                                </p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <asp:TextBox ID="txtdatess" runat="server" class="form-control" BorderStyle="Solid" BorderColor="Black" BorderWidth="3px" placeholder="Enter  Transation Date" TextMode="Date" /></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+
+                                                <td>
+                                                    <asp:TextBox ID="txttransid" runat="server" class="form-control" BorderStyle="Solid" BorderColor="Black" BorderWidth="3px" placeholder="Enter Transation Id" aria-label="search" aria-describedby="search" />
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:Button ID="btnupdate" runat="server" class="btn btn-danger" data-dismiss="modal" Text="Update" OnClientClick="btnupdate_click" OnClick="btnupdate_Click1" />
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </asp:Panel>
+
+
+            </div>
+        </div>
+</asp:Content>
