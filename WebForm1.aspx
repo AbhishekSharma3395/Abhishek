@@ -346,9 +346,52 @@
             //document.write(a);
             // op random value 0.7600295933571604
 
-         
 
 
+  //date methods get
+
+
+            //1 New date
+            //var now = new Date();
+            //document.write(now);
+           //  OP=======> Fri May 27 2022 14:12:50 GMT+0530 (India Standard Time)
+
+             //2 toDateString
+            //var now = new Date();
+            //document.write(now.toDateString());
+           //  OP=======>  Fri May 27 2022
+
+             //3 getDate()
+             //var now = new Date();
+            //document.write(now.getDate());
+            //  OP=======> 27
+
+            // 4 getFullYear()
+            //var now = new Date();
+            //document.write(now.getFullYear());
+            // OP=======> 2022
+
+            //var now = new Date();
+            //document.write(now.getMonth());
+            // 4(start from 0)
+
+            //var now = new Date();
+            //document.write(now.getDay());
+            // OP ==> 5  (0 means sunday, 1 monday)
+
+            //var now = new Date();
+            //document.write(now.getUTCMilliseconds());
+            //op ==> 866
+
+
+// set date 
+            //var now = new Date();
+            //now.setDate(29);
+            //document.write(now);
+            //Sun May 29 2022 14: 31: 24 GMT + 0530(India Standard Time)
+
+
+            
         </script>
     </form>
 </body>
