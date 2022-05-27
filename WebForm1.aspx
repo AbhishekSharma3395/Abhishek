@@ -257,7 +257,7 @@
             //var str = "my name is is abhishek";
             //var a = str.lastIndexOf("is");
             //document.write(a);
-            //17
+            //op 17
 
             //str replace
             //var str = "my name is is abhishek";
@@ -391,7 +391,54 @@
             //Sun May 29 2022 14: 31: 24 GMT + 0530(India Standard Time)
 
 
-            
+
+
+
+
+// number method 
+            //var a = "50";
+            //var num = Number(a);
+            //document.write(num + 20);
+            //OP ===>  70
+
+
+// Parseint
+            //var a = "50.55";
+            //var num = parseInt(a);
+            //document.write(num);
+            // 50
+
+
+
+// ParseFloat
+            //var a = "10.39";
+            //var num = parseFloat(a);
+            //document.write(num);
+            //10.39
+
+//isfinite only int true
+            //var a = "dfd";
+            //var num = Number.isFinite(a);
+            //document.write(num);
+            //false 
+
+//isintiger int or not
+            //var a =15;
+            //var num = Number.isInteger(a);
+            //document.write(num);
+
+
+//tofixed
+            //var a = 15.505;
+            //var num = a.toFixed(2);
+            //document.write(num);
+
+//toprecison
+            //var a = 5.865456464;
+            //var num = a.toPrecision(10);
+            //document.write(num);
+            //op ==> 5.865456464
+
         </script>
     </form>
 </body>
