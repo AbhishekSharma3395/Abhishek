@@ -1,0 +1,1385 @@
+classes.cs
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.SqlClient;
+using System.Data;
+using System.IO;
+using System.Drawing;
+
+namespace WebApplication29
+{
+    public class classes
+    {
+        SqlConnection con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["shiv"].ConnectionString);
+        SqlCommand cmd = new SqlCommand();
+        SqlDataAdapter da = new SqlDataAdapter();
+        DataTable dt1 = new DataTable();
+        public string datetime = "yyyy-MM-dd HH:mm:ss:fff";
+        public void ExecuteQuery(string sql)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            //da.SelectCommand = cmd;
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+
+        public DataTable SelectQuery(string sql)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            da.SelectCommand = cmd;
+            cmd.Connection = con;
+            cmd.CommandText = sql;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return (dt);
+        }
+        public int updateimage(string query, byte[] barcode)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Parameters.Add("@barcode", SqlDbType.Image).Value = barcode;
+            cmd.Connection = con;
+            res = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            con.Close();
+            return res;
+        }
+        public int insertscalar(string query)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            res = Convert.ToInt32(cmd.ExecuteScalar());
+            con.Close();
+            return res;
+        }
+
+        public int deletewithpopup(string query)
+        {
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            int i = cmd.ExecuteNonQuery();
+            return i;
+        }
+        public int insert(string query)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            res = cmd.ExecuteNonQuery();
+            con.Close();
+            return res;
+        }
+        public int delete(string query)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            int res = cmd.ExecuteNonQuery();
+            con.Close();
+            return res;
+        }
+        public DataTable select(string query)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();
+            return dt;
+        }
+        public Bitmap selectimage(string query)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            da.SelectCommand = cmd;
+            byte[] img = (byte[])cmd.ExecuteScalar();
+            MemoryStream str = new MemoryStream();
+            str.Write(img, 0, img.Length);
+            Bitmap bit = new Bitmap(str);
+            con.Close();
+            return bit;
+        }
+        public int update(string query)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            cmd.CommandText = query;
+            cmd.Connection = con;
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            return i;
+        }
+        public int insertimage(string query, byte[] qrcode, byte[] barcode)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Parameters.Add("@qrcode", SqlDbType.Image).Value = qrcode;
+            cmd.Parameters.Add("@barcode", SqlDbType.Image).Value = barcode;
+            cmd.Connection = con;
+            res = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            con.Close();
+            return res;
+        }
+        public int insertstaff(string query, byte[] photo, byte[] sign, byte[] qrcode, byte[] barcode)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Parameters.Add("@qrcode", SqlDbType.Image).Value = qrcode;
+            cmd.Parameters.Add("@barcode", SqlDbType.Image).Value = barcode;
+            cmd.Parameters.Add("@photo", SqlDbType.Image).Value = photo;
+            cmd.Parameters.Add("@sign", SqlDbType.Image).Value = sign;
+            cmd.Connection = con;
+            res = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            con.Close();
+            return res;
+        }
+        public int updatestaffPhoto(string query, byte[] photo)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Parameters.Add("@photo", SqlDbType.Image).Value = photo;
+            cmd.Connection = con;
+            res = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            con.Close();
+            return res;
+        }
+        public int updatestaffsign(string query, byte[] sign)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Parameters.Add("@sign", SqlDbType.Image).Value = sign;
+            cmd.Connection = con;
+            res = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            con.Close();
+            return res;
+        }
+        public int updateimagebarcode(string query, byte[] barcode)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Parameters.Add("@barcode", SqlDbType.Image).Value = barcode;
+            cmd.Connection = con;
+            res = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            con.Close();
+            return res;
+        }
+        public int updateimageqrcode(string query, byte[] qrcode)
+        {
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            int res;
+            cmd.CommandText = query;
+            cmd.Parameters.Add("@qrcode", SqlDbType.Image).Value = qrcode;
+            cmd.Connection = con;
+            res = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            con.Close();
+            return res;
+        }
+        public string getmonthname(int num)
+        {
+            if (num == 1)
+            {
+                return "January";
+            }
+            else if (num == 2)
+            {
+                return "February";
+            }
+            else if (num == 3)
+            {
+                return "March";
+            }
+            else if (num == 4)
+            {
+                return "April";
+            }
+            else if (num == 5)
+            {
+                return "May";
+            }
+            else if (num == 6)
+            {
+                return "June";
+            }
+            else if (num == 7)
+            {
+                return "July";
+            }
+            else if (num == 8)
+            {
+                return "August";
+            }
+            else if (num == 9)
+            {
+                return "September";
+            }
+            else if (num == 10)
+            {
+                return "October";
+            }
+            else if (num == 11)
+            {
+                return "November";
+            }
+            else if (num == 12)
+            {
+                return "December";
+            }
+            else
+            {
+                return "value out of index";
+            }
+        }
+        public string NumberToWords(int number)
+        {
+            if (number == 0)
+                return "Zero";
+
+            if (number < 0)
+                return "minus " + NumberToWords(Math.Abs(number));
+
+            string words = "";
+
+            if ((number / 1000000) > 0)
+            {
+                words += NumberToWords(number / 1000000) + " Million ";
+                number %= 1000000;
+            }
+
+            if ((number / 1000) > 0)
+            {
+                words += NumberToWords(number / 1000) + " Thousand ";
+                number %= 1000;
+            }
+
+            if ((number / 100) > 0)
+            {
+                words += NumberToWords(number / 100) + " Hundred ";
+                number %= 100;
+            }
+
+            if (number > 0)
+            {
+                if (words != "")
+                    words += " ";
+
+                var unitsMap = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
+                var tensMap = new[] { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+
+                if (number < 20)
+                    words += unitsMap[number];
+                else
+                {
+                    words += tensMap[number / 10];
+                    if ((number % 10) > 0)
+                        words += " " + unitsMap[number % 10];
+                }
+            }
+
+            return words;
+
+
+        }
+    }
+}
+
+
+
+------------------------------------------------------------------
+
+Main.Master
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="WebApplication29._default1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+   
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAHERU - Home</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="images/pulogo.svg">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/off-canvas.css">
+    <link rel="stylesheet" type="text/css" href="fonts/linea-fonts.css">
+    <link rel="stylesheet" type="text/css" href="fonts/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/rsmenu-main.css">
+    <link rel="stylesheet" type="text/css" href="css/rs-spacing.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+  
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        .loader-icon .img{
+            margin-left:45px;
+        }
+
+        .logo-part {
+    position: relative;
+    z-index: 9;
+    margin-left:80px;
+}
+
+    </style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+          <div id="loader" class="loader blue-color">
+        <div class="loader-container">
+            <div class="loader-icon">
+                <img src="images/logo.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!--Preloader area End here-->
+    <div class="main-content">
+        <div class="full-width-header home8-style4 home9">
+            <header id="rs-header" class="rs-header">
+                <!-- Menu Start -->
+                <!-- Topbar Area Start -->
+                <div class="topbar-area home9-topbar">
+                    <div class="container-fluid">
+                        <div class="row y-middle">
+                            <div class="col-md-7">
+                                <ul class="topbar-contact">
+                                    <li>
+                                        <i class="flaticon-email"></i>
+                                        <a href="mailto: info@pacific-university.ac.in"> info@pacific-university.ac.in</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5 text-right">
+                                <ul class="topbar-right">
+                                    <li class="login-register">
+                                        <i class="fa fa-sign-in"></i>
+                                        <a href="login.html">Login</a>/<a href="register.html">Register</a>
+                                    </li>
+                                    <li class="btn-part">
+                                        <a class="apply-btn" href="#">Apply Now</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Topbar Area End -->
+                <div class="menu-area menu-sticky">
+                    <div class="container-fluid p-0">
+                        <div class="row y-middle h-25">
+                            <div class="col-lg-3">
+                                <div class="logo-cat-wrap">
+                                    <div class="logo-part">
+                                        <a href="default.aspx">
+                                            <img class="normal-logo" src="images/logo.png" alt="">
+                                            <img class="sticky-logo" src="images/logo.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 text-right">
+                                <div class="rs-menu-area">
+                                    <div class="main-menu">
+                                        <div class="mobile-menu">
+                                            <a class="rs-menu-toggle">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                        </div>
+                                        <nav class="rs-menu">
+                                            <ul class="nav-menu">
+                                                <li class="menu-item-has-children current-menu-item">
+                                                    <a href="default.aspx">Home</a>
+                                                       <ul class="sub-menu">
+                                                        <li><a href="institute.aspx">Institute</a></li>
+                                                           <li><a href="admission.aspx">Admission</a> </li>
+                                                        <li><a href="activities.aspx">Other Activities</a> </li>
+                                                        
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">About Us</a>
+                                                   <ul class="sub-menu">
+                                                      <li><a href="events.aspx">Events</a> </li>
+                                                             <li><a href="whatother.aspx">What Other's Says</a> </li>
+                                                      
+                                                      
+                                                       
+
+                                                    </ul>
+                                                </li>
+
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Gallery</a>
+                                                    <ul class="sub-menu">
+                                                      <li><a href="news.aspx">News Gallery</a> </li>
+                                                          <li><a href="campusview.aspx">Campus View</a> </li>
+                                                       
+
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children">
+                                                    <a href="placements.aspx">Placements</a>
+                                                       <ul class="sub-menu">
+                                                      <li><a href="facultie.aspx">Faculty Profile</a></li>
+
+                                                     </ul>
+                                                </li>
+                                                 <li class="menu-item-has-children">
+                                                    <a href="contactus.aspx">Contact US</a>
+                                                      
+
+                                                    
+                                                </li>
+                                               
+
+
+                                            </ul> <!-- //.nav-menu -->
+                                        </nav>
+                                    </div> <!-- //.main-menu -->
+
+                                </div>
+                            </div>
+                            <div class="col-lg-1 text-right">
+                                <div class="expand-btn-inner">
+                                    <a id="nav-expander" class="nav-expander style6 mr-5">
+                                        <div class="bar">
+                                            <span class="dot1"></span>
+                                            <span class="dot2"></span>
+                                            <span class="dot3"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu End -->
+                     <!-- Canvas Menu start -->
+                <nav class="right_menu_togle hidden-md">
+                    <div class="close-btn">
+                        <span id="nav-close">
+                            <div class="line">
+                                <span class="line1"></span><span class="line2"></span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="canvas-logo">
+                        <a href="default.aspx"><img src="images/logo-yellow2.png" alt="logo"></a>
+                    </div>
+                    <div class="offcanvas-text">
+                        <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo  by the charms of pleasure of the moment data com so blinded by desire.</p>
+                    </div>
+                    <div class="offcanvas-gallery">
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/1.jpg"><img src="images/gallery/1.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/2.jpg"><img src="images/gallery/2.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/3.jpg"><img src="images/gallery/3.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/4.jpg"><img src="images/gallery/4.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/5.jpg"><img src="images/gallery/5.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/6.jpg"><img src="images/gallery/6.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="map-img">
+                        <img src="images/map.jpg" alt="">
+                    </div>
+                    <div class="canvas-contact">
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Canvas Menu end -->
+            </header>
+        </div>
+               
+<!-- Banner Section Start -->
+<div class="rs-slider style1">
+    <div class="rs-carousel owl-carousel" data-loop="true" data-items="1" data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="1" data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="1" data-ipad-device-nav2="true" data-ipad-device-dots2="false" data-md-device="1" data-md-device-nav="true" data-md-device-dots="false">
+        <div class="slider-content slide1">
+            <div class="container">
+                <div class="sl-sub-title white-color wow bounceInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">World Leading University</div>
+                <h1 class="sl-title white-color wow fadeInRight" data-wow-delay="600ms" data-wow-duration="2000ms">Pacific University</h1>
+                <div class="sl-btn wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
+                    <a class="readon2 banner-style" href="#">Discover More</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-content slide2">
+            <div class="container">
+                <div class="sl-sub-title white-color wow bounceInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">World Leading University</div>
+                <h1 class="sl-title white-color wow fadeInRight" data-wow-delay="600ms" data-wow-duration="2000ms">Pacific University</h1>
+                <div class="sl-btn wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
+                    <a class="readon2 banner-style" href="#">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Banner Section End -->
+    <!-- Features Section start -->
+    <div id="rs-features" class="rs-features style2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 md-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-university" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">Admission<br>Form</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 md-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-graduation-cap" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">Research <br>& Ph.D</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 sm-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-newspaper-o" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">University <br>Memberships</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 md-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-calendar" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">Examination &<br>Results</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 sm-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-sun-o" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">New Age Degree Program</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-users" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">Anti-Ragging<br>Committee</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Features Section End -->
+
+
+      </div>  
+        
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+        
+          <!-- Newsletter section start -->
+   <div class="rs-newsletter style1 event2-bg yellow-color mb--90 sm-mb-0 sm-pb-70">
+        <div class="container">
+            <div class="newsletter-wrap">
+                <div class="row y-middle">
+                    <div class="col-lg-6 col-md-12 md-mb-30">
+                        <div class="content-part">
+                            <div class="sec-title">
+                                <div class="title-icon md-mb-15">
+                                    <img src="images/newsletter2.png" alt="images">
+                                </div>
+                                <h2 class="title mb-0 white-color">Subscribe to Newsletter</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="newsletter-form">
+                          
+                            <input type="email" name="email" placeholder="Enter Your Email" required="">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Newsletter section end -->
+
+       
+    <!-- Newsletter section end -->
+
+         <footer id="rs-footer" class="rs-footer home9-style">
+        <div class="footer-top bg-dark">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 footer-widget md-mb-50">
+                        <h3 class="widget-title">PACIFIC UNIVERSITY</h3>
+                        <ul class="address-widget">
+                            <li>
+                                <i class="flaticon-location"></i>
+                                <div class="desc">
+                                    Pacific Hills, Pratapnagar Extension,
+                                    Airport Road, Debari, Udaipur - 313003
+                                </div>
+                            </li>
+                            <li>
+                                <i class="flaticon-call"></i>
+                                <div class="desc">
+                                    <a href="#">+919672970940, +917665017757, +919672927863</a>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="flaticon-email"></i>
+                                <div class="desc">
+                                    <a href="mailto:info@pacific-university.ac.in">info@pacific-university.ac.in</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 footer-widget">
+                        <h3 class="widget-title">PACIFIC YOUTUBE CHANNEL</h3>
+                        <div class="textwidget white-color pr-60 md-pr-15 w-100">
+                            <a href="user/PacificUdrUniversity.html" target="_blank"><img src="images/footer-video.jpg" alt="pacific-gallery"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 footer-widget">
+                        <h3 class="widget-title">LIKE US ON FACEBOOK</h3>
+                        <div class="fb-page fb_iframe_widget w-100" data-href="https://www.facebook.com/pacificuniversityofficial" data-tabs="timeline" data-height="215" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=&amp;container_width=413&amp;height=215&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpacificuniversityofficial&amp;locale=en_GB&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=timeline"><span style="vertical-align: bottom; width: 340px; height: 215px;"><iframe name="f7855b75f0688c" width="1000px" height="215px" data-testid="fb:page Facebook Social Plugin" title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="v2.8/plugins/page.php.html?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df9927f7e49b344%26domain%3Dwww.pacific-university.ac.in%26origin%3Dhttps%253A%252F%252Fwww.pacific-university.ac.in%252Ff1cdca3d53e5cc%26relation%3Dparent.parent&amp;container_width=413&amp;height=215&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpacificuniversityofficial&amp;locale=en_GB&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=timeline" style="border: none; visibility: visible; width: 340px; height: 215px;" class=""></iframe></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="background-color:black">
+            <div class="container-fluid">
+                <div class="row y-middle">
+                    <div class="col-lg-4 md-mb-20">
+                        <div class="footer-logo md-text-center">
+                            <a href="default.aspx"><img src="images/whitelogo.svg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 md-mb-20">
+                        <div class="copyright text-center md-text-left">
+                            <p>&copy; 2020 All Rights Reserved.<br> Developed & Maintained By <a href="#">Pacific University IT Team</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-right md-text-left">
+                        <ul class="footer-social">
+                            <li><a href="pacificuniversityofficial.html"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="PacificUniver.html"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="pacific_university/index.htm"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/edu/pacific-university-udaipur-155034"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="user/PacificUdrUniversity.html"><i class="fa fa-youtube-play"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <script src="js/modernizr-2.8.3.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/rsmenu-main.js"></script>
+    <script src="js/jquery.nav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/skill.bars.jquery.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/tilt.jquery.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/contact.form.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+
+    </form>
+</body>
+</html>
+
+------------------------------------------------------------------
+
+default.aspx
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="WebApplication29._default1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+   
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAHERU - Home</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="images/pulogo.svg">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/off-canvas.css">
+    <link rel="stylesheet" type="text/css" href="fonts/linea-fonts.css">
+    <link rel="stylesheet" type="text/css" href="fonts/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/rsmenu-main.css">
+    <link rel="stylesheet" type="text/css" href="css/rs-spacing.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+  
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        .loader-icon .img{
+            margin-left:45px;
+        }
+
+        .logo-part {
+    position: relative;
+    z-index: 9;
+    margin-left:80px;
+}
+
+    </style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+          <div id="loader" class="loader blue-color">
+        <div class="loader-container">
+            <div class="loader-icon">
+                <img src="images/logo.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!--Preloader area End here-->
+    <div class="main-content">
+        <div class="full-width-header home8-style4 home9">
+            <header id="rs-header" class="rs-header">
+                <!-- Menu Start -->
+                <!-- Topbar Area Start -->
+                <div class="topbar-area home9-topbar">
+                    <div class="container-fluid">
+                        <div class="row y-middle">
+                            <div class="col-md-7">
+                                <ul class="topbar-contact">
+                                    <li>
+                                        <i class="flaticon-email"></i>
+                                        <a href="mailto: info@pacific-university.ac.in"> info@pacific-university.ac.in</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5 text-right">
+                                <ul class="topbar-right">
+                                    <li class="login-register">
+                                        <i class="fa fa-sign-in"></i>
+                                        <a href="login.html">Login</a>/<a href="register.html">Register</a>
+                                    </li>
+                                    <li class="btn-part">
+                                        <a class="apply-btn" href="#">Apply Now</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Topbar Area End -->
+                <div class="menu-area menu-sticky">
+                    <div class="container-fluid p-0">
+                        <div class="row y-middle h-25">
+                            <div class="col-lg-3">
+                                <div class="logo-cat-wrap">
+                                    <div class="logo-part">
+                                        <a href="default.aspx">
+                                            <img class="normal-logo" src="images/logo.png" alt="">
+                                            <img class="sticky-logo" src="images/logo.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 text-right">
+                                <div class="rs-menu-area">
+                                    <div class="main-menu">
+                                        <div class="mobile-menu">
+                                            <a class="rs-menu-toggle">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                        </div>
+                                        <nav class="rs-menu">
+                                            <ul class="nav-menu">
+                                                <li class="menu-item-has-children current-menu-item">
+                                                    <a href="default.aspx">Home</a>
+                                                       <ul class="sub-menu">
+                                                        <li><a href="institute.aspx">Institute</a></li>
+                                                           <li><a href="admission.aspx">Admission</a> </li>
+                                                        <li><a href="activities.aspx">Other Activities</a> </li>
+                                                        
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">About Us</a>
+                                                   <ul class="sub-menu">
+                                                      <li><a href="events.aspx">Events</a> </li>
+                                                             <li><a href="whatother.aspx">What Other's Says</a> </li>
+                                                      
+                                                      
+                                                       
+
+                                                    </ul>
+                                                </li>
+
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Gallery</a>
+                                                    <ul class="sub-menu">
+                                                      <li><a href="news.aspx">News Gallery</a> </li>
+                                                          <li><a href="campusview.aspx">Campus View</a> </li>
+                                                       
+
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children">
+                                                    <a href="placements.aspx">Placements</a>
+                                                       <ul class="sub-menu">
+                                                      <li><a href="facultie.aspx">Faculty Profile</a></li>
+
+                                                     </ul>
+                                                </li>
+                                                 <li class="menu-item-has-children">
+                                                    <a href="contactus.aspx">Contact US</a>
+                                                      
+
+                                                    
+                                                </li>
+                                               
+
+
+                                            </ul> <!-- //.nav-menu -->
+                                        </nav>
+                                    </div> <!-- //.main-menu -->
+
+                                </div>
+                            </div>
+                            <div class="col-lg-1 text-right">
+                                <div class="expand-btn-inner">
+                                    <a id="nav-expander" class="nav-expander style6 mr-5">
+                                        <div class="bar">
+                                            <span class="dot1"></span>
+                                            <span class="dot2"></span>
+                                            <span class="dot3"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu End -->
+                     <!-- Canvas Menu start -->
+                <nav class="right_menu_togle hidden-md">
+                    <div class="close-btn">
+                        <span id="nav-close">
+                            <div class="line">
+                                <span class="line1"></span><span class="line2"></span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="canvas-logo">
+                        <a href="default.aspx"><img src="images/logo-yellow2.png" alt="logo"></a>
+                    </div>
+                    <div class="offcanvas-text">
+                        <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo  by the charms of pleasure of the moment data com so blinded by desire.</p>
+                    </div>
+                    <div class="offcanvas-gallery">
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/1.jpg"><img src="images/gallery/1.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/2.jpg"><img src="images/gallery/2.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/3.jpg"><img src="images/gallery/3.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/4.jpg"><img src="images/gallery/4.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/5.jpg"><img src="images/gallery/5.jpg" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="images/gallery/6.jpg"><img src="images/gallery/6.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="map-img">
+                        <img src="images/map.jpg" alt="">
+                    </div>
+                    <div class="canvas-contact">
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Canvas Menu end -->
+            </header>
+        </div>
+               
+<!-- Banner Section Start -->
+<div class="rs-slider style1">
+    <div class="rs-carousel owl-carousel" data-loop="true" data-items="1" data-margin="0" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="1" data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="1" data-ipad-device-nav2="true" data-ipad-device-dots2="false" data-md-device="1" data-md-device-nav="true" data-md-device-dots="false">
+        <div class="slider-content slide1">
+            <div class="container">
+                <div class="sl-sub-title white-color wow bounceInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">World Leading University</div>
+                <h1 class="sl-title white-color wow fadeInRight" data-wow-delay="600ms" data-wow-duration="2000ms">Pacific University</h1>
+                <div class="sl-btn wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
+                    <a class="readon2 banner-style" href="#">Discover More</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-content slide2">
+            <div class="container">
+                <div class="sl-sub-title white-color wow bounceInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">World Leading University</div>
+                <h1 class="sl-title white-color wow fadeInRight" data-wow-delay="600ms" data-wow-duration="2000ms">Pacific University</h1>
+                <div class="sl-btn wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
+                    <a class="readon2 banner-style" href="#">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Banner Section End -->
+    <!-- Features Section start -->
+    <div id="rs-features" class="rs-features style2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 md-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-university" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">Admission<br>Form</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 md-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-graduation-cap" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">Research <br>& Ph.D</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 sm-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-newspaper-o" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">University <br>Memberships</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 md-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-calendar" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">Examination &<br>Results</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 sm-mb-30">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-sun-o" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">New Age Degree Program</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="rs-iconbox-area">
+                        <div class="icon-area">
+                            <i class="fa fa-5x fa-users" style="color: #cea611 !important"></i>
+                        </div>
+                        <div class="text-area">
+                            <h3 class="icon-title">Anti-Ragging<br>Committee</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Features Section End -->
+
+
+      </div>  
+        
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+        
+          <!-- Newsletter section start -->
+   <div class="rs-newsletter style1 event2-bg yellow-color mb--90 sm-mb-0 sm-pb-70">
+        <div class="container">
+            <div class="newsletter-wrap">
+                <div class="row y-middle">
+                    <div class="col-lg-6 col-md-12 md-mb-30">
+                        <div class="content-part">
+                            <div class="sec-title">
+                                <div class="title-icon md-mb-15">
+                                    <img src="images/newsletter2.png" alt="images">
+                                </div>
+                                <h2 class="title mb-0 white-color">Subscribe to Newsletter</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="newsletter-form">
+                          
+                            <input type="email" name="email" placeholder="Enter Your Email" required="">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Newsletter section end -->
+
+       
+    <!-- Newsletter section end -->
+
+         <footer id="rs-footer" class="rs-footer home9-style">
+        <div class="footer-top bg-dark">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 footer-widget md-mb-50">
+                        <h3 class="widget-title">PACIFIC UNIVERSITY</h3>
+                        <ul class="address-widget">
+                            <li>
+                                <i class="flaticon-location"></i>
+                                <div class="desc">
+                                    Pacific Hills, Pratapnagar Extension,
+                                    Airport Road, Debari, Udaipur - 313003
+                                </div>
+                            </li>
+                            <li>
+                                <i class="flaticon-call"></i>
+                                <div class="desc">
+                                    <a href="#">+919672970940, +917665017757, +919672927863</a>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="flaticon-email"></i>
+                                <div class="desc">
+                                    <a href="mailto:info@pacific-university.ac.in">info@pacific-university.ac.in</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 footer-widget">
+                        <h3 class="widget-title">PACIFIC YOUTUBE CHANNEL</h3>
+                        <div class="textwidget white-color pr-60 md-pr-15 w-100">
+                            <a href="user/PacificUdrUniversity.html" target="_blank"><img src="images/footer-video.jpg" alt="pacific-gallery"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 footer-widget">
+                        <h3 class="widget-title">LIKE US ON FACEBOOK</h3>
+                        <div class="fb-page fb_iframe_widget w-100" data-href="https://www.facebook.com/pacificuniversityofficial" data-tabs="timeline" data-height="215" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=&amp;container_width=413&amp;height=215&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpacificuniversityofficial&amp;locale=en_GB&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=timeline"><span style="vertical-align: bottom; width: 340px; height: 215px;"><iframe name="f7855b75f0688c" width="1000px" height="215px" data-testid="fb:page Facebook Social Plugin" title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="v2.8/plugins/page.php.html?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df9927f7e49b344%26domain%3Dwww.pacific-university.ac.in%26origin%3Dhttps%253A%252F%252Fwww.pacific-university.ac.in%252Ff1cdca3d53e5cc%26relation%3Dparent.parent&amp;container_width=413&amp;height=215&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpacificuniversityofficial&amp;locale=en_GB&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=timeline" style="border: none; visibility: visible; width: 340px; height: 215px;" class=""></iframe></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="background-color:black">
+            <div class="container-fluid">
+                <div class="row y-middle">
+                    <div class="col-lg-4 md-mb-20">
+                        <div class="footer-logo md-text-center">
+                            <a href="default.aspx"><img src="images/whitelogo.svg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 md-mb-20">
+                        <div class="copyright text-center md-text-left">
+                            <p>&copy; 2020 All Rights Reserved.<br> Developed & Maintained By <a href="#">Pacific University IT Team</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-right md-text-left">
+                        <ul class="footer-social">
+                            <li><a href="pacificuniversityofficial.html"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="PacificUniver.html"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="pacific_university/index.htm"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/edu/pacific-university-udaipur-155034"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="user/PacificUdrUniversity.html"><i class="fa fa-youtube-play"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <script src="js/modernizr-2.8.3.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/rsmenu-main.js"></script>
+    <script src="js/jquery.nav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/skill.bars.jquery.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/tilt.jquery.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/contact.form.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+
+    </form>
+</body>
+</html>
+
+
+--------------------------------------------------------------
+
+
+
+default.aspx.cs
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+using System.Net.Mail;
+
+namespace WebApplication29
+{
+    public partial class _default : System.Web.UI.Page
+    {
+        classes cs = new classes();
+        string sql = "";
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                faculty(); course();
+
+
+            }
+        }
+
+        protected void SendMail()
+        {
+            string url = Request.Url.Host;
+            #region Email
+            MailMessage mail = new MailMessage();
+            mail.To.Add("info@pacific-university.ac.in ");
+            mail.From = new MailAddress("it@pacific-university.ac.in");
+            mail.Subject = "Enquiry From Website "+url+"";
+            mail.Body = "<table width=100%>" +
+                "<tr><td width=40%>1. <b> Name </b></td>" + "<td width=60%>" + txt_name.Text + "</td>" +
+                "</tr><br><tr><td width=40%>2. <b> Faculty </b></td>" + "<td width=60%>" + ddlfaculy.SelectedItem.Text.ToUpper() + "</td></tr><br><tr><td width=40%>3. <b> Course </b></td>" + "<td width=60%>" + ddlcourse.SelectedItem.Text.ToUpper() + "</td></tr><br><tr><td width=40%>4. <b> Email-Id </b></td>" + "<td width=60%>" + txt_email.Text + "</td></tr><br><tr><td width=40%>5. <b> Contact No </b></td>" + "<td width=60%>" + txtphone.Text + "</td></tr><br><tr><td width=40%>6. <b> Email </b></td>" + "<td width=60%>" + txt_email.Text + "</td></tr></Table>";
+            string body = "From: " + txt_name.Text + "\n";
+            body += "Faculty: " + ddlfaculy.SelectedItem.Text + "\n";
+            body += "Course: " + ddlcourse.SelectedItem.Text + "\n";
+            body += "Email: " + txt_email.Text + "\n";
+            body += "Phone No.: " + txtphone.Text + "\n";
+            mail.Body = body;
+            mail.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient();
+            client.UseDefaultCredentials = true;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.Host = "smtp.gmail.com";
+            client.Port = 587;
+            client.Credentials =
+            new System.Net.NetworkCredential("it@pacific-university.ac.in", "paheritemail@2019");
+            try
+            {
+                client.Send(mail);
+            }
+            catch (Exception ex)
+            {
+            }
+            #endregion
+        }
+
+        protected void faculty()
+        {
+            DataTable dt = cs.select("select * from faculty where isActive='1'");
+            ddlfaculy.DataSource = dt; ddlfaculy.DataTextField = "faculty";
+            ddlfaculy.DataValueField = "id";
+            ddlfaculy.DataBind();
+            ddlfaculy.Items.Insert(0, "Select Faculty");
+        }
+        protected void course()
+        {
+            if (ddlfaculy.SelectedValue.ToLower() == "select faculty")
+            {
+                ddlcourse.Items.Insert(0, "Select Course");
+            }
+            else
+            {
+                DataTable dt = cs.select("select * from course where isActive='1' and facultyid='" + ddlfaculy.SelectedValue + "'");
+                ddlcourse.DataSource = dt; ddlcourse.DataTextField = "course";
+                ddlcourse.DataValueField = "id";
+                ddlcourse.DataBind();
+                ddlcourse.Items.Insert(0, "Select Course");
+            }
+
+        }
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            string url = Request.Url.Host;
+            DataTable dt = cs.select("select * from  Enquiries where email= N'" + txt_email.Text + "' and website = '" + url + "' and facultyName = '" + ddlfaculy.SelectedItem.Text + "' and courseName ='" + ddlcourse.SelectedItem.Text + "' and enquirytime='" + Convert.ToDateTime(DateTime.Now).ToString("yyyy/MM/dd") + "' ");
+            if (dt.Rows.Count == 0)
+            {
+
+                string sql = "insert into Enquiries(name,email,mobile,website,facultyname,coursename,enquirytime)values(N'" + txt_name.Text + "',N'" + txt_email.Text + "','" + mobile_no.Text + "','" + url + "','" + ddlfaculy.SelectedItem.Text + "','" + ddlcourse.SelectedItem.Text + "','" + Convert.ToDateTime(DateTime.Now).ToString("yyyy/MM/dd") + "')";
+                cs.ExecuteQuery(sql); txtphone.Text = ""; txt_email.Text = ""; txt_name.Text = ""; ddlcourse.Items.Clear(); ddlfaculy.Items.Clear(); faculty(); course(); txtphone.Text = "";
+                string temp2s = "alertify.notify( 'enquiry send succesfully' , 'success', 3, function(){  console.log('dismissed'); });";
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "alert4", temp2s, true);
+                SendMail();
+            }
+            else
+            {
+                string temp2s = "alertify.notify( 'enquiry already exist' , 'error', 3, function(){  console.log('dismissed'); });";
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "alert4", temp2s, true);
+            }
+        }
+        protected void ddlfaculy_clickevent(object sender, EventArgs e)
+        {
+            course();
+        }
+    }
+}
