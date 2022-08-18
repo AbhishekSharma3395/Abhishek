@@ -1,0 +1,1377 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"  CodeBehind="Master.master.cs" Inherits="MedicalHospital.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Pacific Medical College and Hospital - Best Medical college and hospital in Rajasthan
+ referred as Pacific Medical College and Hospital formerly Medical College Rajasthan,one of the best medical college in rajasthan,medical college admission 2022,Teh-Girwa Udaipur Rajasthan-313024">
+
+
+<meta name="keywords" content="Medical College and Hospital,
+ Medical College, Pacific Medical College and hospital, Udaipur Medical College, pacificmedicalcollege, pacificmedicalcollegeandhospitaludaipur, udaipurmedicalcollege,
+Top Medical college and hospital in Rajasthan,PMCH,PMCH udaipur,P.M.C.H.,pacific hospital,medical admission 2023">
+    
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZG2RN49J8F"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZG2RN49J8F');
+</script>
+
+
+
+ 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+ 	<title>Pacific Medical College & Hospital (PMCH)</title>
+ 	<link href="/asset/Css/tailwind.min.css" rel="stylesheet">
+ 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+ 	<link rel="stylesheet" href="/asset/Css/animate.min.css" />
+ 	<link rel="stylesheet" href="/asset/Css/owl.carousel.min.css" />
+ 	<link rel="stylesheet" href="/asset/Css/owl.theme.default.min.css">
+ 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 	<link href="/asset/Css/aos.css" rel="stylesheet">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<script src="/asset/bundle.umd.js" defer></script>
+ 	<script src="/asset/main.js" defer></script>
+ 	<link rel="stylesheet" href="/asset/fonts.css">
+ 	<link rel="stylesheet" href="/asset/styles.css">
+    <link href="csss/css/bootstrap.min.css" rel="stylesheet" />
+    <a href="csss/css/bootstrap.min.css.map"></a>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="csss/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="csss/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="csss/css/bootstrap.min.css">
+
+
+    <link href="css-1.css" rel="stylesheet" />
+    <link href="css.css" rel="stylesheet" />
+    <!-- Style -->
+    <link rel="stylesheet" href="csss/css/style.css">
+
+    <link href="css/style.css" rel="stylesheet" />
+
+
+     <%-- <script>
+          let validName = (string) => {
+              let firstName = "";
+              let middleName = "";
+              let lastName = "";
+              let spacecount = 0;
+              let dotcount = 0;
+              let e = "";
+              //let f = true;
+              for (let i = 0; i < string.length; i++) {
+                  if (string[i] === ".") {
+                      dotcount += 1;
+                  }
+                  if (string[i] === " ") {
+                      spacecount += 1;
+                  }
+                  if (spacecount === 0) {
+                      firstName += string[i];
+                  } else
+                      if (spacecount === 1) {
+                          if (string[i] !== " ") {
+                              middleName += string[i];
+                          }
+                      } else
+                          if (spacecount === 2) {
+                              if (string[i] !== " ") {
+                                  lastName += string[i];
+                              }
+                          }
+              }
+              if (string[string.length - 1] === ".") {
+                  dotcount -= 1;
+              }
+              //console.log("spacecount: " + spacecount);
+              //console.log("firstName: " + firstName);
+              //console.log("middleName: " + middleName);
+              //console.log("lastName: " + lastName);
+              let firstNameRegex = /^[A-Z][a-zA-Z]+$|^[A-Z]\W$/g;
+              let a = firstNameRegex.test(firstName);
+              let a1 = firstName.match(firstNameRegex);
+              //console.log("a: " + a);
+              //console.log("a1: " + a1);
+              let middleNameRegex = /^[A-Z][a-zA-Z]+$|^[A-Z]\W$/g;
+              let b = middleNameRegex.test(middleName);
+              let b1 = middleName.match(middleNameRegex);
+              //console.log("b: " + b);
+              //console.log("b1: " + b1);
+              let lastNameRegex = /^[A-Z][a-zA-Z]+$/g;
+              let c = lastNameRegex.test(lastName);
+              let c1 = lastName.match(lastNameRegex);
+              //console.log("c: " + c);
+              //console.log("c1: " + c1);
+              //console.log("dotcount: " + dotcount);
+              if (a === true && b === true && c === true && spacecount === 2
+                  && (dotcount === 0 || dotcount === 2)) {
+                  e = true;
+              } else
+                  if (a === true && b === true && c === true && spacecount === 2
+                      && (middleName[middleName.length - 1] === ".")) {
+                      e = true;
+                  } else
+                      if (a === true && b === true && spacecount === 1) {
+                          e = true;
+                      } else
+                          e = false;
+              //console.log("e: " + e);
+              let fullName = firstName + " " + middleName + " " + lastName
+              //console.log(fullName);
+              return e;
+          };
+
+          console.log(validName("aaa dsfdsdsds"));
+      </script>--%>
+
+
+
+ 	<style>
+ 	    .secondary-bg {
+ 	        background: #FFCC00;
+ 	    }
+
+ 	    body {
+ 	        font-family: 'Roboto', sans-serif !important;
+ 	    }
+
+ 	    .primary-bg {
+ 	        background: #536DBB;
+ 	    }
+
+ 	    .pulse2 {
+ 	        -webkit-animation: pulse 400ms infinite alternate;
+ 	        animation: pulse 400ms infinite alternate;
+ 	    }
+
+ 	    .pulse3 {
+ 	        -webkit-animation: pulse 400ms infinite alternate;
+ 	        animation: pulse 400ms infinite alternate;
+ 	        animation-delay: .5s;
+ 	    }
+
+ 	    @-webkit-keyframes pulse {
+ 	        0% {
+ 	            color: white;
+ 	        }
+
+ 	        100% {
+ 	            color: #FFCC00;
+ 	        }
+ 	    }
+
+ 	    @keyframes pulse {
+ 	        0% {
+ 	            color: white;
+ 	        }
+
+ 	        100% {
+ 	            color: #FFCC00;
+ 	        }
+ 	    }
+
+ 	    .demo-gallery > ul > li a > img {
+ 	        -webkit-transition: -webkit-transform 0.15s ease 0s;
+ 	        -moz-transition: -moz-transform 0.15s ease 0s;
+ 	        -o-transition: -o-transform 0.15s ease 0s;
+ 	        transition: transform 0.15s ease 0s;
+ 	        -webkit-transform: scale3d(1, 1, 1);
+ 	        transform: scale3d(1, 1, 1);
+ 	        height: 100%;
+ 	        width: 100%;
+ 	    }
+
+ 	    .item:hover > img {
+ 	        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+ 	        transform: scale3d(1.1, 1.1, 1.1);
+ 	    }
+
+ 	    .item:hover .demo-gallery-poster > img {
+ 	        opacity: 1;
+ 	    }
+
+ 	    .item .demo-gallery-poster {
+ 	        background-color: rgba(0, 0, 0, 0.1);
+ 	        bottom: 0;
+ 	        left: 0;
+ 	        position: absolute;
+ 	        right: 0;
+ 	        top: 0;
+ 	        -webkit-transition: background-color 0.15s ease 0s;
+ 	        -o-transition: background-color 0.15s ease 0s;
+ 	        transition: background-color 0.15s ease 0s;
+ 	        z-index: 1
+ 	    }
+
+ 	        .item .demo-gallery-poster > img {
+ 	            left: 50%;
+ 	            margin-left: -10px;
+ 	            margin-top: -10px;
+ 	            opacity: 0;
+ 	            position: relative;
+ 	            top: 50%;
+ 	            -webkit-transition: opacity 0.3s ease 0s;
+ 	            -o-transition: opacity 0.3s ease 0s;
+ 	            transition: opacity 0.3s ease 0s;
+ 	        }
+
+ 	    .item:hover .demo-gallery-poster {
+ 	        background-color: rgba(0, 0, 0, 0.5);
+ 	    }
+
+ 	    .button-citizen {
+ 	        position: fixed;
+ 	        left: 0px;
+ 	        top: 35%;
+ 	        z-index: 1000;
+ 	        background-color: darkseagreen;
+ 	        width: 66px;
+ 	    }
+
+ 	    .site-navbar .site-navigation .site-menu > li > a {
+ 	        color: black;
+ 	    }
+ 	    .f-contact{
+        font-family:serif;
+ 	    font-size:14px;
+         }
+ 	    .f-contact a{
+ 	    color:#00ffb8;
+            }
+ 	    h4.title{
+ 	    font-family:serif;
+            }
+ 	</style>
+
+
+    <style>
+
+.quickLinkFixed > div {
+    position: fixed;
+    right: 0;
+    -webkit-transform: translate(0, 0%);
+    transform: translate(0, 0%);
+    z-index: 99
+}
+
+    .quickLinkFixed > div.Enquire-button {
+        width: 350px;
+        top:0px;
+        right: 0;
+        -webkit-transform: translateX(300px);
+        transform: translateX(300px);
+        -webkit-transition: -webkit-transform 0.35s linear 0s;
+        transition: -webkit-transform 0.35s linear 0s;
+        transition: transform 0.35s linear 0s;
+        transition: transform 0.35s linear 0s, -webkit-transform 0.35s linear 0s;
+        top: 155px;
+        background: rgba(0, 73, 147);
+        z-index: 999;
+        width: 300px;
+        padding: 20px;
+        top: 120px;
+        padding-bottom: 0
+    }
+
+        .quickLinkFixed > div.Enquire-button a {
+            -webkit-transform: rotate(-90deg) translateX(0%);
+            transform: rotate(-90deg) translateX(0%);
+            background-color: #004993;
+            padding: 10px 8px;
+            padding: .625rem .5rem;
+            -ms-flex-preferred-size: 114px;
+            flex-basis: 114px;
+            position: absolute;
+            left: -96px;
+            top: 185px;
+            border-top-left-radius:5px;
+            border-top-right-radius:5px
+        }
+
+            .quickLinkFixed > div.Enquire-button a i {
+                /* padding-right: 5px; */
+                /* padding-right: .3125rem */
+                margin-right: .7rem
+            }
+
+    .quickLinkFixed > div.EnquireSlide.EnquireSlide .fa-angle-down {
+        display: unset;
+        background: red;
+        padding: 2px 5px;
+        border-radius: 10px;
+        
+    }
+
+    .quickLinkFixed > div.EnquireSlide.EnquireSlide .fa-info-circle,
+    .quickLinkFixed > div.Enquire-button .fa-angle-down {
+        display: none;
+    }
+
+    .quickLinkFixed > div.Enquire-button .enquireForm {
+        -ms-flex-preferred-size: 80%;
+        flex-basis: 80%
+    }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm p {
+            margin-bottom: 0
+        }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm textarea {
+            height: 86px;
+            border-radius: 0;
+            overflow: auto
+        }
+
+            .quickLinkFixed > div.Enquire-button .enquireForm textarea:focus {
+                outline: 0
+            }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm .wpcf7-form-control-wrap .wpcf7-not-valid-tip {
+            display: none
+        }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm .wpcf7-form-control-wrap .wpcf7-not-valid {
+            border-color: #da0812
+        }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm input {
+            border-radius: 0
+        }
+
+            .quickLinkFixed > div.Enquire-button .enquireForm input:focus {
+                outline: 0
+            }
+
+            .quickLinkFixed > div.Enquire-button .enquireForm input.wpcf7-submit {
+                background-color: #da0812;
+                width: 100%
+            }
+
+                .quickLinkFixed > div.Enquire-button .enquireForm input.wpcf7-submit:hover {
+                    background-color: #004993
+                }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm div.wpcf7-response-output {
+            margin-top: 16px;
+            margin-top: 1rem;
+            line-height: 1.5;
+            font-size: 13px;
+            font-size: .8125rem
+        }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm select {
+            border-radius: 0
+        }
+
+            .quickLinkFixed > div.Enquire-button .enquireForm select:focus {
+                outline: 0
+            }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm .form-group {
+            position: relative
+        }
+
+            .quickLinkFixed > div.Enquire-button .enquireForm .form-group .ajax-loader {
+                position: absolute;
+                right: 10px;
+                top: 10px
+            }
+
+        .quickLinkFixed > div.Enquire-button .enquireForm .wpcf7-response-output {
+            color: #fff
+        }
+
+    .quickLinkFixed > div.Enquire-button .EnquireSlide {
+        display: block
+    }
+
+    .quickLinkFixed > div.apply-button {
+        width: 116px;
+        right: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-transform: translateX(117px);
+        transform: translateX(117px);
+        -webkit-transition: -webkit-transform 0.35s linear 0s;
+        transition: -webkit-transform 0.35s linear 0s;
+        transition: transform 0.35s linear 0s;
+        transition: transform 0.35s linear 0s, -webkit-transform 0.35s linear 0s;
+        float: right;
+        margin-top: 45px;
+        margin-top: 2.8125rem;
+        top: 441px
+    }
+
+        .quickLinkFixed > div.apply-button:before {
+            content: "";
+            display: table
+        }
+
+        .quickLinkFixed > div.apply-button:after {
+            content: "";
+            clear: both;
+            display: table
+        }
+
+        .quickLinkFixed > div.apply-button > a {
+            padding: 10px 15px;
+            padding: .625rem .9375rem;
+            background-color: #da0812;
+            -ms-flex-preferred-size: 125px;
+            flex-basis: 125px;
+            max-width: 125px;
+            position: absolute;
+            left: -89px;
+            top: 34px;
+            -webkit-transform: rotate(-90deg) translateY(-169%);
+            transform: rotate(-90deg) translateY(-169%);
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px
+        }
+
+            .quickLinkFixed > div.apply-button > a:hover {
+                background-color: #004993
+            }
+
+        .quickLinkFixed > div.apply-button ul {
+            width: 100%;
+            list-style-type: none;
+            padding-left: 0;
+            border-top-left-radius: 0px;
+            margin-bottom: 6px;
+            background-color: rgba(218, 8, 18, 0.7);
+            border-bottom-left-radius: 0px
+        }
+
+            .quickLinkFixed > div.apply-button ul li {
+                padding: 12px 0;
+                padding: .75rem 0;
+                line-height: 1.3;
+                padding-left: 15px;
+                padding-left: .9375rem;
+                padding-right: 15px;
+                padding-right: .9375rem;
+                border-bottom: 1px solid #fff
+            }
+
+                .quickLinkFixed > div.apply-button ul li:hover {
+                    background-color: #004993
+                }
+
+                .quickLinkFixed > div.apply-button ul li a {
+                    color: #fff;
+                    text-align: left;
+                    font-size: 16px;
+                    font-size: 1rem
+                }
+
+                    .quickLinkFixed > div.apply-button ul li a i {
+                        display: block;
+                        padding-bottom: 8px;
+                        padding-bottom: .5rem;
+                        display: none
+                    }
+
+                    .quickLinkFixed > div.apply-button ul li a:hover {
+                        color: #fff
+                    }
+
+                .quickLinkFixed > div.apply-button ul li:last-child {
+                    border-bottom: 0
+                }
+
+        .quickLinkFixed > div.apply-button.EnquireSlide > a i:before {
+            content: "\f104"
+        }
+
+    .quickLinkFixed > div.EnquireSlide {
+        -webkit-transform: translateX(0);
+        transform: translateX(0)
+    }
+
+.quickLinkFixed a {
+    color: #fff;
+    display: block
+}
+
+.quickLinkFixed > div.apply-button > a {
+    max-width: 158px;
+    -webkit-transform: rotate(0deg) translateY(-71%) translateX(47px);
+    transform: rotate(0deg) translateY(-71%) translateX(47px);
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px
+}
+
+    .quickLinkFixed > div.apply-button > a i {
+        padding-right: 4px;
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg)
+    }
+
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+  
+
+
+
+:root {
+  --color-primary: #ffffff;
+  --color-primary-light: #e9eaf1;
+  --color-primary-dark: #0a423c;
+  --color-white: #c5c5c5;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  min-height: 100vh;
+}
+
+.header {
+    margin-top:8x;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-right: 85px;
+    padding-left: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 25px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+.navigation ul {
+  list-style: none;
+}
+
+.header .navigation ul li {
+  float: left;
+  position: relative;
+}
+
+.header .navigation ul li a {
+  font-size: 16px;
+  color: var(--color-black);
+  text-decoration: none;
+  padding: 20px;
+  display: block;
+  transition: all .2s ease;
+}
+
+.header .navigation ul li a:hover {
+  background: var(--color-primary-light);
+}
+
+.header .navigation ul li ul {
+  position: absolute;
+  right: 0;
+  width: 300px;
+  background: var(--color-primary);
+
+  display: none;
+}
+
+
+.header .navigation ul li ul li a {
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.header .navigation ul li ul li ul {
+  position: absolute;
+  top: 0;
+  right: 300px;
+}
+
+.header .navigation ul li ul li {
+  width: 100%;
+  border-top: 1px solid var(--color-primary-light);
+}
+
+.header .navigation ul li:hover > ul {
+  display: initial;
+}
+
+.header .navigation ul li ul li span {
+  float: right;
+  color: var(--color-white);
+  background: var(--color-primary-dark);
+  padding: 5px 10px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#toggle ,
+.header label {
+  display: none;
+  cursor: pointer;
+}
+
+
+
+@media(max-width: 950px) {
+  .header label {
+    display: initial;
+  }
+
+  .header {
+    padding: 20px 10%;
+  }
+
+  .header .navigation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-primary);
+
+    display: none;
+  }
+
+  .header .navigation ul li {
+    width: 100%;
+    border-top: 1px solid var(--color-primary-light);
+  }
+
+        .header .navigation ul li a {
+            padding: 8px 30px 8px 10%;
+            font-size: 18px;
+            color: #000000;
+        }
+  .header .navigation ul li ul {
+    position: relative;
+    width: 100%;
+    left: 0;
+  }
+
+  .header .navigation ul li ul li {
+    background: var(--color-primary);
+  }
+
+  .header .navigation ul li ul li ul {
+    position: relative;
+    width: 100%;
+    left: 0;
+  }
+
+  .header .navigation ul li ul li span {
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+
+  #toggle:checked ~ .navigation {
+    display: block;
+  }
+}
+
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0,0,0, .4), rgba(0,0,0, .4)), url('img/hero.jpg') no-repeat center center/cover;
+}
+
+
+
+</style>
+
+
+   
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+
+<body class="antialiased">
+    	<%--<div class="button-citizen"><a href="/PermissionLetters/citizencharternew.pdf" target="_blank"><img src="/Image/Citizen.jpg" alt="CITIZEN’S CHARTER" title="CITIZEN’S CHARTER" style="width:65px">Citizen’s Charter</a></div>--%>
+    <form id="form1" runat="server">
+    <div class="flex w-full justify-end md:h-12 xs:h-16 sm:h-16">
+            <div class="w-3/4 text-black rounded-bl-full shadow shadow-md" style="background: #0585EB">
+                <div class="md:ml-48 lg:ml-48">
+                    <ul class="flex md:p-4 flex-wrap text-white md:text-sm text-xs font-semibold justify-evenly">
+                        <li><a href="Instruction.aspx" class="pulse3 ">PG Admission 2021-22</a></li>
+                      
+
+
+                        <li><a href="#"><img src="images/Phd.gif" style="width:265px; height:30px; margin-top:-7px" /></a></li>
+                       
+                         <li><a href="/Contact.aspx" class="pulse3 ">Contact</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+         <header class="header">
+    <div class="logo">   <img src="images/PMCH%20Logo.png" /></div>
+
+    <input type="checkbox" id="toggle">
+    <label for="toggle"> <img src="img/menu.png" alt=" menu"></label>
+
+    <nav class="navigation">
+      <ul>
+        <li><a href="#">About Us</a>
+
+               <ul>
+            <li><a href="MedicalProfile.aspx">PMCH Profile</a></li>
+                    <li><a href="Vision.aspx">Mission & Vision</a></li>
+                    <li><a href="FoundersProfile.aspx">Founder's Profile</a></li>
+                         <li><a href="management.aspx">Management</a></li>
+                         <li><a href="Medical_Sup.aspx">Medical Superintendent</a></li>
+                        <li><a href="Dean.aspx">Dean</a></li>
+                         <li><a href="AffiliationHospital.aspx">Hospital Affiliation</a></li>
+          </ul>
+
+        </li>
+     
+        <li><a href="#">News & Events</a>
+            <ul>
+              <li> <a href="/pressRelease.aspx">Press Release</a> </li>
+                    <li><a href="/Events.aspx">Events</a></li>
+                        <li><a href="/Advertisements.aspx">Advertisement</a></li>
+                        <li><a href="/Award.aspx">Award & Achievements</a></li>
+                      <li><a href="/Activities.aspx">Academic Activities</a></li>
+
+                </ul>
+    
+        </li>
+
+             <li><a href="#">Hospital</a>
+               <ul>
+            <li><a href="#">Departments</a></li>
+                    <li><a href="/ClinicalFacilities.aspx">Clinical Facilities</a></li>
+                        <li><a href="#">Bed Distribution(Unitwise)</a></li>
+                <li class="has-children"><a href="#">Infrastructure</a>
+
+                           <ul class="dropdown">
+                                <li><a href="/Inauguration.aspx">Inauguration</a></li>
+                                <li><a href="/HospitalCampus.aspx">Hospital Campus</a></li>
+                             
+                               </ul>
+                    </li>
+          </ul>
+
+
+        </li>
+
+
+        <li><a href="#">Information under MSR Clause B.1.11</a>
+
+          <ul>
+              <li><a href="Medical_Sup.aspx">Medical Superintendent</a></li>
+                    <li><a href="Course.aspx">Courses Offered</a></li>
+                    <li><a href="AffiliationHospital.aspx">Hospital Affiliation</a></li>
+                    <li><a href="ClinicalDataJan2021.pdf">Clinical Data</a></li>
+
+
+                       <li class="has-children"><a href="#">Workforce</a>
+
+                           <ul class="dropdown">
+                                <li> <a href="FacultyList.pdf">Teaching Staff</a></li>
+          </ul>
+        </li>
+                <li class="has-children"><a href="#">Student Feedback</a>
+                               <ul class="dropdown">
+                 <li><a href="Batch/studentsfeedback16_17.PDF"> Student Feedback-(Batch:2016 & 2017)</a></li>
+                 <li> <a href="Batch/studentsfeedback16_17.PDF"> Student Feedback-(Batch:2014 & 2015)</a></li>
+                               </ul>
+                    </li>
+
+
+                       
+                       <li class="has-children"><a href="#">Student Details</a>
+
+                           <ul class="dropdown">
+                                <li><a href="Batch/batch2019.pdf"> Merit wise Details</a></li>
+                                 <li><a href="StudentsList2020.pdf"> Categorywise Students</a></li>
+                                  <li><a href="#">Hostel Details(Student)</a></li>
+                               </ul>
+                    </li>
+
+
+                      
+                        <li class="has-children"><a href="#">Teaching Time-Table</a>
+
+                           <ul class="dropdown">
+                                <li><a href="/Batch/batch2019.pdf">Batch: 2019</a></li>
+                                 <li><a href="/Batch/batch1718.jpg">Batch: 2017-2018</a></li>
+                                  <li><a href="/Batch/batch1617.jpg">Batch: 2016-2017</a></li>
+                               <li><a href="/Batch/batch1516.jpg">Batch: 2015-2016</a></li>
+                               <li><a href="/Batch/batch1415.jpg">Batch: 2014-2015</a></li>
+                              
+                             
+                               </ul>
+
+              </ul>
+            </li>
+        <li><a href="#">Examination</a>
+               <ul>
+            <li><a href="/Timetable.aspx">Time Table</a></li>
+                    <li><a href="/Result.aspx">Results</a></li>
+      
+          </ul>
+
+
+        </li>
+           <li><a href="#">Committiees</a>
+                 <ul>
+             <li class="has-children"><a href="Pharmacovigilance.aspx">Pharmacovigilance Committee</a>
+                         <ul class="dropdown">
+                                <li><a href="Anti_Ragging_Commities.aspx">Anti Ragging Committee</a></li>
+                               <li><a href="DisciplinaryCommittee.aspx">Disciplinary Committee</a></li>
+                        <li><a href="MedicalEducationUnit.aspx">Medical Education Unit </a></li>
+                       <li><a href="MedicalEducationCommittee.aspx">Medical Education Committee </a></li>
+
+                  
+                       <li><a href="BloodTransfusion.aspx">Blood Transfusion </a></li>
+                       <li><a href="FoodSanitation.aspx">Food & Sanitation </a></li>
+                   
+                   
+                       <li><a href="Newbulletin.aspx"> News Bulletine Committee </a></li>
+                       <li><a href="Deathauditcommittee.aspx">Death Audit Committee </a></li>
+                               </ul>
+                            
+                    </li>
+
+
+
+
+
+
+                      
+                      <li class="has-children"><a href="CollegeCouncil.aspx">College Council Committee</a>
+                         <ul class="dropdown">
+                               <li><a href="StudentCommittee.aspx">Student Welfare Committee</a></li>
+                               <li><a href="StudentUnion.aspx">Student Union Committee</a></li>
+                                 <li><a href="Library.aspx">Library </a></li>
+                                 <li><a href="Sports.aspx">Sports Committee  </a></li>
+                               <li><a href="Mentormentees.aspx">Mentor & Mentees Committee</a></li>
+                               </ul>
+                            
+                    </li>
+
+                    
+                 
+                     
+                        <li class="has-children"><a href="#">Other Committee</a>
+                         
+                             <ul class="dropdown">
+                                 <li><a href="GenderHarrasment.aspx">Gender Harrasment</a></li>
+                                 <li><a href="InstitutionalEthics.aspx">Institutional Ethics</a></li>
+                                <li><a href="InfectionControl.aspx">Infection Control</a></li>
+                             
+                               <li><a href="AnimalEthics.aspx">Animal Ethics </a></li>
+                               <li><a href="AnimalEthics.aspx">Instutional Animal Ethics</a></li>
+                               <li><a href="SCSTcell.aspx">SC/ST Cell</a></li>
+                              
+                               </ul>
+                    </li>
+                        
+      
+          </ul>
+
+
+           </li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+
+ <%--   <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>      
+    <header class="site-navbar" role="banner" style="background-color:white; margin-top:15px;">--%>
+         <div>
+     <%-- <div class="container-fluid" style=" width: 93%;
+    padding-right: 15px;
+    margin-top:3px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color:white;">
+        <div class="row align-items-center">          
+          <div class="col-11 col-xl-2  col-md-1">
+            <h1 class="mb-0 site-logo"><a href="/" title="Pacific Medical University">
+                <img src="images/PMCH%20Logo.png" />
+                </a><%--<a href="index.html" class="text-white mb-0">Brand</a></h1>
+          </div>
+          <div class="col-12 col-md-10 d-none d-xl-block" ">
+            <nav class="site-navigation position-relative" role="navigation">
+            
+                
+                <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                   
+                    
+                    <li class="has-children">
+                  <a href="#"><span>About Us</span></a>
+                  <ul class="dropdown arrow-top">
+                    <li><a href="MedicalProfile.aspx">PMCH Profile</a></li>
+                    <li><a href="Vision.aspx">Mission & Vision</a></li>
+                    <li><a href="FoundersProfile.aspx">Founder's Profile</a></li>
+                         <li><a href="management.aspx">Management</a></li>
+                         <li><a href="Medical_Sup.aspx">Medical Superintendent</a></li>
+                        <li><a href="Dean.aspx">Dean</a></li>
+                         <li><a href="AffiliationHospital.aspx">Hospital Affiliation</a></li>
+                       
+               
+                  </ul>
+                </li>
+              
+                    
+                    
+                    
+                    <li class="has-children">
+                  <a href="#"><span>Hospital</span></a>
+                  <ul class="dropdown arrow-top">
+                    
+                    <li><a href="#">Departments</a></li>
+                    <li><a href="/ClinicalFacilities.aspx">Clinical Facilities</a></li>
+                        <li><a href="#">Bed Distribution(Unitwise)</a></li>
+                <li class="has-children"><a href="#">Infrastructure</a>
+
+                           <ul class="dropdown">
+                                <li><a href="/Inauguration.aspx">Inauguration</a></li>
+                                <li><a href="/HospitalCampus.aspx">Hospital Campus</a></li>
+                             
+                               </ul>
+                    </li>
+                  </ul>
+                </li>
+
+
+
+                    <li class="has-children">
+                  <a href="#"><span>Committees</span></a>
+                  <ul class="dropdown arrow-top">
+                  
+                      
+
+                      <li class="has-children"><a href="Pharmacovigilance.aspx">Pharmacovigilance Committee</a>
+                         <ul class="dropdown">
+                                <li><a href="Anti_Ragging_Commities.aspx">Anti Ragging Committee</a></li>
+                               <li><a href="DisciplinaryCommittee.aspx">Disciplinary Committee</a></li>
+                        <li><a href="MedicalEducationUnit.aspx">Medical Education Unit </a></li>
+                       <li><a href="MedicalEducationCommittee.aspx">Medical Education Committee </a></li>
+
+                  
+                       <li><a href="BloodTransfusion.aspx">Blood Transfusion </a></li>
+                       <li><a href="FoodSanitation.aspx">Food & Sanitation </a></li>
+                   
+                   
+                       <li><a href="Newbulletin.aspx"> News Bulletine Committee </a></li>
+                       <li><a href="Deathauditcommittee.aspx">Death Audit Committee </a></li>
+                               </ul>
+                            
+                    </li>
+
+
+
+
+
+
+                      
+                      <li class="has-children"><a href="Pharmacovigilance.aspx">College Council Committee</a>
+                         <ul class="dropdown">
+                               <li><a href="StudentCommittee.aspx">Student Welfare Committee</a></li>
+                               <li><a href="StudentUnion.aspx">Student Union Committee</a></li>
+                                 <li><a href="Library.aspx">Library </a></li>
+                                 <li><a href="Sports.aspx">Sports Committee  </a></li>
+                               <li><a href="Mentormentees.aspx">Mentor & Mentees Committee</a></li>
+                               </ul>
+                            
+                    </li>
+
+                    
+                 
+                     
+                        <li class="has-children"><a href="#">Other Committee</a>
+                         
+                             <ul class="dropdown">
+                                 <li><a href="GenderHarrasment.aspx">Gender Harrasment</a></li>
+                                 <li><a href="InstitutionalEthics.aspx">Institutional Ethics</a></li>
+                                <li><a href="InfectionControl.aspx">Infection Control</a></li>
+                             
+                               <li><a href="AnimalEthics.aspx">Animal Ethics </a></li>
+                               <li><a href="AnimalEthics.aspx">Instutional Animal Ethics</a></li>
+                                 <li><a href="SCSTcell.aspx">SC/ST Cell</a></li>
+                                     <li><a href="CurriculamCommitte.aspx">Curriculam Committee</a></li>
+                               </ul>
+                    </li>
+                        
+              
+                  </ul>
+                </li>
+
+                     
+                    <li class="has-children">
+                  <a href="#"><span>Information under MSR Clause B.1.11</span></a>
+                  <ul class="dropdown arrow-top">
+                    <li><a href="Medical_Sup.aspx">Medical Superintendent</a></li>
+                    <li><a href="Course.aspx">Courses Offered</a></li>
+                    <li><a href="AffiliationHospital.aspx">Hospital Affiliation</a></li>
+                    <li><a href="ClinicalDataJan2021.pdf">Clinical Data</a></li>
+
+
+                       <li class="has-children"><a href="#">Workforce</a>
+
+                           <ul class="dropdown">
+                                <li> <a href="FacultyList.pdf">Teaching Staff</a></li>
+                              
+                             
+                               </ul>
+                    </li>
+
+                      
+                       <li class="has-children"><a href="#">Student Feedback</a>
+                               <ul class="dropdown">
+                 <li><a href="Batch/studentsfeedback16_17.PDF"> Student Feedback-(Batch:2016 & 2017)</a></li>
+                 <li> <a href="Batch/studentsfeedback16_17.PDF"> Student Feedback-(Batch:2014 & 2015)</a></li>
+                               </ul>
+                    </li>
+
+
+                       
+                       <li class="has-children"><a href="#">Student Details</a>
+
+                           <ul class="dropdown">
+                                <li><a href="Batch/batch2019.pdf"> Merit wise Details</a></li>
+                                 <li><a href="StudentsList2020.pdf"> Categorywise Students</a></li>
+                                  <li><a href="#">Hostel Details(Student)</a></li>
+                               </ul>
+                    </li>
+
+
+                      
+                        <li class="has-children"><a href="#">Teaching Time-Table</a>
+
+                           <ul class="dropdown">
+                                <li><a href="/Batch/batch2019.pdf">Batch: 2019</a></li>
+                                 <li><a href="/Batch/batch1718.jpg">Batch: 2017-2018</a></li>
+                                  <li><a href="/Batch/batch1617.jpg">Batch: 2016-2017</a></li>
+                               <li><a href="/Batch/batch1516.jpg">Batch: 2015-2016</a></li>
+                               <li><a href="/Batch/batch1415.jpg">Batch: 2014-2015</a></li>
+                              
+                             
+                               </ul>
+                    </li>
+
+
+                        
+                       <li class="has-children"><a href="#">Teaching Time-Table</a>
+
+                           <ul class="dropdown">
+                                <li> <a href="Batch/batch2019.pdf"> Batch: 2019</a></li>
+                                 <li><a href="Batch/batch2019.pdf">Batch: 2019</a></li>
+                                  <li><a href="Batch/batch1718.jpg">Batch: 2017-2018</a></li>
+                              
+                             
+                               </ul>
+                    </li>
+            
+                  </ul>
+                </li>
+             
+
+                    <li class="has-children">
+                  <a href="#"><span>Examination</span></a>
+                  <ul class="dropdown arrow-top">
+                    <li><a href="/Timetable.aspx">Time Table</a></li>
+                    <li><a href="/Result.aspx">Results</a></li>
+                   </ul>
+                </li>
+             
+                 <li class="has-children">
+                  <a href="#"><span>News & Events</span></a>
+                  <ul class="dropdown arrow-top">
+                    <li> <a href="/pressRelease.aspx">Press Release</a> </li>
+                    <li><a href="/Events.aspx">Events</a></li>
+                        <li><a href="/Advertisements.aspx">Advertisement</a></li>
+                        <li><a href="/Award.aspx">Award & Achievements</a></li>
+                      <li><a href="/Activities.aspx">Academic Activities</a></li>
+                  
+                  </ul>
+                </li>
+
+          
+                     
+              </ul>           
+<%--             <div class="col-11 col-xl-2  col-md-2">
+            <h1 class="mb-0 site-logo"><a href="/" title="Pacific Medical University">
+                  <img src="/images/PU_apply_now.png" alt="Apply Now"></a></h1>
+          </div>
+            </nav>
+          </div>
+
+
+  <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;">
+  <a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      </div>
+      
+    </header>--%>
+
+	<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+	    <div class="owl-carousel owl-theme">
+            <div class="item">
+                <img src="/images/banner/001.jpg" class="object-cover w-full"/>
+            </div>
+            <div class="item">
+                <img src="/images/banner/002.jpg"  class="object-cover w-full"/>
+            </div>
+            <div class="item">
+                <img src="/images/banner/003.jpg"  class="object-cover w-full"/>
+            </div>
+            <div class="item">
+                <img src="/images/banner/004.jpg"  class="object-cover w-full"/>
+            </div>
+            <div class="item">
+                <img src="/images/banner/005.jpg"  class="object-cover w-full"/>
+            </div>
+            <div class="item">
+                <img src="/images/banner/006.jpg"  class="object-cover w-full"/>
+            </div>
+        </div>
+    </asp:ContentPlaceHolder>
+
+             <section class="quickLinkFixed">
+		<div class="Enquire-button toggleQuickLink">
+			<a href="javascript:void(0);"><i class="fas fa-info-circle"></i>Admission Enquiry</a>
+			<div class="enquireForm ">
+                <h3 style="color:#ffd800">Inquiry Now</h3>
+				<div role="form" class="wpcf7" id="wpcf7-f960-o1" lang="en-US" dir="ltr">
+					<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+                    <asp:ScriptManager runat="server" ID="sptmngr"></asp:ScriptManager>
+                   <asp:UpdatePanel ID="uppnl" runat="server" UpdateMode="Always"><ContentTemplate>
+					<form class="wpcf7-form init" novalidate="novalidate" data-status="init">
+						
+						<div class="form-group">
+                             <asp:TextBox runat="server" CssClass="form-control" ID="txt_name" placeholder="Name" oncopy="return false" oncut="return false"></asp:TextBox>
+       <asp:RequiredFieldValidator ID="f_name" runat="server" ErrorMessage="Please enter a name" ForeColor="Red" ControlToValidate="txt_name" Display="Dynamic" ValidationGroup="first"></asp:RequiredFieldValidator>
+                             
+						</div>
+
+						<div class="form-group">
+                             <asp:TextBox runat="server" CssClass="form-control" ID="txt_email" placeholder="Email" TextMode="Email" oncopy="return false" oncut="return false"></asp:TextBox>
+ <asp:RequiredFieldValidator ID="email" runat="server" ErrorMessage="Please enter a email id" ForeColor="Red" ControlToValidate="txt_email" Display="Dynamic" ValidationGroup="first"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="emailgh" runat="server" ErrorMessage="Enter valid email id" ForeColor="Red" ControlToValidate="txt_email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic" ValidationGroup="first"></asp:RegularExpressionValidator>
+						</div>
+
+						<div class="form-group">
+                           <asp:DropDownList ID="ddlfaculy" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="ddlfaculy_clickevent" placeholder="-Select Faculty-">
+         
+        </asp:DropDownList>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Select Faculty" ForeColor="Red" ControlToValidate="ddlfaculy" InitialValue="Select Faculty" Display="Dynamic" ValidationGroup="first"></asp:RequiredFieldValidator> 
+
+						</div>
+					<div class="form-group">
+                          <asp:DropDownList ID="ddlcourse" runat="server" CssClass="form-control" placeholder="course"  AutoPostBack="true" OnTextChanged="ddlcourse_clickevent">
+                        
+                        </asp:DropDownList>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Select Course" ForeColor="Red" ControlToValidate="ddlcourse" InitialValue="Select Course" Display="Dynamic" ValidationGroup="first" OnTextChanged="ddlcourse_clickevent"></asp:RequiredFieldValidator>
+
+						</div>
+						<div class="form-group">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtphone" placeholder="+91" TextMode="Phone" oncopy="return false" oncut="return false"></asp:TextBox>
+     <asp:RequiredFieldValidator ID="mobile_no" runat="server" ErrorMessage="Please enter mobile number" ForeColor="Red" ControlToValidate="txtphone" Display="Dynamic" ValidationGroup="first"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="m" runat="server" ControlToValidate="txtphone" ErrorMessage="Enter a valid 10 Digit mobile No." ForeColor="Red" ValidationExpression="[0-9]{10}" Display="Dynamic" ValidationGroup="first"></asp:RegularExpressionValidator>
+						</div>
+                        <div class="form-group">
+                        <asp:Button ID="btnsubmit" runat="server" ValidationGroup="first" CssClass="btn btn-info btn-block" Text="Submit" OnClick="submit_Click" />
+
+
+                         </div>
+					</form>
+                    </ContentTemplate> </asp:UpdatePanel>
+				</div>
+			</div>
+		</div>
+
+	
+	
+	</section>
+
+   
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">							
+		<script>
+            $(document).ready(async function () {
+
+                $('.owl-carousel').owlCarousel({
+                    animateOut: 'animate__lightSpeedOutLeft',
+                    animateIn: 'animate__lightSpeedInRight',
+                    items: 1,
+                    smartSpeed: 450,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    loop: true,
+                    dots: false,
+                });
+            });
+        </script>
+	</asp:ContentPlaceHolder>
+
+        <div class="mt-10" style="height:400px;background-color:#0585eb;">
+             <div class="container mb-0" style="">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="f-contact">
+                                     <h4 class="title" style="color:white";>Contact Us</h4>
+									<p  style="color:white";>
+										<strong>Pacific Medical College & Hospital</strong><br>
+										Bhilon ka Bedla, Pratap Pura<br>
+										NH27, Tehsil-Girwa</br> Udaipur
+										Rajasthan-313024<br>
+									</p>
+									<p  style="color:white";>
+										<strong>Ph:</strong>0294-3520000
+										<br>
+										<strong>Mobile No:</strong>7230045361,7665017704<br/>
+									</p>
+									<p  style="color:white";>
+										<strong>Email: </strong><a href="#">info@pacificmedical.ac.in</a>
+										<br>
+										<a href="#"></a>
+										<br>
+										<strong>Website:</strong> <a href="#">www.pacificmedical.ac.in</a>
+									</p>
+								</div>
+                            </div> 
+
+                            <div class="col-md-3">
+                                <h4 class="title"  style="color:white;">Gallery</h4>
+								<div class="f-gallery">
+									<ul class="flex flex-col">
+
+										<li class="flex justify-evenly">
+											<div class="p-2"  style="color:white;">
+												<a href="Gallery.aspx" >
+													<img src="/images/Footer/01.jpg" alt="img"></a>
+												</div>
+                                            <li>                                        
+                                            <li class="flex justify-evenly">
+													<div class="p-2">
+													<a href="Gallery.aspx">
+														<img src="/images/Footer/03.jpg" alt="img"></a>
+													</div>
+                                            <li>
+                                            <li class="flex justify-evenly">
+													<div class="p-2">
+														<a href="Gallery.aspx">
+															<img src="/images/Footer/04.jpg" alt="img"></a>
+													</div>
+													</li>
+										            </ul>
+								</div>
+                            </div> 
+
+                            <div class="col-md-3">
+                                <h4 class="title"  style="color:white;">On Facebook</h4>									
+								<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fpmchudaipurofficial%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" style="border:none;overflow:scroll;width:100%;height:80%;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" ></iframe>
+                            </div>
+
+                            <div class="col-md-3">
+                            <h4 class="title"  style="color:white;">Youtube</h4>							
+                                <iframe src="https://www.youtube.com/embed/-Hv2WKzsI80" style="width:100%;height:80%;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+                            </div>
+
+						</div>
+              </div>	
+        </div>     			            
+	<script src="/asset/Js/aos.js"></script>	
+        
+    <script>
+        AOS.init();
+    </script>
+	<script src="csss/js/jquery-3.3.1.min.js"></script>
+    <script src="csss/js/popper.min.js"></script>
+    <script src="csss/js/bootstrap.min.js"></script>
+    <script src="csss/js/jquery.sticky.js"></script>
+    <script src="csss/js/main.js"></script>        
+    <script src="js/modernizr-2.8.3.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/rsmenu-main.js"></script>
+    <script src="js/jquery.nav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/skill.bars.jquery.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/tilt.jquery.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/contact.form.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+    <script type='text/javascript' src='https://management.nirmauni.ac.in/wp-content/themes/nirma/assets/js/lib/bootstrap.js?ver=4.1.0' id='nirma-bootstrap-js'></script>
+    <script type='text/javascript' src='https://management.nirmauni.ac.in/wp-includes/js/jquery/ui/core.min.js?ver=1.12.1' id='jquery-ui-core-js'></script>
+    <script type='text/javascript' src='https://management.nirmauni.ac.in/wp-includes/js/jquery/ui/autocomplete.min.js?ver=1.12.1' id='jquery-ui-autocomplete-js'></script>
+    <script type='text/javascript' src='https://management.nirmauni.ac.in/wp-content/themes/nirma/assets/js/main.js?ver=1.0.2' id='nirma-main-js'></script>
+</form>   
+</body>   
+</html>
