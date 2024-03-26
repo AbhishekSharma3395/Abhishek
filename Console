@@ -1,0 +1,299 @@
+//using System;
+//using System.Collections.Generic;
+
+//namespace ConsoleApp1
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            // Program For Print Hello World!
+
+//            Console.WriteLine("Hello World!");
+
+//            Console.WriteLine("----------------------------------------------------------------");
+
+//            // Program For Add Two No.
+//            Console.WriteLine(3 + 3);
+
+//            Console.WriteLine("----------------------------------------------------------------");
+//            // Print Only String 
+//            string name = "abhishek";
+//            Console.WriteLine(name);
+
+//            // Print String With Hello 
+//            string names = "John";
+//            Console.WriteLine("Hello " + names);
+
+//            // Print Only Number 
+//            int num = 15;
+//            Console.WriteLine(num);
+
+//            // Print Only Bool Value 
+//            bool myBool = true;
+//            Console.WriteLine(myBool);
+
+//            // Print Only Const Value 
+//            const int myNum = 35;
+//            Console.WriteLine(myNum);
+
+//            // 02 Remove Extra Space
+//            string firstFriend = "                       abhishek        ";
+//            string secondFriend = "                       nikhil        ";
+//            Console.WriteLine($"My Friend is {firstFriend.Trim()} " +
+//                $"and {secondFriend.Trim()}");
+
+//            //03 Replace Length 
+//            string friends = $"My Friend are {firstFriend.Trim()} and {secondFriend.Trim()}";
+//            Console.WriteLine(friends.Replace("nikhil", "abhi"));
+//            Console.WriteLine("Before Replace OP Is" + friends);
+//            Console.WriteLine("Total Length Is " + friends.Length);
+
+//            //04 FindMax
+//            int num1 = 100;
+//            int num2 = 200;
+//            int ret;
+//            Program n = new Program();
+//            //calling the FindMax method
+//            ret = FindMax(num1, num2);
+//            Console.WriteLine("Max value is : {0}", ret);
+//            Console.ReadLine();
+
+//            int FindMax(int num1, int num2)
+//            {
+//                /* local variable declaration */
+//                int result;
+
+//                if (num1 > num2)
+//                    result = num1;
+//                else
+//                    result = num2;
+//                return result;
+//            }
+
+//            //05 My First Method Function!
+//            static void MyMethod()
+//            {
+//                Console.WriteLine("My First Method Function!");
+//            }
+//            MyMethod();
+
+//            //Combined Two Name
+//            string firstname = "My First Name + ";
+//            string lastname = "My Second Name";
+//            string fullname = firstname + lastname;
+//            Console.WriteLine("After Combined String " + fullname);
+
+//            //Combined Two Name Wiht Dollor Sign
+//            string firstName = "John";
+//            string lastName = "Doe";
+//            string name1 = $"My full name is: {firstName} {lastName}";
+//            Console.WriteLine(name1);
+
+//            //Addition Of Three Number Is 
+//            int x = 5;
+//            int y = 15;
+//            int z = 25;
+//            Console.WriteLine("The Addition Of Three No Is");
+//            Console.WriteLine(x + y + z);
+
+
+//            Console.WriteLine("----------------------------------------------------------------");
+//            //Addition Of Two Number With += 
+//            int xa = 10;
+//            xa += 5;
+//            Console.WriteLine(xa);
+
+
+//            Console.WriteLine("----------------------------------------------------------------");
+//            //Index Of Given Char No.
+//            string h = "ABHISHEK";
+//            Console.WriteLine(h[2]);
+
+
+//            Console.WriteLine("----------------------------------------------------------------");
+//            // Print Double Quote In String
+//            string txt = "we are the so-called \"vikings\" from the north.";
+//            Console.WriteLine(txt);
+
+
+//            Console.WriteLine("----------------------------------------------------------------");
+//            // Print Which No Is Greter With Bool True Or False
+//            int ab = 10;
+//            int bb = 9;
+//            Console.WriteLine(ab > bb);
+
+//            Console.WriteLine("----------------------------------------------------------------");
+//            // Array 
+//            string[] cars = { "volvo", "bmw", "ford", "mazda" };
+//            foreach (string i in cars)
+//            {
+//                Console.WriteLine(i);
+//            }
+
+//            Console.WriteLine("-----------------------------------------------------------------");
+//            // Add Long No.
+//            int aaa = 250000000;
+//            long bbb = 250000000;
+//            long ccc = (long)aaa + (long)bbb;
+//            Console.WriteLine(ccc);
+//            Console.ReadLine();
+
+//            Console.WriteLine("------------------------------------------------------------------");
+
+//            // Add Decimal No.
+//            decimal d1 = 25.3M;
+//            Decimal d2 = 25.5M;
+//            Decimal cc = d1 + d2;
+//            Console.WriteLine($"The total is {cc}");
+
+//            Console.WriteLine("------------------------------------------------------------------");
+
+//            // Add 2 No And Check No Is Less Then Or Greater Then Condition
+//            int a = 5;
+//            int b = 1;
+//            int c = a + b;
+//            bool mytest = c > 10;
+//            if (mytest)
+//            {
+//                Console.WriteLine("greate then 10");
+//            }
+//            else
+//                Console.WriteLine("less then 10");
+//            Console.ReadLine();
+
+//            Console.WriteLine("----------------------------------------------------------------");
+
+//            //Program For Increment No By 1 
+//            int counter = 0;
+//            counter = counter + 1;
+//            Console.WriteLine(counter);
+//            counter = counter + 1;
+//            Console.WriteLine(counter);
+//            counter = counter + 1;
+//            Console.WriteLine(counter);
+//            counter++;
+//            Console.WriteLine(counter);
+
+//            // While Loop Print 1 To 5
+//            int counterr = 0;
+//            while (counterr < 5)
+//            {
+//                counterr++;
+//                Console.WriteLine(counterr);
+//            }
+
+//            Console.WriteLine("------------------------------------------------------------------");
+
+
+//            // For Loop Print  1 TO 4
+//            for (int i = 0; i < 5; i++)
+//            {
+//                Console.WriteLine(i);
+//            }
+
+//            Console.WriteLine("------------------------------------------------------------------");
+
+//            // Break For Loop At 3
+//            for (int i = 0; i < 5; i++)
+//            {
+//                if (i == 3)
+//                    Console.WriteLine(i);//3
+//            }
+//            Console.WriteLine("------------------------------------------------------------------");
+
+//            // Print 1A To 1J ,2A To2J , 3A To 3J
+//            for (int row = 1; row < 4; row++)
+//            {
+//                for (char column = 'a'; column < 'k'; column++)
+//                {
+//                    Console.WriteLine($"The cell is ({row},{column})");
+//                }
+//            }
+
+//            Console.WriteLine("------------------------------------------------------------------");
+
+//            Console.WriteLine("how many you want");
+//            string can = Console.ReadLine();
+//            Console.WriteLine(" you add 4 more total is " + (Convert.ToInt32(can) + 4));
+
+
+//            Console.WriteLine("-----------------------------------------------------------------");
+
+//            // Only Check Condition Is True Or False
+//            Console.WriteLine(5 > 4);//true
+
+//            Console.WriteLine("-----------------------------------------------------------------");
+
+
+//            Console.WriteLine("------------------------------------------------------------------------");
+
+//            // 01 Program For Only Enter User Name And Show
+//            Console.WriteLine("Enter User Name");
+//            string username = Console.ReadLine();
+//            Console.WriteLine("User Name is " + username);
+
+//            Console.WriteLine("--------------------------------------------------------------------------------");
+//            //01 Program For Only Enter Integer Number
+//            Console.WriteLine("Enter your age:");
+//            int age = Convert.ToInt32(Console.ReadLine());
+//            Console.WriteLine("Your age is: " + age);
+
+
+//            //While Loop Infinite
+//            int loopin = 0;
+//            while (true)
+//            {
+//                counterr++;
+//                Console.WriteLine(loopin);
+//            }
+//        }
+//    }
+//}
+
+////var names = new list<string> { "abhishek", "lucky", "pavan" };
+////names.add("anu");
+////names.add("seema");
+////foreach (var i in names)
+////{
+////    console.writeline($" hello my name is {i.toupper()}! ");//all name
+////}
+
+////console.writeline(names[0]);//abhishek
+////console.writeline(names[2]);// pavan
+////console.writeline(names[^4]);// lucky
+////console.writeline(names[names.count - 1]);//seema
+
+////                //var number = new List<int> { 99, 85, 75, 25, 20 };
+////                //number.Sort();
+////                //foreach (var i in number)
+////                //{
+////                //    Console.WriteLine($" Hello Number After Sorting {i}! ");
+////                //}
+////                //Console.WriteLine($" I found 75 at index of {number.IndexOf(75)};");
+////                ////all no. sorting and searching
+
+
+////                //List<int> scores = [99, 85, 75, 25];
+////                //for (int i = 0; i < scores.Count; i++)
+////                //{
+////                //    if (scores[i] > 80)
+////                //    {
+////                //        Console.WriteLine($" Found Over 80 {scores[i]}! ");
+////                //    }
+
+////                //}
+
+////                //List<int> scores = (99, 85, 75, 25);
+////                //int[] scores = new int[4] { 99, 85, 75, 25 };
+
+////                //IEnumerable<int> selectQuery = from score in scores
+////                //                               where score > 80
+////                //                               select score;
+////                //foreach (int i in selectQuery)
+////                //{
+////                //    Console.WriteLine(i + "");
+
+////                //}
+
+
