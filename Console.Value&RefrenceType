@@ -1,0 +1,89 @@
+using System;
+
+namespace ValueTypeRefrenceType
+{
+//Value Type--------------------------
+
+    //struct employee
+    //{
+    //    public int salary;
+    //    public int age;
+    //}
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        employee e = new employee();
+    //        e.salary = 5000;
+    //        e.age = 23;
+
+    //        employee e1 = e;
+    //        employee e2 = e;
+
+    //        e.age = 25;
+    //        Console.WriteLine(e.age); //op 25
+    //        Console.WriteLine(e1.age);//op 23
+    //        Console.WriteLine(e2.age);//op 23
+
+    //    }
+    //}
+
+
+// -----------------------------------------------------------------------------------
+// Refrence Type
+
+    class employee
+    {
+        public int salary;
+        public int age;
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            employee e = new employee();
+            e.salary = 5000;
+            e.age = 23;
+
+            employee e1 = e;
+            employee e2 = e;
+
+            e.age = 25;
+            Console.WriteLine(e.age); //op 25
+            Console.WriteLine(e1.age);//op 25
+            Console.WriteLine(e2.age);//op 25
+
+        }
+    }
+
+}
+
+
+
+// Struct => Value Type -> Store in Stack Memory....Stack me kam jagh hoti
+// Class => Refrence Type -> Store In Heap Memory....Heap me jyada jagh hoti
+
+// Refrence Variable banega stack ke under or iska object heap ke under banega 
+
+// stuct or value type ko ignore krte he.
+
+//value type => a data type is a value type if it holds a data value within its own memory space.it means variable of these data types directly contain their value.
+// the following data types are all of value type = >
+//bool,byte, enum int ,struct etc
+
+
+/*Refrence type = > Unlike Value type a Refernce type doesnt store its value directly.
+ Instead , it stores the address where the value is being stored.
+A refrence type contains a pointer to another memory location that hold the data.
+
+ref varible stack memory ke under banta uske pass sirf ref hota he jo ki point krata he memory location ki trf jha acutal obj bana hua he.
+ye apne ref variable ke under value store nhi krta,address store krta obj heap ke under hota.
+
+The following data type are ref type :- 
+1 string
+2 all array
+3 clas
+4 objct
+5 delegates
+6 interface
+
