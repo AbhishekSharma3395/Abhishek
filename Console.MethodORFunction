@@ -16,7 +16,7 @@ namespace Method_Or_Functions
             Console.WriteLine("hey..............");
         }
 
-        public static void add(int num1, int num2) // static parameterized method
+        public static void add(int num1, int num2) // Calling Method ,static parameterized method
         {
             int result = num1 + num2; // local varible result
             Console.WriteLine("Addition is " + result);
@@ -33,6 +33,18 @@ namespace Method_Or_Functions
         {
 
             Console.WriteLine("Your Age is " + age);
+        }
+
+        public static void Show_Name_Age(string name, int age)
+        {
+            Console.WriteLine("Your Name Is " + name);
+            Console.WriteLine("Your Age Is " + age);
+        }
+
+        public static int add1(int num1, int num2) // change returntype
+        {
+            int result = num1 + num2; // local varible result
+            return result;
         }
 
         static void  Main(string[] args)
@@ -65,6 +77,18 @@ namespace Method_Or_Functions
 
             Program.Showage();
 
+            Program.Show_Name_Age("Abhishek",29);
+            Program.Show_Name_Age(age:29, name:"Abhi");// named argument
+
+
+            Console.WriteLine(Program.add1(10, 20)); //called method
+
+            int c = Program.add1(20, 30);
+            int d = 20;
+            int e = c + d;
+            Console.WriteLine(e);
+
+
             //Console.WriteLine("Enter Your Name");
             //string name = (Console.ReadLine());
             //Console.WriteLine("Your Name Is" + name);
@@ -73,8 +97,16 @@ namespace Method_Or_Functions
     }
 }
 
+
+
+
+
+
+
 // method is a group of stataments toghether perform a task.
 // method ko c# me functin kha jata he.
+// method parameter le bhi skte he or nahi bhi 
+// ek class or ek main method compalsary hota he
 // jab bhi method bananyge class ke under hi bananyge
 // call main method me khege
 // jab bhi non -static or instance method ko call karege to phle obj bnana he fir obj k saath method ka name
@@ -82,4 +114,44 @@ namespace Method_Or_Functions
 // instance method me static ka keyword nhi hota.
 // static ka keword he to claass ke sath call nhi he to obj bana k
 // method ko reuse kr skte
-//
+// named argument position change krne k kaam aata he
+
+
+// void kuch bhi return nhi krta void ke case me return use nhi kr skte.
+
+
+//invoking method =>
+// define a method , call a method
+// in c# method always invoked from another method
+
+
+// Method Parameter and Arguments =>
+
+//Parameter = > The variables included in a method defination are called parameters. 
+//Which have 0 or more parameter.seprated by commas.
+//If the method takes no parameters, it is indicated by empty parantheses.
+//Method banate time jo variable decalare krte he unko paramter kehte he
+
+
+// Arguments=>
+// Lekin jab method ko call kr k actual value dete he unko arguments kehte he
+
+
+// there are 2 types of methd 
+// 1 static method
+// 2 non static / instance methods
+
+
+// according to parameters there are 2 types of method
+// 1 Parameterized method
+// 2 Non-Parameterized method
+
+
+// Named Arguments => An argments passed by its name instead of its position is called a name argument. while passing name arguments, the order of the arg declared in the method does not matter.
+
+
+//Advantages of Using Method = >
+// 01 Well Strucuted
+// 02 Enhance The Readability of the code
+// 03 reuse
+// 04 optimize execution time and memory spaces
