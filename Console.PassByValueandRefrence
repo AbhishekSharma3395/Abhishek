@@ -1,0 +1,61 @@
+using System;
+
+namespace PassByValueandPBReferenceType
+{
+    class Program
+    {
+
+        public static void PassByVal(int a)
+        {
+            a = a + 10;
+            Console.WriteLine("/n Pass value is " + a);//15
+        }
+        public static void PassByRef(ref int a)
+        {
+            a = a + 10;
+            Console.WriteLine("\n Ref value is " + a);//15
+        }
+
+        public static void PassByOut(out int a)
+        {
+            a = 20;
+            Console.WriteLine("\n Out value is " + a);//10
+        }
+        static void Main(string[] args)
+        {
+            //int value = 5;
+            //PassByVal(value);   //15
+            //Console.WriteLine(value); //5
+
+            //int value = 5;
+            //PassByRef(ref value); //15
+            //Console.WriteLine(value); //15
+            //Console.ReadLine();
+
+            int value;
+            PassByOut(out value); //20
+            Console.WriteLine(value); //20
+            Console.ReadLine();
+        }
+    }
+}
+/*
+Pass By Value = >
+ Orignal Value me Change nhi hoga
+ 
+Pass By Ref = >
+Memory ke address ko ref khte. 
+Orignal Value me Change hoga
+calling method me pass krte value to ref keyord uske ref ko update kr deta he.
+jo value method ke para me di he usko bhi change kr dega.
+ref ka keyword lagana.
+jo value method ke under pass kr rhe usko intialize hona jaruri he
+
+
+
+
+Pass By Out =>
+variable ki alg copy nhi bnti.ek hi memory blcok banta usko hi share krte.
+ref me value de rhe the out me intialize function k under karwa skte.
+
+ */
