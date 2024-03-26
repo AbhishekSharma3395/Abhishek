@@ -77,6 +77,8 @@ agar instance method ya variable ko use krna he to us class ke obj k sath use kr
 
 
 Static Member =>
+Static variable can be initialize outside the member function or class defination
+static member are invoked using class name.
 her object ke liye same value like school name
  static member class ke name k sath use hota
 ek hi copy sbke pass jaygi,
