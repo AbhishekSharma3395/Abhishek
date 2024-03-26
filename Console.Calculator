@@ -1,0 +1,67 @@
+using System;
+
+namespace Creating_Calculator
+{
+    class Program
+    {
+
+        public static void add(int num1 , int num2)
+        {
+           int result = num1 + num2;
+            Console.WriteLine("Result is {0}",result);
+        }
+
+        public static void min(int num1, int num2)
+        {
+            int result = num1 - num2;
+            Console.WriteLine("Result is {0}", result);
+        }
+
+        public static void mul(int num1, int num2)
+        {
+            int result = num1 * num2;
+            Console.WriteLine("Result is {0}", result);
+        }
+
+        public static void div(int num1, int num2)
+        {
+            int result = num1 / num2;
+            Console.WriteLine("Result is {0}", result);
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter First No.");
+            int num1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Second No.");
+            int num2 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter Operator +, - ,/ ,*");
+            string op = Console.ReadLine();
+
+       
+            if(op == "+")
+            {
+                Program.add(num1, num2);
+            }
+            else if (op == "-")
+            {
+                Program.min(num1, num2);
+            }
+            else if (op == "*")
+            {
+                Program.mul(num1, num2);
+            }
+            else if (op == "/")
+            {
+                Program.div(num1, num2);
+            }
+            else
+            {
+                Console.WriteLine("Invalid Operator");
+            }
+
+
+        }
+    }
+}
