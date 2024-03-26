@@ -1,0 +1,66 @@
+using System;
+
+namespace Constructor
+{
+    class Program
+    {
+
+        int EmpId;
+        string EmpName;
+        int age;     
+        
+        //default Constructor
+        public Program() // Constructr Decalaring
+        {
+            Console.WriteLine("Constructor Invoked");
+        }
+
+        //Parameterised Constructor
+        public Program(int EmpId, string EmpName, int age)
+        {
+            this.EmpId = EmpId;
+            this.EmpName = EmpName;
+            this.age = age;
+        }
+        static void Main(string[] args)
+        {
+            //DC
+            Program p = new Program();
+            //PC
+            Program abhishek = new Program(11, "aa", 22);
+            Console.WriteLine(abhishek.EmpId);
+            Console.WriteLine(abhishek.EmpName);
+            Console.WriteLine(abhishek.age);
+
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Constructor => A class constructor is a special member function of a class that is executed whenever we create new object of that class.
+ * member bhi isko bolte, chalta tb he jb us class ka object banate he.
+ * class ref variable = new class (jese hi ye line likhege call ho jayga)
+ * special method he isko call krne ki need nhi.
+ * class ka name or cunstrutor ka name same hoga. 
+ * isko method to bolte bt method me is constucutor me koi return type nhi hoga.
+ * constructr ke sath pubilc ka access modifier use krte.
+ *  agar hum constructr nhi banate to c# ka compiler automatically apni class ka ek constructr bana leta. but vo empty hota he
+ * 
+ * types of constructor =>
+ * 1 Default constructor => parameter nhi dete hum. class ka instance banate wqt use hota
+   2 Parameterized Constructor => A constructor which has at least one parameter.
+iske through variables ko initialize kr skte
+ 
+ */ 
