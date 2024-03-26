@@ -1,0 +1,40 @@
+using System;
+
+namespace ConstructorOverloading
+{
+    class Program
+    {
+        //default Constructor
+        public Program()
+        {
+            Console.WriteLine("This is a first Constructor");
+        }
+
+        //parameter Constructor
+        public Program(int a, int b)
+        {
+            Console.WriteLine("This is a second Constructor {0}",a+b);
+        }
+        //parameter Constructor
+        public Program(int a, int b,int c)
+        {
+            Console.WriteLine("This is a third Constructor {0}", a+b+c);
+        }
+
+        public Program(string a, string b, string c)
+        {
+            Console.WriteLine("This is a third Constructor {0}", a + b + c);
+        }
+        static void Main(string[] args)
+        {
+            Program p1 = new Program();
+            Program p2 = new Program(10,20);
+            Program p3 = new Program(10,20,30);
+            Program p4 = new Program("a", "b", "c");
+        }
+    }
+}
+
+
+
+// dusra constructr different hona chahiye. same name diffrent parameter, data type change kr k same parameter used kr skte
