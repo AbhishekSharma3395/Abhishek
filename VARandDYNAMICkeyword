@@ -1,0 +1,52 @@
+using System;
+
+namespace VarAndDynamicKeyword
+{
+    class Program
+    {
+       public static void show(dynamic c)
+        {
+            Console.WriteLine(c);
+        }
+        static void Main(string[] args)
+        {
+            int a = 10;
+            var b = "Abhi";
+            Console.WriteLine("Hello World!"+a);//10
+            Console.WriteLine(b.Length);//4
+            Console.WriteLine(b.GetType());//System.String
+
+            dynamic c=20;
+            c = "dsfa";
+            Console.WriteLine(c.GetType());
+
+            Program.show(5);
+            Program.show("Dyamic function");
+            Program.show(4.5);
+        }
+    }
+}
+
+
+/*  VAR => kisi bhi type ka data store krne ke liye.
+value of var variable is decided at compile time.
+koi value dalna compalsary he.
+Getype method use hota data type jaan ne ke liye
+Var keyword ke sath intellisense ki help show karayga.
+var variable cannot be used for prperty or return value from a function.They can only be used as local variable in a function.
+we cannot use var variable as a function parameter.
+var keyword is of value type.
+
+
+Dynamic Keyword =>
+Dynamic keyword is also used to store any type of data in its variable.
+Value of Dynamic Variable is decided at run time
+Initialization is not medantary
+dynamic me data type change kr skte .
+Getype method use hota data type jaan ne ke liye
+Dynamic keyword ke sath intellisense ki help show nhi karayga.
+error run time per dega
+Dynamic variable can be used to create properties and return value from a function.
+we can use dynamic variable as a functipn parameter.
+dynamic keyword is of ref type
+*/
