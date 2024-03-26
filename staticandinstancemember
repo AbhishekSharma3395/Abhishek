@@ -1,0 +1,86 @@
+using System;
+
+namespace StaticAndInstanceMember
+{
+
+    //Instance Variable
+    class student
+    {
+        public int roll;
+        public string firstname;
+        public string lastname;
+        public static string school = "MVM School";
+        public static int fees = 40000;
+
+        //Instance Method
+        public void printfullname()
+        {
+        string fullname = this.firstname +" "+ this.lastname;
+        Console.WriteLine("Your Full name is {0}",fullname);
+        }
+
+        public static int getfees()
+        {
+            return fees;
+        }
+
+        public static int getfeesincrement(int fee)
+        {
+            return fee / 10;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            student abhishek = new student();
+            abhishek.roll = 1;
+            abhishek.firstname = "Abhishek";
+            abhishek.lastname = "Sharma";
+            Console.WriteLine(abhishek.firstname);
+            Console.WriteLine(abhishek.lastname);
+            Console.WriteLine(student.school);
+            Console.WriteLine(student.getfees());
+            Console.WriteLine("------------");
+            student lucky = new student();
+            lucky.roll = 2;
+            lucky.firstname = "Lucky";
+            lucky.lastname = "Sharma";
+            Console.WriteLine(lucky.firstname);
+            Console.WriteLine(lucky.lastname);
+            Console.WriteLine(student.school);
+            Console.WriteLine(student.fees);
+            Console.WriteLine(student.getfeesincrement(30000));
+            Console.WriteLine("------------");
+            Console.WriteLine(abhishek.roll+" "+lucky.roll);
+            Console.WriteLine("------------");
+            abhishek.printfullname();
+            lucky.printfullname();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+/* Static And Instance Member Of Class =>
+ 
+ * Instance Member=> Instance member have a seprate copy for each and every object of a class.
+ * Instance member belongs to the obj of the class.
+ * when no static keyword is present the class member is called non static or instance member.
+ * (her object ke liye alg hota, uniqe)
+ * Instance variable ki pehchan us se phle static nhi laga hota
+object ke name k sath use hota instance
+her obejct ke liye alg alg memory milti
+instance method ke under dono use kr skte (static, instance)
+agar instance method ya variable ko use krna he to us class ke obj k sath use kr skte dot laga ke
+
+
+Static Member =>
+her object ke liye same value like school name
+ static member class ke name k sath use hota
+ek hi copy sbke pass jaygi,
+static ka jo member hota he uslo memory me ek hi dafa jgh milti 
+static method ke liye object banane ki need nhi, method class ke name se call
+static method ke under instance variable ko use nhi kr skte
+ * */
