@@ -1,0 +1,85 @@
+using System;
+
+namespace Method_Or_Functions
+{ 
+    class Program
+    {
+        public void getshow() //decalaring a method.. / non-static or instance method/ non paramiterize method
+        {
+            Console.WriteLine("Non Static Method");
+            Console.WriteLine("hey..............");
+        }
+
+        public static void getshow1()//static mathod
+        {
+            Console.WriteLine("Static Method");
+            Console.WriteLine("hey..............");
+        }
+
+        public static void add(int num1, int num2) // static parameterized method
+        {
+            int result = num1 + num2; // local varible result
+            Console.WriteLine("Addition is " + result);
+        }
+
+
+        public static void ShowName(string name = "Unknown") // static parameterized method
+        {
+         
+            Console.WriteLine("Your Name is " + name);
+        }
+
+        public static void Showage(int age = 18) // static parameterized method
+        {
+
+            Console.WriteLine("Your Age is " + age);
+        }
+
+        static void  Main(string[] args)
+        {
+            //for non static
+            Program show = new Program(); //new program ko constructor kehte
+            show.getshow();
+            show.getshow();
+            show.getshow();
+
+
+            //for static
+            Program.getshow1();
+            Program.getshow1();
+
+            
+            Program.add(20,10);//arugments
+            Program.add(30,40);
+            Program.add(60, 40);
+
+            Console.WriteLine("Enter First No");
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Second No");
+            int b = int.Parse(Console.ReadLine());
+            Program.add(a, b);
+
+            Program.ShowName("Abhishek");
+            Program.ShowName("Lucky");
+            Program.ShowName();//optional parameter
+
+            Program.Showage();
+
+            //Console.WriteLine("Enter Your Name");
+            //string name = (Console.ReadLine());
+            //Console.WriteLine("Your Name Is" + name);
+
+        }
+    }
+}
+
+// method is a group of stataments toghether perform a task.
+// method ko c# me functin kha jata he.
+// jab bhi method bananyge class ke under hi bananyge
+// call main method me khege
+// jab bhi non -static or instance method ko call karege to phle obj bnana he fir obj k saath method ka name
+// static method ko only class ke name k sath call kr skte no need of obj.
+// instance method me static ka keyword nhi hota.
+// static ka keword he to claass ke sath call nhi he to obj bana k
+// method ko reuse kr skte
+//
