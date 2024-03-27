@@ -1,0 +1,54 @@
+using System;
+
+namespace AccessSpecifier1
+{
+    public class class1
+    {
+        public void show1()
+        {
+            Console.WriteLine("This Is The Public Method");
+        }
+        public void show2()
+        {
+            class1 c1 = new class1();
+            c1.show1();
+        }
+    }
+    class Program1 : class1
+    {
+        static void Main(string[] args)
+        {
+            Program1 c1 = new Program1();
+            c1.show2();
+            
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+using System;
+using AccessSpecifier1;
+
+namespace AccessSpecifier2
+{
+    class Program2
+    {
+        static void Main(string[] args)
+        {
+            class1 c1 = new class1();
+            c1.show1();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+data get from 2 different namespace
