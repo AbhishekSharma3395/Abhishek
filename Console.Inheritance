@@ -1,0 +1,54 @@
+using System;
+
+namespace Inheritance
+{
+
+    class VisitingEmployees : Employee
+    {
+        public int VisitingSalary;
+        public int VisitingHours;
+    }
+    class PermanentEmployees : Employee
+    {
+        public int PermanentSalary;
+        public int PermanentHours;
+    }
+    class Employee
+    {
+        public int EmpId;
+        public string EmpName;
+        public int EmpAge;
+        public int EmpContactNo;
+
+        public void show()
+        {
+            Console.WriteLine("This is a method of base class");
+        }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            PermanentEmployees abhishek = new PermanentEmployees();
+            Console.WriteLine(abhishek.EmpId = 1);
+            VisitingEmployees abhinav = new VisitingEmployees();
+            abhinav.EmpName = "Abhinav";
+            Console.WriteLine(abhinav.EmpName);
+            abhinav.show();
+        }
+    }
+}
+
+
+
+
+/* Inheritance => Child Parent Ka Relationship
+01 Child apne physical feature parents se leta he.
+02 property or method ek class ke dusri class ke under lena.
+03 child class ko derived parent ko based class kehte
+04 base class ki property lene ke liye colon 
+
+Base Class => jis ki property dusri child class ke under ja rhi hogi
+Derived Class => jis ke under dusre class ke feature aa rhe ho
+*/
