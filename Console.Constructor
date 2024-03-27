@@ -59,7 +59,7 @@ namespace Constructor
  *  agar hum constructr nhi banate to c# ka compiler automatically apni class ka ek constructr bana leta. but vo empty hota he
  * 
  * types of constructor =>
- * 1 Default constructor => parameter nhi dete hum. class ka instance banate wqt use hota
+ * 1 Default constructor => parameter nhi dete hum. class ka instance banate wqt use hota, her obj ke liye alg alg chalta
    2 Parameterized Constructor => A constructor which has at least one parameter.
 iske through variables ko initialize kr skte
  
