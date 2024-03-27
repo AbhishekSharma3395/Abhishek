@@ -1,0 +1,54 @@
+using System;
+
+namespace ConstructorInInheritance
+{
+    class baseclass
+    {
+        public baseclass(string msg) //constructor
+        {
+            Console.WriteLine(msg);
+            //Console.WriteLine("This is the constructor of base class");
+        }
+    }
+    class derivedclass : baseclass
+    {
+        public derivedclass()  :base("Hello C#")// only default construtor ko called kr skta he, 
+        {
+            Console.WriteLine("This is the constructor of derived class");
+        }
+        
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            derivedclass d1 = new derivedclass();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+/*op
+This is the constructor of base class
+This is the constructor of derived class
+
+phle base class ka constuctor chalayga
+
+/op 
+Hello C#
+This is the constructor of derived class
+
+
+
+
+
+
+
+
+
+/*
+ Constructor In Inheritance =>  1) Constructor of both class must be executed when the object of child class is created.
+2) base keyword ka kaam apne const ko call krne se phle parent class ka const call krna
+ */
