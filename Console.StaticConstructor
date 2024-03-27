@@ -1,0 +1,62 @@
+using System;
+
+namespace Static_Constructor
+{
+    class person
+    {
+        public static string PersonName;
+        public static int PersonAge;
+
+         static person()                //static constructor
+        {
+            PersonName = "Abhishek";
+            PersonAge = 23;
+            Console.WriteLine("Static Constructor Invoked");
+        }
+        public static void GetDetails()   // static 
+        {
+            Console.WriteLine("Person Name is {0}",PersonName);
+            Console.WriteLine("Person Age is {0}",PersonAge);
+        }
+        public person()                 //default constructor
+        {
+            Console.WriteLine("Default Constructor Invoked");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            person abhishek = new person();
+            person lucky = new person();
+            person.GetDetails();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+//default construct se phle static constructor chalega
+// OP =>
+//Static Constructor Invoked
+//Default Constructor Invoked
+//Default Constructor Invoked
+//Get Detail Function
+
+
+
+
+/* Static Constructor =>1  static variable ko initialize krne k liye. and a perform a particular actin only once
+  2. Static Constructor ek hi baar chalega, no mater how many obj you create.
+  3. Static Constructor is called before instance (default or parameterized) Constructor.
+  4. koi bhi parameter nhi use kr skte. and does not use any access modifier.  
+ * Key Point = >
+ * 1) 1 class ke under 1 hi Static Constructor.
+ * 2) automatically called jab class ka pehla obj bantae he
+ * 3) We cannot call Static Constructor directly.
+ * 4) Static Constructor ko clr(compiler) call krta.
+ * clr = .net freamwork ka tool he prog ki execution ko control krta he
+
+instance method ke under instance variable bhi use kr skte or static variable bhi use kr skte.
+static method ke under only static variable hi access kr skte. instanace nhi
+ */
