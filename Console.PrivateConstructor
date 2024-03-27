@@ -1,0 +1,65 @@
+using System;
+
+namespace Private_Constructor
+{
+
+    class example
+    {
+
+        public string name;
+        public string fname;
+        public static int a;
+
+        public example(string name, string fname) // parameter constructor 
+        {
+            this.name = name;
+            this.fname = fname;
+        }
+        private example(int a) //private constructor
+        {
+
+        }
+
+        public static int getIncrment()
+        {
+            return ++a;
+        }
+        public static void gettime() // static method
+        {
+            Console.WriteLine(DateTime.Now);
+        }
+    }
+
+    //class example2 : example  // inherite nhi kr skte
+    //{
+
+    //}
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /* example e = new example();*/ // obj nhi bana skte
+            example.gettime();
+            example.a = 20;
+            Console.WriteLine(example.getIncrment());
+            example e = new example("abhishek","sharma");
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+/* Private Constructor => 01) child calss nhi bana skte.
+02) agar kisi class me private constructor he to us class ka instance (obj) bhi nhi bana skte.
+03) dusri class se inherite nhi kra skte
+04) that are usually used in classes that contain static member only.(static member, method ,property ho ) jab hme obj. banane ki need nhi hoti to us class me private constructor bana lete.
+Some Key Point Of Private Constructor =>
+01) hum iska use krte he jab class ke under sare member static ho.restraction lagane k liye
+02) jab hmne khud se koi constructor bana liya us case me complier khud se jo const bannata vo nhi banayga.
+03) agar class ke under parameterless private constuctor bana hua he to default constuctor nhi bana skte
+04) We can have parameters in private constructor.
+ */
