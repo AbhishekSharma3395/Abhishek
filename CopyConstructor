@@ -1,0 +1,55 @@
+using System;
+
+namespace Copy_Constructor
+{
+
+    class Example
+    {
+        string name;
+        int age;
+        public Example(string name, int age)
+        {
+            this.name = name;
+            this.age = age;
+        }
+        public Example(Example e) //copy constructor
+        {
+            this.name = e.name;
+            this.age = e.age;
+        }
+        public void getdata()
+        {
+            Console.WriteLine("Name is {0}" , name);
+            Console.WriteLine("Age is {0}", age);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Example obj = new Example("Abhishek", 25);
+            obj.getdata();
+            Example obj1 = new Example(obj); //Copy Constructor
+            obj1.getdata();
+            Console.ReadLine();
+        }
+    }
+}
+
+//op name is abhishek 
+// age is 25
+// name is abhishek 
+// age is 25
+
+
+
+
+/*Copy Constructor =>
+           1) Ek object ke variables ko copy kr k kisi dusre object ke under rkhna.
+ 2) the purpose of a copy constructor is to initialize a new instance(obj) to the values of an existing instance.
+3) copy constructor parameterised construtor hona chahiye compalsary, which contain a parameter of same class type.
+4) use tb krte jab new obj banana ho bt value purane obj ki chahiye ho
+5) Copy Constructor ek esa Constructor he jo ki ek obj ka data uske variable unki value copy kr k kisi dusre obj ke under store karay
+6)Copy constructor akele nhi bana skte. koi dusra constructor hona chahiye jiski obj ki value copy kre
+
+*/
