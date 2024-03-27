@@ -1,0 +1,81 @@
+using System;
+
+namespace TypesOfInheritance
+{
+    class baseclass
+    {
+        public void show1()
+        {
+            Console.WriteLine("This is the method of base class");
+        }
+    }
+    class derivedclass1 : baseclass
+    {
+        public void show2()
+        {
+            Console.WriteLine("This is the method of 1st derived class");
+        }
+    }
+
+    class derivedclass2 : derivedclass1
+    {
+        public void show3()
+        {
+            Console.WriteLine("This is the method of 2nd derived class");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DerivedClass3 dc3 = new DerivedClass3();
+            dc3.show1();
+            dc3.show2();
+            dc3.show3();
+            dc3.show4();
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TypesOfInheritance
+{
+    class DerivedClass3: derivedclass2
+    {
+        public void show4()
+        {
+            Console.WriteLine("This is the method of 3th derived class");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* Types of in Iheritance
+ 
+1) Single =>  1 base class and 1 derived class. 
+    Class A (base class) {}
+    Class B:A (derived class){}
+
+2) Heraricahical Inheritance => 1 parent 3 child
+ multiiple classs derived from 1 base class.
+
+3) Multilevel Inheirance => Grandfather ->father ->chlid
+   base class ->Intermidiate class -> derived class
+ esi class derived kri jiska parent bhi ek child hota he
+ 
+ */  
