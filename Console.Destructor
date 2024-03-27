@@ -1,0 +1,56 @@
+using System;
+
+namespace Destructor
+{
+    class person
+    {
+        public string name;
+        public int age;
+
+        public person(string name, int age)   //constructor
+        {
+            this.name = name;
+            this.age = age;
+        }
+
+        public string getname()
+        {
+            return this.name;
+        }
+
+        public int getage()
+        {
+            return this.age;
+        }
+        ~person() //destructor
+        {
+            Console.WriteLine("Destructor has been invoked !!");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            person abhishek = new person("Abhishek", 22);
+            person abhinav = new person("Abhinav", 24);
+            Console.WriteLine(abhinav.getname());
+            Console.WriteLine(abhinav.getage());
+            Console.WriteLine(abhishek.getname());
+            Console.WriteLine(abhishek.getage());
+            //Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+/*Destructor => 01) special method which has same name as the class but start with the chararcter (~) before the class name . 
+02) Obj ki memory ko destroy krte jab obj ka kaam khtm
+03) destructor ko overload,inherited nhi kr skte.
+04) khud se call nhi krte, obj out of scope jayge distructor chal jayga.
+05) access modifier us nhi krte na hi parameter de skte
+06/ obj ki memory deallocate kr dega
+
+*/
