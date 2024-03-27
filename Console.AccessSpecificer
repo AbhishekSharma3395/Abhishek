@@ -1,0 +1,38 @@
+using System;
+
+namespace AccessSpecifier1
+{
+    public class class1
+    {
+        public void show1()
+        {
+            Console.WriteLine("This Is The Public Method");
+        }
+        public void show2()
+        {
+            class1 c1 = new class1();
+            c1.show1();
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            class1 c1 = new class1();
+            c1.show1();
+            c1.show2();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+\\op
+This Is The Public Method
+This Is The Public Method
+
+
+
+
+
+
