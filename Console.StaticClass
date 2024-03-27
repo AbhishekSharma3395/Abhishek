@@ -1,0 +1,73 @@
+using System;
+
+namespace Static_Class
+{
+    static class product
+    {
+        public static int ProductID;
+        public static string ProductName;
+        public static int ProductPrice;
+
+        static product() //static constructr
+        {
+            ProductID = 111;
+            ProductName = "Book";
+            ProductPrice = 5000;
+        }
+        //class item : product   // nhi bnegi
+        //{
+
+        //}
+        public static void getproductdetail()
+        {
+            Console.WriteLine("Product ID {0}", ProductID);
+            Console.WriteLine("Product Name {0}", ProductName);
+            Console.WriteLine("Product Price {0}", ProductPrice);
+        }
+        public static void getdiscount()
+        {
+            int d_amount = ProductPrice / 10;
+            Console.WriteLine("Discount Price is{0}", d_amount);
+            Console.WriteLine("Total Cost Of  Product {0}",(ProductPrice -d_amount));
+        }
+
+    }
+        class Program
+    {
+        static void Main(string[] args)
+        {
+            //product p = new product(); // obj nhi bana skte
+            product.getproductdetail();
+            product.getdiscount();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  Static Class => 01) static class ka obj nhi bana skte. inherit bhi nhi kr skte.
+ use staic keyworduse before the class, that consist of static data member and static mathod. variable, constructor , method sb static no instance create.
+02) possible nhi he new kewyord ki help se obj banao.
+03) They can only contain static members.
+04) static class se koi dusri derived class nhi bana skte.
+ */
+
+
+
+
