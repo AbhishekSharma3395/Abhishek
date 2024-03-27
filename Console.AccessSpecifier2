@@ -20,8 +20,8 @@ namespace AccessSpecifier1
         {
             Program1 c1 = new Program1();
             c1.show2();
-            
             Console.ReadLine();
+    
         }
     }
 }
@@ -48,6 +48,23 @@ namespace AccessSpecifier2
     }
 }
 
+
+OR
+using System;
+using AccessSpecifier1;
+
+namespace AccessSpecifier2
+{
+    class Program2:class1
+    {
+        static void Main(string[] args)
+        {
+            Program2 c1 = new Program2();
+            c1.show1();
+            Console.ReadLine();
+        }
+    }
+}
 
 
 
