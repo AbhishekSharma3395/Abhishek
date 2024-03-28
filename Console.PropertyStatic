@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Static_Property
+{
+
+    class university
+    {
+        private static string UniversityName;
+        private static string DepartmentName;
+        private int age; // instance
+
+        //error aaygi isme instance nhi lega
+        //public static int _age
+        //{
+        //    set
+        //    {
+        //        age = value;
+        //    }
+        //    get
+        //    {
+        //        return _age;
+        //    }
+
+        //}
+        public static string _UniversityName
+        {
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    Console.WriteLine("You Cannot Enter University Name Null Value");
+                }
+                else
+                {
+                    UniversityName = value;
+                }
+
+            }
+            get
+            { //get accessor
+                return UniversityName;
+            }
+
+        }
+
+        public static string _DepartmentName
+        {
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                {
+                    Console.WriteLine("You Cannot Enter Null Department Name Value");
+                }
+                else
+                {
+                    DepartmentName = value;
+                }
+            }
+            get
+            {
+                return DepartmentName;
+            }
+
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            university._UniversityName = "MVM";
+            Console.WriteLine("Unviversity Name Is {0}",university._UniversityName);
+            university._DepartmentName = "Library";
+            Console.WriteLine("Unviversity Name Is {0}", university._DepartmentName);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Static Property = >
+01) jo static variable he unko set ya get krne ke liye use
+02) static keyword ke sath use hota he.
+03) class ke name se property ko accesss krege.
+04) obj banane ki need nhi 
+05) instnce variable set get nhi kara skte static property me.
+*/
+
+//jab bhi koi name denge value ke pass jayga
