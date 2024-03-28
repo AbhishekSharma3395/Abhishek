@@ -1,0 +1,113 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Encapsulation
+{
+    class person
+    {
+         string name;
+         int age;
+        
+        public void setname(string name)
+        {
+            if (string.IsNullOrEmpty(name)==true)
+                {
+                Console.WriteLine("Name is Required ");
+                }
+            else
+            {
+                this.name = name;
+            }
+        }
+        public void getname()
+        {
+            if (string.IsNullOrEmpty(this.name) == true)
+            {
+             
+            }
+            else
+            {
+                Console.WriteLine("Your name is " + this.name);
+            }
+
+           
+        }
+
+        public void setage(int age)
+        {
+            if(age>0)
+            {
+                this.age = age;
+            }
+            else
+            {
+                Console.WriteLine("Age should negative or 0 ");
+            }
+            
+        }
+        public void getage()
+        {
+            if (age > 0)
+            {
+                Console.WriteLine("Your age is " + this.age);
+            }
+            else
+            {
+
+            }
+          
+        }
+
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            person p = new person();
+            p.setname("abhisek");
+            p.getname();
+            p.setage(22);
+            p.getage();
+
+            //p.name = "abhishek";
+            //p.age = 25;
+            //Console.WriteLine(p.name);
+            //Console.WriteLine(p.age);
+            //Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+/* Encapsulation => 01) Encapsulation is one of the four fundamental oop concepts. The other Three inheritance,polymorephism and abstraction.
+  2) ek esa tarika jiske under wrapping krte data (variable) ko and code acting on the data(method or property) togther as a single unit.
+  3) kuch varible banay unme data set or get ke liye method banay jab unko ek hi class k under wrap krege usko Encapsulation khte. data set variable me, get krne ke liye method.
+  4) variable or method ko ek class ke under bind krna encapsulation.
+ 5) claass ke under variable ko hide krte dusri classes se. access through method or propertities current class. therefore, its also known as data hiding.
+ 
+Encapsulation ki need =>
+01) jo bhi data private varible ke under daal rhe vo method me check hoga.
+02) protective shield he jis me data hid karaya hua he.. 
+
+To achive encapsulation in c# =>
+01) Declare the variables of a class as private.
+02) Provide public setter and getter methods or property to modify and view the variable value.
+
+Benifites =>
+01 the fields of a class can be made read-only(seeter method hata do) or write only(getter method hata do value get nhi kr skte).
+02) class ka total control over the what is store in its fields.
+03) valid data ja rha he ya nhi. 
+
+Why Need => public method ke through check kr k data jayga(data invalid na daal de). protect krna or prevent krna aacciddental corruption.
+ */ 
+
