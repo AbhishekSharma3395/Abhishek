@@ -1,0 +1,130 @@
+  static void Main(string[] args)
+        {
+
+
+            //            for (int row = 8; row >= 1; --row)
+            //            {
+            //                for (int col = 1; col <= row; ++col)
+            //                {
+            //                    Console.Write("*");
+            //                }
+
+            //                Console.WriteLine();
+            //            }
+            //            Console.ReadLine();
+            //        }
+
+          
+            //Output =>
+            //********
+            //*******
+            //******
+            //*****
+            //****
+            //***
+            //**
+            //*
+
+
+         
+
+            //    int x, y, z;
+            //    for (x = 6; x >= 1; x--)
+            //    {
+            //        for (y = 1; y < x; y++)
+            //        {
+            //            Console.Write(" ");
+            //        }
+            //        for (z = 6; z >= x; z--)
+            //        {
+            //            Console.Write("*");
+            //        }
+            //        Console.WriteLine();
+            //    }
+            //    Console.ReadLine();
+
+            //Output =>
+            //     *
+            //    **
+            //   ***
+            //  ****
+            // *****
+            //******
+
+
+
+
+            //            for (int row = 1; row <= 8; row++)
+            //            {
+            //                for (int col = 1; col <= row; ++col)
+            //                {
+            //                    Console.Write("*");
+            //                }
+
+            //                Console.WriteLine();
+            //            }
+            //            Console.ReadLine();
+            //        }
+
+            //Output=>
+            //*
+            //**
+            //***
+            //****
+            //*****
+            //******
+            //*******
+            //********
+
+
+
+
+            // int num;
+            // Console.WriteLine("Enter the number");
+            //  num = Convert.ToInt32(Console.ReadLine());
+            // for (int row = 1; row <= num; row++)
+            // {
+            //     for (int col = 1; col <= row; ++col)
+            //     {
+            //         Console.Write("*");
+            //     }
+
+            //     Console.WriteLine();
+            // }
+            // Console.ReadLine();
+            //}
+           
+
+            //Output=>
+            //Enter the number 7
+            //*
+            //**
+            //***
+            //****
+            //*****
+            //******
+            //*******
+
+
+
+            //.Piramid Program
+
+            //int space, len = 1, count;
+            //Console.WriteLine("Enter Row No.");
+            //count = Convert.ToInt32(Console.ReadLine());
+            //space = count - 1;
+            //for (int i = 1; i <= count; i++)
+            //{
+            //    for (int r = 1; r <= space; r++)
+            //    {
+            //        Console.WriteLine(" ");
+            //    }
+            //    for (int s = 1; s <= len; s++)
+            //    {
+            //        Console.WriteLine("*");
+            //    }
+            //    space--;
+            //    len = len + 2;
+            //    Console.WriteLine();
+            //}
+            //Console.ReadLine();
