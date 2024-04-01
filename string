@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace String
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Print String
+
+            //string str;
+            //Console.WriteLine("Enter A String");
+            //str = Console.ReadLine();
+            //Console.WriteLine("String Is" + str);
+
+
+
+
+            // Sort String In Alphabetic Order
+
+            //string myStr;
+            //Console.WriteLine("Enter A String");
+            //myStr = Console.ReadLine();
+            //char temp;
+            //string str = myStr.ToLower();
+            //char[] charstr = str.ToCharArray();
+
+            //for (int i = 1; i < charstr.Length; i++)
+            //{
+            //    for (int j = 0; j < charstr.Length - 1; j++)
+            //    {
+            //        if (charstr[j] > charstr[j + 1])
+            //        {
+            //            temp = charstr[j];
+            //            charstr[j] = charstr[j + 1];
+            //            charstr[j + 1] = temp;
+
+            //        }
+            //    }
+            //}
+            //Console.WriteLine(charstr);
+
+
+
+            //Reverse String
+
+            //string str,revstring="";
+            //Console.WriteLine("Enter A String");
+            //str = Console.ReadLine();
+            //for (int i =str.Length-1; i>=0; i--)
+            //{
+            //    revstring = revstring + str[i];
+            //}
+            //Console.WriteLine("Reverse String Is {0}",revstring);
+
+
+            //Remove Duplicate From String
+            //string str = "abhisbbhhiiiheka";
+            //string result = "";
+
+            //for (int i = 0; i< str.Length;i++)
+            //{
+            //    if (!result.Contains(str[i]))
+            //        result += str[i];
+
+            //}
+            //Console.WriteLine("Duplicate Remove {0}", result);
+            //Console.ReadLine();
+
+
+        }
+    }
+}
