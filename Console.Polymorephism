@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Polymorphism
+{
+    class Program
+    {
+
+        // 01 Method Overloading
+
+        //public void add()
+        //{
+        //    int a = 20;
+        //    int b = 30;
+        //    int c =a+b;
+        //    Console.WriteLine(c);         
+        //}
+        //public void add(int a, int b)
+        //{        
+        //    int c = a + b;
+        //    Console.WriteLine(c);
+        //}
+
+        //public  void add(string a, string b)
+        //{
+        //    string c = a +" "+ b;
+        //    Console.WriteLine(c);
+        //}
+
+        //public void add(float a, float b)
+        //{
+        //    float c = a + b;
+        //    Console.WriteLine(c);
+        //}
+
+
+
+       
+        
+        // 02 Operator Overloading 
+        public string str;
+        public int num;
+        public static Program operator +(Program p2 , Program p3)
+        {
+            Program p4 = new Program();
+            p4.str = p2.str + " " +p3.str;
+            p4.num = p2.num + p3.num;
+            return p4;
+        }
+
+        static void Main(string[] args)
+        {
+
+            //Method Overloading
+            //Program p1 = new Program();
+            //p1.add();
+            //p1.add(50,50);
+            //p1.add("Abhishek" ,"Lucky");
+            //p1.add(50.33f,50.33f);
+            //Console.ReadLine();
+
+
+
+            // Operator Overloading 
+            Program p2 = new Program();
+            p2.str = "Abhishek";
+            p2.num = 20;
+
+            Program p3 = new Program();
+            p3.str = "Lucky";
+            p3.num = 18;
+
+            Program p4 = new Program();
+            p4 = p2 + p3;
+
+            Console.WriteLine(p4.str);
+            Console.WriteLine(p4.num);
+            Console.ReadLine();
+        }
+       
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* polymorphism =>
+ek kaam ko different tariko ke under perfom kr ske.
+ek se jyada forms.
+ex ek man son bhi he husband bhi he teaher bhi he
+
+
+types of polymorephsim=>
+1 static polymorephsim (compile)
+2 dynmamic polymorephsim(run time)
+
+
+1.) static polymorephsim => ek technique he function ko link krne ke objct k sath compile time me, early binding bhi khte.
+
+c# provide two technique to implement static polymorephsim.
+
+a) Method or function overloading=> 
+    multiple defination for the same function name in th same scope. name same but defination(parameter) alg. return type  change krne se method dusre method se different nhi hoga.
+
+b) Operator Overloading => operator ko bhi overlaod kiya ja skta he.
+ ek opertor ko use kr k multiple task perform.
+ jab bhi operator overloading krni hogi ek fun banana padega.
+jab bhi operator overlaod ke liye function bana rhe tb ek keyword use krege operator
+thik usi ke baad koi opertor singn.
+c# ke operators ki capability bada deta he.
+user define data types ke sath use krte.
+prdefine operator ko hi overload kr skte he.
+compiler as a function read krta he.
+only && ,!!, +=,-=,*=,/=%=,=(Assignment & Logical Not Overlaoded)
+
+*/
+          
+
