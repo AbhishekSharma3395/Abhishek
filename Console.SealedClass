@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Sealed_Class
+{
+     sealed class BaseClass
+    {
+        public void Show1()
+        {
+            Console.WriteLine("Method Of Base Class");
+        }
+    }
+    class DeriveClass : BaseClass
+    {
+        public void Show2()
+        {
+            Console.WriteLine("Method Of Derived Class");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DeriveClass d = new DeriveClass();
+            d.Show1();
+            Console.ReadLine();
+        }
+    }
+}
+
+op 
+
+
+
+/*Sealed Clas => Jiske Uper Inheritance Apply nhi kr skte.uski child class nhi bn skti.sealed class parent nhi bn skti.
+class ke keyword se phle seal likhna.
+nhi chahte koi third class use kre or override kr de.
+
+ */
