@@ -1,0 +1,158 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Delegates
+{
+    //Multiple Delegate
+    public delegate void Show_Delegate();
+
+    public delegate void Calcution2(int num);
+    //delegate
+
+
+    //single cast delegate
+    public delegate void calculation(int a , int b); //signature same
+
+    //single cast delegate
+    public delegate void calculations(int num1, int num2);
+    class Program
+    {
+        
+        public static void show()
+        {
+            Console.WriteLine("This is a show Method");
+        }
+
+        public static void square(int num)
+        {
+            int square = num * num;
+            Console.WriteLine("Square Of {0} is {1}",num,square);
+        }
+
+        public static void cube(int num)
+        {
+            int cube = num * num *num;
+            Console.WriteLine("Cube Of {0} is {1}", num, cube);
+        }
+
+        public static void Addition (int a ,int b)
+        {
+            int result = a + b;
+            Console.WriteLine("Addition is {0}",result);
+        }
+        public static void Substraction(int a, int b)
+        {
+            int result = a - b;
+            Console.WriteLine("Substraction is {0}", result);
+        }
+        public static void Multiplication(int a, int b)
+        {
+            int result = a * b;
+            Console.WriteLine("Multiplication is {0}", result);
+        }
+        public static void Division(int a, int b)
+        {
+            int result = a / b;
+            Console.WriteLine("Division is {0}", result);
+        }
+
+        //Single Cast Delegate =>
+        public static void Additions(int num1, int num2)
+        {
+            int result = num1 + num2;
+            Console.WriteLine("Result is {0}", result);
+        }
+
+        static void Main(string[] args)
+        {
+            calculation obj = new calculation(Program.Addition);
+            obj.Invoke(5, 7);//12
+            calculation obj1 = new calculation(Program.Division);
+            obj1(20, 2);//10
+           
+            obj = Substraction;
+            obj(20, 10);//10
+            obj = Multiplication;
+            obj(20, 10);//200
+            obj = Division;
+            obj(20, 10);//2
+            
+
+            //Single Cast 
+            calculation obj2 = new calculation(Program.Additions);
+            obj2(50, 70);//120
+           
+
+
+            // show delegate
+            Show_Delegate obj3 = new Show_Delegate(show);
+            obj3.Invoke();
+            
+
+            // square
+            Calcution2 obj4 = new Calcution2(square);
+            obj4.Invoke(2);//4
+            obj4 = cube;
+            obj4.Invoke(3);//27
+
+            Calcution2 obj5 = new Calcution2(cube);
+            obj5.Invoke(3);//27
+           
+
+            //Multicast Delegate
+            calculation obj6 = new calculation(Addition);
+            obj6 += Substraction;
+            obj6 += Multiplication;
+            obj6 += Division;
+            obj6(20, 10);
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Delegates => 2 Logo ke bich communication.
+ Delegate ke obj ke under kisi bhi method ka ref rkhte.isko fun ka pointer bhi khte,
+Delegate can point to a parameterized method or non parameterized method.
+Delegate are used to encapsulate method.
+Delegate jis bhi fun ko point krega to deligate ka hi kaam hoga usko call kre.
+direct method ko call nhi krte delegate bana ke us ko kaam de rhe ki uske under jis method ka ref hoga usko chalayga.
+Its a ref type.
+Delegate signature same hona chahiye jo method ka signature hoga.
+call karane ke liye method hota invoke.
+delegate ki only declaration no body.
+run time pe decide hoga ki konsa method mila he.
+same return type. same para type.
+need =>
+method ko incapsulate krna ho or indirectly way me method ko call krna ho.
+1 hi delegate ke through different method ko bhi point kr skte.
+execution time me improvment
+ 
+
+Single Cast Delegate =>
+ek hi method ko point krta he. ek se jyada method ke ref pass nhi kr skte.
+They are dervied from System.Delegate class.
+ek delegate se different method pass nhi kra skte.
+ 
+
+Types of Delegates=>
+1 Multiple Delegates => single pro ke under multiple delegates.different signature change.
+2 Single Cast Delegates
+3 Multi Cast Delegates => ek hi delegate ka obj uske under multiple method ke ref he.
+System. Multicast Delegate class.
+We can use += and -=
+-= krege to data show nhi hoga only baki 3
+ */ 
