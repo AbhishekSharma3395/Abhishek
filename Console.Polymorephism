@@ -172,6 +172,20 @@ agar aap apne parent class ka vo hi method use krna chahte ho child class ke und
 jo method base class se inherite ho kr aaa rha us per override ka keyword lagayge.
 
 
+
+Diffrence Between Method Hiding and Method Overriding =>
+01 Method hiding me parent class ka method call 
+Method overriding me child class ka method call cause virtual he
+Method Hiding => a base class ref variable pointing to a child class obj, will invoke the hidden method of the base class.
+Method Overriding => a base class ref variable pointing to a child class obj, will invoke the overhidden method of the child class.
+
+
+
+
+
+
+
+
 */
 
 
