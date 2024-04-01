@@ -9,8 +9,7 @@ namespace Polymorphism
     class Program
     {
 
-        // 01 Method Overloading
-
+ // 01 Method Overloading
         //public void add()
         //{
         //    int a = 20;
@@ -40,16 +39,36 @@ namespace Polymorphism
 
        
         
-        // 02 Operator Overloading 
-        public string str;
-        public int num;
-        public static Program operator +(Program p2 , Program p3)
+ // 02 Operator Overloading 
+        //public string str;
+        //public int num;
+        //public static Program operator +(Program p2 , Program p3)
+        //{
+        //    Program p4 = new Program();
+        //    p4.str = p2.str + " " +p3.str;
+        //    p4.num = p2.num + p3.num;
+        //    return p4;
+        //}
+
+
+
+//03 Method Overriding
+       class parent
         {
-            Program p4 = new Program();
-            p4.str = p2.str + " " +p3.str;
-            p4.num = p2.num + p3.num;
-            return p4;
+            public virtual void print()
+            {
+                Console.WriteLine("This is the method of PARENT Class");
+            }
         }
+        class child : parent
+        {
+            public override void print()
+            {
+                //base.print();
+                Console.WriteLine("This is the method of Child Class");
+            }
+        }
+
 
         static void Main(string[] args)
         {
@@ -65,19 +84,25 @@ namespace Polymorphism
 
 
             // Operator Overloading 
-            Program p2 = new Program();
-            p2.str = "Abhishek";
-            p2.num = 20;
+            //Program p2 = new Program();
+            //p2.str = "Abhishek";
+            //p2.num = 20;
 
-            Program p3 = new Program();
-            p3.str = "Lucky";
-            p3.num = 18;
+            //Program p3 = new Program();
+            //p3.str = "Lucky";
+            //p3.num = 18;
 
-            Program p4 = new Program();
-            p4 = p2 + p3;
+            //Program p4 = new Program();
+            //p4 = p2 + p3;
 
-            Console.WriteLine(p4.str);
-            Console.WriteLine(p4.num);
+            //Console.WriteLine(p4.str);
+            //Console.WriteLine(p4.num);
+            //Console.ReadLine();
+
+
+            // Method Overriding
+            parent d = new child();
+            d.print();
             Console.ReadLine();
         }
        
@@ -127,6 +152,26 @@ prdefine operator ko hi overload kr skte he.
 compiler as a function read krta he.
 only && ,!!, +=,-=,*=,/=%=,=(Assignment & Logical Not Overlaoded)
 
+
+2.) dynmamic polymorephsim => is achive by method overiding.
+base class ke under jo method hote he virtual ya abstract unhe derived calss ke under override kr skte he.
+same method same parameter.
+
+Method Overriding => method same name with same signature vesa hi child class me hoga.
+parent class ke under jo method hota he usko virtual banate. virtual ne child class ke method ko permission de di override krne ki.
+override ka mtlb apne hisab se implementation dede.
+virtual mtlb gayb ho jayga.override chalega.
+parent class ka method nhi chalana isliye iska use krte.
+
+if derived class define same method as defined in its base class ,it is known as method overriding in c#.
+it is used to achive run time poly.
+child class wala method parent class ke method se different rkhna chahte tb hum provide krte method overriding.
+virtual keyword with the base class , and override keyword with derived class.
+virtual method hmesa base clas me banega.
+agar aap apne parent class ka vo hi method use krna chahte ho child class ke under tb child class ke under override ka keyword lagana pageda us method me complsary he.
+jo method base class se inherite ho kr aaa rha us per override ka keyword lagayge.
+
+
 */
-          
+
 
