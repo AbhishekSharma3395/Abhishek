@@ -1,0 +1,112 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Mehod_Hiding
+{
+    //class parent
+    //{
+    //    public void show()
+    //    {
+    //        Console.WriteLine("Parent Class Method");
+    //    }
+    //}
+    //class child : parent
+    //{
+    //    public new void show()
+    //    {
+    //        base.show();//parent
+    //        Console.WriteLine("Child Class Method");//child
+    //    }
+    //}
+
+
+
+    //class Employee
+    //{
+    //    public string firstname;
+    //    public string lastname;
+        
+    //    public void PrintfullName()
+    //    {
+    //        Console.WriteLine(firstname + ""+ lastname);
+    //    }
+
+    //}
+
+    //class PartTimeEmpoyee : Employee
+    //{
+    //    public  new void PrintfullName()
+    //    {
+    //        base.PrintfullName();
+    //        Console.WriteLine(firstname + "" + lastname +" PTE");
+    //    }
+    //}
+
+    //class FullTimeEmpoyee : Employee
+    //{
+    //    public new void PrintfullName()
+    //    {
+    //        Console.WriteLine(firstname + "" + lastname +"FTE");
+    //    }
+    //}
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //01
+            //child c = new child();
+            //c.show();
+
+            //((parent)c).show(); //Parent 
+            
+            //parent p = new child();
+            //p.show();
+
+            //Console.ReadLine();
+
+
+            //02
+            //PartTimeEmpoyee PTE = new PartTimeEmpoyee();
+            //PTE.firstname = "Abhishek ";
+            //PTE.lastname = "Sharma";
+            //PTE.PrintfullName();
+            //Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Method Hiding =>  Use with Inheritance
+Child class ka method parent class ke method ko hide krta he.
+use new keyword with child class.nhi lagayge to warnig aaygi.
+jab base class or derived class ke under same method ho tb method hiding hoti he.
+
+child class ke under parent class ke method ko call krne ke tarike = >
+1 use base keyword
+2 cast child type to parent type and invoke the hidden member
+3 parentclass pc = new childclass);
+pc.hiddenmethod;
+
+when we create the obj of child class, parent class obj is also created.
+
+*/
