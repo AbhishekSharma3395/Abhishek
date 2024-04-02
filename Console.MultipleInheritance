@@ -1,0 +1,65 @@
+using System;
+
+namespace Multiple_Inheritance
+{
+    class Person
+    {
+        public void show1()
+        {
+            Console.WriteLine("this is the method of person class");
+        }
+    }
+    interface Employee
+    {
+        void show1();
+    }
+
+    interface Employee1
+    {
+        void show1();
+    }
+    class Teacher : Person, Employee, Employee1
+    {
+        //public void show2()
+        //{
+        //    Console.WriteLine("This is the method of Employee Interface");
+        //}\
+
+        void Employee.show1()
+        {
+            Console.WriteLine("This is the method of Employee Interface");
+        }
+        void Employee1.show1()
+        {
+            Console.WriteLine("This is the method of 2nd Employee Interface");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Teacher t = new Teacher();
+            t.show1();
+            Employee e = new Teacher();
+            e.show1();
+            Employee1 f = new Teacher();
+            f.show1();
+            //t.show2();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+/*  Multiple Inhiritance => One Child More Then One Parent.
+ *  1 bacche ke 2 baap c# me nhi
+ *  Multiple Inheritance using classes nhi use kr skte
+ *  Multiple Inheritance using Interface Ka Concept He
+ *  ek child class only ek class ko parent bana skti but multiple inheritance ko apna parent bana skti.
+ *  
+*/
