@@ -1,0 +1,65 @@
+using System;
+
+namespace Interfaces
+{
+    interface IEmployee
+    {
+        void show();
+  
+    }
+    class PartTimeEmployee : IEmployee
+    {
+        public void show()
+        {
+            Console.WriteLine("This is the Method Of IEmployee");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            PartTimeEmployee pte = new PartTimeEmployee();
+            pte.show();
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Interface => jitne bhi member hote he vo sare by default abstract he.
+kisi bhi cheez ka signature ya declaration hota he sirf.
+method,prop,indexes,evernt ki sirf declaration de skte interface ke under,complete child class krta he.
+: ka Symbol hota he use.
+abstract class ke under apne uper banana he ya nhi.
+Interface ko multiple inheritance me use kr skte.
+Abstract keyowrd use nhi hoga,, compiler laga deta phle hi.
+interface ka obj nhi bana skte.
+interface cannonot have field. like variable,static variable
+phle se public khud se nhi laga skte public.
+inheriting ke liye colon symbol.
+jab tk child class interface ke sare member ko body nhi degi tb tk run nhi hogi.
+ 
+
+ */
+
+
+
