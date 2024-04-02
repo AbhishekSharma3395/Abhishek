@@ -1,0 +1,83 @@
+using System;
+
+namespace Genrics
+{
+    class example
+    {
+        public static void ShowArray<T>(T [] arr)
+        {
+            for (int i = 0; i< arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }  
+        }
+
+        public static bool Check<T>(T a,T b)
+        {
+            bool c = a.Equals(b);
+            return c;
+        }
+        public static void CheckType<T>(T c)
+        {
+
+            Console.WriteLine(typeof(T));
+        }
+       
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[3];
+            numbers[0] = 11;
+            numbers[1] = 22;
+            numbers[2] = 33;
+
+            string[] names = { "Abhishek", "lucky", "Lavish" };
+            double[] Points = {2.3,4.5,6.8};
+            example.ShowArray(numbers);
+            example.ShowArray(names);
+            example.ShowArray(Points);
+
+            Console.WriteLine(example.Check(10, 20));
+            Console.WriteLine(example.Check(10.5, 10.5));
+            Console.WriteLine(example.Check("Abhi", "Abhi"));
+
+            example.CheckType("Abhishek");
+            example.CheckType(10.50);
+
+       
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+Genrics => esi class or method jo her data type ke sath work kre. 
+ 1 hi method her data type ke array ke sath work.
+placeholder me jo bhi denge vo replace kra skte fields,method,para ke.
+sbko genrics bana skte like class,method,interface,delegate,events.
+run time me type bhi pata kr skte.
+<> se define krte.
+increase the reusability of code.
+
+Genric Method =>
+jab value dete tb decide hota jo geniric type ka placholder he t vo kis se replace hoga.
+<> se 
+ek se jyada bhi de skte <T,S> angular breaket me.
+non genric class or geniric class dono me genric method bana skte.
+
+Virtual Override abstract 3no genrics ho skte
+
+ */ 
