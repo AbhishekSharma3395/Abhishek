@@ -1,0 +1,90 @@
+using System;
+
+namespace Difference_Abstract_Class_And_Interface
+{
+
+    abstract class MyClass :Example,i1,i2
+    {
+        public MyClass()
+        {
+            Console.WriteLine("Abstract Class Constructor Invoked");
+        }
+
+        ~MyClass()
+        {
+            Console.WriteLine("Abstract Class Destrucotr Invoked");
+
+        }
+        public abstract void show();
+     
+    }
+    class Myclass1 : MyClass,MyInterface
+    {
+        public override void show()
+        {
+            Console.WriteLine("This is the method of abstract class");
+        }
+        public void show1()
+        {
+            Console.WriteLine("This is the method of Interface");
+        }
+    }
+    class Example
+    {
+
+    }
+    interface i1 /* /* Example; */
+    {
+
+    }
+    interface i2
+    {
+
+    }
+    interface MyInterface : i1,i2
+    {
+        void show1()
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+    class Program: Myclass1
+    {
+        static void Main(string[] args)
+        {
+
+            Myclass1 p = new Myclass1();
+            p.show();
+            p.show1();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+/*
+ Abstract Class => 1 class ko 2 class se inherited nhi kra skte.
+ese method bana skte jinki body ho
+ Abstract Class can have method with a body.
+Abstract Class ke method ko child class me implement kr rhe to override keyword.
+abstract class ke under jo abstract method bana rhe to uske sath abstract keyword.
+abstract class tb use krte jab child class ke sari prop abstract class ke under declare kr de.
+construtor destructor declare kr skte.
+abstract class ke under abstract method banana chahte to abstract keyword use krna pdega.
+
+
+
+Interface => 1 Interface ek se jyada Interface ko inherited kr skta he lekin class ko nhi.
+interface cannot have method with a body.
+interface ke under jitne bhi method hote vo by default abstract hote
+override keyword ki need nhi
+interface tb us krte jab common abstract method banane.
+na constructor na destructor.
+by default abstract hote to abstract keyword use krne ki need nhi
+ */
