@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Abstraction
+{
+    class employee
+    {
+        public int EmpId;
+        public string EmpName;
+        public Double GrossPay;
+        double TaxDeduction = 0.1;
+        double NetSalary;
+
+       public employee(int Eid, String Ename, Double Egrosspay)
+        {
+            this.EmpId = Eid;
+            this.EmpName = Ename;
+            this.GrossPay = Egrosspay;
+        }
+        void CalculateSalary()
+        {
+            if(GrossPay>=30000)
+            {
+                NetSalary = GrossPay - (TaxDeduction * GrossPay);
+                Console.WriteLine("Your Salary Is {0}",NetSalary);
+            }
+            else
+            {
+                Console.WriteLine("Your Salary Is {0}", GrossPay);
+            }
+        }
+        public void ShowEmployeeDetails()
+        {
+            Console.WriteLine("Employee Id Is {0}",this.EmpId);
+            Console.WriteLine("Employee Name Is {0}",this.EmpName);
+            this.CalculateSalary();
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            employee e1 = new employee(3,"Abhisek Sharma",5000);
+            e1.ShowEmployeeDetails();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Abstraction => Only Neccesary Data dikhana outside world. Unimportant Data Hide Krna.
+ * Hiding can be achived by private access modifier.
+ * user ko bs ye pata hona chahiye obj krta kya he, kese krta he vo jaanne ki need nhi.
+ * Example => console.WriteLine Only call
+ * dusri class ko jo method dikha rhe unko abstraction jo hide kr rhe unko encapsulation khte.
+ * sirf ye dikhana obj krta kya he
+ * important info display
+ * hiding the working style 
+ 
+ 
+ */
