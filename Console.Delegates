@@ -140,7 +140,9 @@ need =>
 method ko incapsulate krna ho or indirectly way me method ko call krna ho.
 1 hi delegate ke through different method ko bhi point kr skte.
 execution time me improvment
- 
+
+
+Delegates ke obj ke under dusre method ka ref pass krte.
 
 Single Cast Delegate =>
 ek hi method ko point krta he. ek se jyada method ke ref pass nhi kr skte.
