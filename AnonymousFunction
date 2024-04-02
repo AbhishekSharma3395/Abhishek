@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Anonymous_Function
+{
+    public delegate void MyDelegate(int num);
+    class Program
+    {
+        //public static void MyMethod(int a)
+        //{
+        //    a += 10;
+        //    Console.WriteLine(a);
+        //}
+
+        //Passed as a Parameter
+        public static void MyMethod(MyDelegate del,int a)
+        {
+            a += 10;//15
+            del.Invoke(a);//+10 =25
+        }
+        static void Main(string[] args)
+        {
+            //MyDelegate obj = new MyDelegate(Program.MyMethod);
+            //obj(10);
+
+            //Annonymus Method
+            //MyDelegate obj1 = delegate (int a)
+            //{
+            //    a += 10;
+            //    return a;
+            //};
+            //Console.WriteLine(obj1(5));
+
+            //Passed as a Parameter
+            Program.MyMethod(delegate (int b) { b += 10; Console.WriteLine(b); }, 5);
+            Console.ReadLine();
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Anonymous Function = > ka koi name nhi hota. without delegate nhi bana skte.
+ * iska koi name nhi hoga only body hogi.
+ * jab bhi Anonymous Function banayege delegate keword use hoga.
+ * jo bhi result hota he vo delgate ke obj(varible) ke under store karate.
+ * iski return type vo hi hogi jo aaapke delegate ki return type he.
+ * dont required to use access specifier
+ * is not a static and instance member
+ * 
+ * Advantage =>
+ * lesser typing work , no access spacifier, no return type , no name of fun.
+ * kam se kam code writer krne ki need vha use krte
+ * Limitation=>
+ * goto break continue use nhi kr skte.
+ * it cannont access ref or out parameter of an outer method.
+ *Point To Remember=>
+ * Outer Variable ko access kr skte he.
+ * Anonymous method can be passed as a parameter.
+ * Anonymous method can be used as a event handlers.
+ * */
