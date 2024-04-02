@@ -1,0 +1,85 @@
+using System;
+
+namespace Abstract_Property
+{
+    abstract class Person
+    {
+        public abstract uint Id { get; set; }
+        public abstract String Name { get; set; }
+    }
+    class Student : Person
+    {
+        uint StudentID;
+        string StudentName;
+
+        public override uint Id
+        {
+            set
+            {
+                if (value == 0)
+                {
+                    Console.WriteLine("Id Cannot Be Zero");
+                }
+                else
+                {
+                    this.StudentID = value;
+                }
+            }
+            get
+            {
+                return this.StudentID;
+            }
+
+        }
+        public override string Name
+        {
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    Console.WriteLine("Name Cannot Be Null");
+                }
+                else
+                {
+                    this.StudentName = value;
+                }
+            }
+            get
+            {
+                return this.StudentName;
+            }
+
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Student abhi = new Student();
+            abhi.Id = 0;//set block
+            abhi.Name = ""; 
+            Console.WriteLine(abhi.Id);//get
+            Console.WriteLine(abhi.Name);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Abstract Property =>  Contain only the declaration of the property without the body of the get and set accessor.
+ * get set ki body nhi hoti, child ke under body implemntation.
+ * Abstract property person class me banai or child class implimntaion de rhi.or usi se obj banba ke use kr rhe
+ 
+ 
+ */ 
