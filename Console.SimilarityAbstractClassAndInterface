@@ -1,0 +1,59 @@
+using System;
+
+namespace SimilartyAbstractClassNdInterface
+{
+   
+
+interface MyInterface
+    {
+       void print();
+    }
+    abstract class Myclass 
+    {
+        public abstract void print1();
+    }
+    class example : Myclass,MyInterface
+    {
+        public void print()
+        {
+            Console.WriteLine("This is the method of interface");
+        }
+        public override void print1()
+        {
+            Console.WriteLine("This is the method of Abstract Class");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            example obj = new example();
+            obj.print();
+            obj.print1();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Similarty Abstract Class And Interface =>
+dono me ese method declare kr skte jinki body na ho.
+dono ke under abstract method bana skte he.
+abstract class ke method me access modifier complasary dena padta.
+jo class inherit kregi vo body degi
+override keyword use hoga abstract class ka method child class me implement krne k liye.
+Both abstract class and interfaces can inherit multiple interface.
+
+2 parent classese se ek child class nhi bana skte, 1child class ka ek parent class.
+abstract class and interfance dono ka object nhi bna skte, but ref variable dono ka bana skte.
+ */
