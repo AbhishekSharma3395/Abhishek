@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lambda_Expression
+{
+    public delegate int MyDelegate(int num);
+    public delegate int MyDelegate1(int a,int b);
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            //MyDelegate obj = (a) =>
+            //{
+            //    a += 5;
+            //    return(a);            
+            //};
+
+            //obj.Invoke(5);
+            
+
+
+            //Expression Lembda ek hi line me sara kaam
+            MyDelegate obj1 = (a) => a * a;
+            MyDelegate obj2 = (a) => a * a * a;
+            Console.WriteLine(obj1.Invoke(5));
+            Console.WriteLine(obj2.Invoke(5));
+
+            MyDelegate1 obj3 = (a,b) => a + b;
+            Console.WriteLine(obj3.Invoke(5,7));
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*Lambda Expression => it is also work like anonymous method.
+delegate keyword remove kr denge,para ki data type dene ki need bhi nhi.
+value ki data type define krne ki need nhi.kyu ki jis delegate ke sath isko match kiya gaya he uski data type parameter ke sath flexible. 
+anonyms function ko simplify krta he.
+lembda ka op delegate ke obj me store.
+lembda opertaor ke left side me jo bhi data hota he usko input ya para kehte.
+right side me experssion(single line), statement(multiline) likh skte.
+left side is input right side is expression.
+
+                                    => lembda operator 
+
+lembda expersssion =>
+            (a) =>
+            {
+                a += 5;
+                Console.WriteLine(a);              
+            };
+
+
+
+lembda expersssion Two Types
+1) Statement Lembda=>  input=>{statments};
+2) Expression Lambda => right side me ek hi line no {}
+automatically koi value return krti he.
+ex= 
+ */
