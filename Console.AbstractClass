@@ -1,0 +1,115 @@
+using System;
+
+namespace Abstract_Class
+{
+    abstract class person
+    {
+        public string FirstName;
+        public string LastName;
+        public int Age;
+        public string  _PhoneNumber;
+
+        public static string SchoolName="MVM School";
+        public string PhoneNumber
+        {
+
+            set
+            {
+                this._PhoneNumber =value;
+            }
+            get
+            {
+                return this._PhoneNumber;
+            }
+        }
+        public abstract void PrintDetails();
+    }
+    class student : person
+    {
+        public int RollNo;
+        public int Fees;
+        
+        public override void PrintDetails()
+        {
+            string name = this.FirstName + "" + this.LastName;
+            Console.WriteLine("Student Name Is {0}",name);
+            Console.WriteLine("Student Age Is {0}",this.Age);
+            Console.WriteLine("Student Phone No. Is {0}",this.PhoneNumber);
+            Console.WriteLine("Student Roll No. Is {0}",RollNo);
+            Console.WriteLine("Student Fees Is {0}",Fees);
+            Console.WriteLine("Student School Is {0}",SchoolName);
+        }
+    }
+    class teacher : person
+    {
+        public string Qualification;
+        public int Salary;
+
+        public override void PrintDetails()
+      
+        {
+            string name = this.FirstName + "" + this.LastName;
+            Console.WriteLine("Teacher Name Is {0}", name);
+            Console.WriteLine("Teacher Age Is {0}", this.Age);
+            Console.WriteLine("Teacher Phone No. Is {0}", this.PhoneNumber);
+            Console.WriteLine("Teacher Qualification Is {0}", this.Qualification);
+            Console.WriteLine("Teacher Salary Is {0}", this.Salary);
+            Console.WriteLine("Teacher School Is {0}", SchoolName);
+        }
+    }
+  
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            student abhi = new student();
+            abhi.FirstName = "Abhishek ";
+            abhi.LastName = "Sharma";
+            abhi.Age = 25;
+            abhi.RollNo = 1;
+            abhi.PhoneNumber = "8890956464";
+            abhi.Fees = 40000;
+            abhi.PrintDetails();
+            
+            Console.WriteLine("------------");
+           
+            teacher shyam = new teacher();
+            shyam.FirstName = "Shyam ";
+            shyam.LastName = "Sunder";
+            shyam.Age = 55;
+            shyam.PhoneNumber = "7891148963";
+            shyam.Qualification = "MCA";
+            shyam.Salary = 25000;
+            shyam.PrintDetails();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Abstract Class= > Abstract Class ka object nhi bana skte.Child class ke under obj banayge. abstract keyword lagate
+ * Abstract Method => ese method jinki koi body nhi hoti.
+ * agar abstract method he to class ko bhi abstract bananna pdega.
+abstract method ko child class body degi.nhi to vo bhi abstract bn jaygi.
+Override keyword lagayge child class me.
+use with inheritance.
+abstract ek idea ho skta jika koi obj nhi hota.
+abstract class ko sirf base class use ho skti he.
+common property abstrcat class me rkh do phir classes ko inheritance kara do.
+may or may not contain abstract method.
+abstract class ke under non abstract method bhi bana skte.
+have constants and field
+have construcor and destructors
+ */
