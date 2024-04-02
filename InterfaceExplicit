@@ -1,0 +1,79 @@
+using System;
+
+namespace Explicit_Interface
+{
+
+    interface i1
+    {
+        void show();
+    }
+    interface i2
+    {
+        void show();
+    }
+
+    class MyClass : i1,i2
+    {
+        public void show()  //Implicit
+        {
+            Console.WriteLine("This is the method of 1st Interface");
+        }
+        // void i1.show()      //Explicit
+        //{
+        //    Console.WriteLine("This is the method of 1st Interface");
+        //}
+
+         void i2.show()      //Explicit
+        {
+            Console.WriteLine("This is the method of 2nd Interface");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Implicit
+            MyClass obj3 = new MyClass();
+            obj3.show();
+
+
+            //Expplicit
+            MyClass obj = new MyClass();
+            ((i1)obj).show();
+            ((i2)obj).show();
+
+            i1 obj1 = new MyClass();
+            obj1.show();
+
+            i2 obj2 = new MyClass();
+            obj2.show();
+            //child class ki trf point kr rha ref variable obj2 interface i2
+            Console.ReadLine();
+            
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Explicit Interface =>
+ interface 1 interface 2 dono me ek hi name ka method. inherit kr rhi my class
+public nhi lagayge.
+parent interface ka ref variable ke under child ka obj store kr skte.
+explicit Interface tab hoga jab dono interface ke under same name ke method ho.
+
+ */
