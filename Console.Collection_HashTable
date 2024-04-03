@@ -153,4 +153,6 @@ Hash Table => hashing algo ki vjh se array or arralist se fast. data random retr
 
 Property of hash table=>
 1 Count
+2 Keys
+3 Value
  */
