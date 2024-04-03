@@ -1,0 +1,85 @@
+using System;
+using System.Collections;
+
+namespace Stack_Collection_NonGenric
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack MyStack = new Stack();
+            MyStack.Push("Abhishek");
+            MyStack.Push(10);
+            MyStack.Push(10.5);
+            MyStack.Push(false);
+            MyStack.Push("Sharma");
+            MyStack.Push(null);
+            MyStack.Push("Sharma");
+            
+          
+
+
+            Console.WriteLine(MyStack.Count);
+            //string a = MyStack.Peek().ToString();
+            //Console.WriteLine(a);
+            foreach (object item in MyStack)
+            {
+                Console.WriteLine(item);
+            }
+            MyStack.Pop();//Remove Last Element
+            Console.WriteLine("-------------");
+            foreach (object item in MyStack)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("Stack me value he ya nhi----------");
+            Console.WriteLine(MyStack.Contains("Abhishek"));
+
+
+            Console.WriteLine("Clear All Data----------");
+            MyStack.Clear();
+            foreach (object item in MyStack)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Non Genric Collection => Me Homogenous or hetrogenious data store kara skte. 
+ * They Are Not Type Safe.
+ * Auto Resizing, capacity automaticaly increased as required through reallocation
+
+Stack => Pile of Object (Ek ke uper ek)
+same or different data type store kr skte.
+Push - Data Insert
+Pop - Top Element Retrive
+
+Push object type ka data leta
+Last wala phle print (decending order me)
+Last in first Out
+Genric and genric dono me he
+null value allow ,also duplicate value.
+
+Property =>
+Count =>total element 
+push => insert at top
+Peek => return the top item 
+Pop=> remove top
+contains=> check value he ya nhi
+Clear=> remove all items 
+ */ 
+ 
