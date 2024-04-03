@@ -1,0 +1,276 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace List_Genric_Collection
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Employee emp1 = new Employee()
+            {
+                   name = "Abhishek",
+                   age = 26,
+                   designation = "manager"                   
+            };
+
+            Employee emp2 = new Employee()
+            {
+                name = "Abhinav",
+                age = 16,
+                designation = "Product Manager"
+            };
+
+            Employee emp3 = new Employee()
+            {
+                name = "Abhi",
+                age = 27,
+                designation = "sales"
+            };
+
+            
+
+            List<Employee> Emplist = new List<Employee>();
+            Emplist.Add(emp1);
+            Emplist.Add(emp2);
+            Emplist.Add(emp3);
+
+            Console.WriteLine("Convert To Array");
+            Employee[] emps = Emplist.ToArray();
+            foreach (Employee emp in emps)
+            {
+                Console.WriteLine("Emloyee Name Is {0} Age is {1} Designation is {2}", emp.name, emp.age, emp.designation);
+            }
+            Console.WriteLine("List Ke Through----------------");
+            List<Employee> myEmps = emps.ToList();
+            foreach (Employee emp in emps)
+            {
+                Console.WriteLine("Emloyee Name Is {0} Age is {1} Designation is {2}", emp.name, emp.age, emp.designation);
+            }
+
+
+            Console.WriteLine("First Index Pe Kis Ki Age 20 Se Jyada-----------------------");
+            Console.WriteLine(Emplist.FindIndex(e => e.age > 20));
+
+            Console.WriteLine("Last Index Pe Kis Ki Age 20 Se Jyada-----------------------");
+            Console.WriteLine(Emplist.FindLastIndex(e => e.age > 20));
+
+            Console.WriteLine(Emplist.Exists(emp => emp.name.StartsWith("A"))); //true
+
+            Console.WriteLine("----------------------------");
+            foreach (Employee emp in Emplist)
+            {
+                Console.WriteLine("Emloyee Name Is {0} Age is {1} Designation is {2}" , emp.name,emp.age,emp.designation);
+            }
+            Console.WriteLine("Remove Employee More Then 20 Age-----------------------");
+
+            //Emplist.RemoveAll((emp => emp.age > 20));
+            //foreach (Employee emp in Emplist)
+            //{
+            //    Console.WriteLine("Emloyee Name Is {0} Age is {1} Designation is {2}", emp.name, emp.age, emp.designation);
+            //}
+            //Console.WriteLine("1st occurance per jo record he vo find");
+            //Employee emps = Emplist.Find(e => e.age > 20);
+            //Console.WriteLine("Emloyee Name Is {0} Age is {1} Designation is {2}", emps.name, emps.age, emps.designation);
+            //Console.WriteLine("----------------------------");
+
+            //Console.WriteLine("Last occurance per jo record he vo find");
+            //Employee empt = Emplist.FindLast(e => e.age > 20);
+            //Console.WriteLine("Emloyee Name Is {0} Age is {1} Designation is {2}", empt.name, empt.age, empt.designation);
+
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("Find All");
+            List<Employee>emplist = Emplist.FindAll(e => e.age > 20);
+            foreach (var emp in emplist)
+            {
+                Console.WriteLine("Emloyee Name Is {0} Age is {1} Designation is {2}", emp.name, emp.age, emp.designation);
+            }
+           
+            Console.WriteLine("----------------------------");
+            List<int> mynumber = new List<int>();
+            mynumber.Add(55);
+            mynumber.Add(24);
+            mynumber.Add(88);
+          /*  Console.WriteLine(mynumber.Capacity);*///4
+            mynumber.Add(44);
+            mynumber.Add(25);
+            mynumber.Add(75);
+            mynumber.Add(65);
+            mynumber.Add(88);
+
+            /* Console.WriteLine(mynumber.Capacity);*///8
+            //Console.WriteLine("Index Of 88-------------");
+            //Console.WriteLine(mynumber.IndexOf(88));
+            //Console.WriteLine("Find 75 Index Of 3-----------");
+            //Console.WriteLine(mynumber.IndexOf(75,3));
+
+            //Console.WriteLine("--------------------");
+            //Console.WriteLine("LAST Index Of--------------");
+            //Console.WriteLine(mynumber.LastIndexOf(88));
+
+            //Console.WriteLine("Clear All-----------------");
+            //mynumber.Clear();
+            //foreach (int item in mynumber)
+            //{
+            //    Console.WriteLine(item);    
+            //}
+            //Console.WriteLine("44 Value He Ya Nhi");
+            //Console.WriteLine(mynumber.Contains(44));
+
+            //Console.WriteLine("--------------------");
+
+            //mynumber.Insert(3, 10);
+            //Console.WriteLine("Specific Index--------------------");
+            //foreach (int item in mynumber)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("--------------------");
+
+
+
+
+            //Console.WriteLine("Remove Value 55");
+            //mynumber.Remove(55);
+            //foreach (int item in mynumber)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("--------------------");
+
+
+
+            //Console.WriteLine("Remove At Index given No");
+            //mynumber.RemoveAt(4);
+            foreach (int item in mynumber)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            //Console.WriteLine("--------------------");
+            //Console.WriteLine("Remove Range 2 index se 4");
+            //mynumber.RemoveRange(2,4);
+            //foreach (int item in mynumber)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            //Console.WriteLine("--------------------");
+            //Console.WriteLine("Insert Range--------------------");
+            //mynumber.InsertRange(2, mynumber);
+            //foreach (int item in mynumber)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            //Console.WriteLine("Sort Order--------------------");
+            //mynumber.Sort();
+
+            //foreach (int item in mynumber)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Console.WriteLine("Reverse Order--------------------");
+            //mynumber.Reverse();
+            //foreach (int item in mynumber)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine("--------------------");
+            //Console.WriteLine("Count "+mynumber.Count);
+            //Console.WriteLine("For Add Range Property Double Time Print");
+
+            //mynumber.AddRange(mynumber); // 5 item vaps show krega total 10
+            //foreach (int item in mynumber)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //Console.WriteLine("--------------------");
+            //Console.WriteLine(mynumber[1]);
+
+            //Console.WriteLine("After Add Range Count " +mynumber.Count);
+            //Console.WriteLine("--------------------");
+
+
+
+
+            //List<string> names = new List<string>();
+            //names.Add("Abhishek");
+            //names.Add("Ali");
+            //names.Add("Lucky");
+            //names.Add(null);
+            //names.Add("Lucky");
+            //foreach (string item in names)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ List => Array list me auto resizing hota tha,List Collection me bhi same he. List<t> bs genric he. or array list non genric 
+List class kisi bhi data type ke sath use kr skte.
+int string complex type ki bhi list bana skte kisi bhi data type ke sath. bs phle pe string dusre pe int store esa nhi hoga.
+different data type ka data nhi daal skte.
+<>placholder he to obj banage tb data type spacify krna complsary. 
+variable length hoti he size increase krta jayga.
+class 1 he bt mulitple obj bana ke diff data type ke sath kaam kr skte.
+index ke through bhi accesss kr skte.
+List class ke obj ke under null bhi bhej sktte and duplicate bhi.
+string ref type he to uske liye null value bhej skte.
+list ko sort kr skte.
+why to use a list->
+list auto resized 
+is a genric type ek class he bt diiff data type ke sath obj bana skte.
+list is type safe
+method provide - search sort manupulate.
+
+property of list-
+1 capacity
+2 count
+
+Method Of List
+1 add - list ke end me add hoga
+2 addrange - multiplee element add kr skte
+3 Insert - insert element into the list<t> at the spacific index 
+4 insert Range  -  puri range index shuru se start hogi jo index denge vha
+4 remove - 1st occureance ko remove
+5 remove at - index no se remove
+6 Remove Range - Range
+7 Remove all - sare element jo bhi condition ko match krega, condtion pass with lamda operator
+8 Contains- element find bolean result
+9 Reverse - reverse the element
+10 Index of - return the index zero based phli dafa kha aa rha 33 jese do bar ho to
+11 Last Index Of - last index se find
+12 Clear - clearr all
+13 find - 1st occurance
+14 find last - last occrance
+15 find all -
+16 find index - condiotion match then record show
+17 Last Index - 
+18 To array
+ */
