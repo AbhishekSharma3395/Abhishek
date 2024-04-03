@@ -1,0 +1,68 @@
+using System;
+
+namespace Genric_Class
+{
+    class Example<T>// placeholder or type parameter
+    {
+        T box;
+        // Constructor Ke Through
+        //public Example(T b)
+        //{
+        //    this.box = b;
+        //}
+        //public T getBox()
+        //{
+        //    return this.box;
+        //}
+
+        //Property Ke Through
+        public T Box
+        {
+            set
+            { this.box = value; }
+
+            get
+            {
+                return this.box;
+            }
+
+        }
+    }
+
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                //Example<int> e = new Example<int>(20);
+                //Example<string> e1 = new Example<string>("Abhishek");
+                //Example<double> e2 = new Example<double>(4.5);
+                //Console.WriteLine(e.getBox());
+                //Console.WriteLine(e1.getBox());
+                //Console.WriteLine(e2.getBox());
+
+
+                //Property Ke Through
+                Example<int> p = new Example<int>();
+                Example<string> p1 = new Example<string>();
+                p.Box = 20;
+                p1.Box = "Abhishek";
+                Console.WriteLine(p.Box);
+                Console.WriteLine(p1.Box);
+                Console.ReadLine();
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+/* Genric Class=> Esi class banao jo her data type ke uper work kr ske.
+ * T jha jis member ke sath use krege vo member multiple data type ke sath kam ke skta.
+ *  placeholder ko Variable ,method ,property ,constructor, constructor parameter ke sath bhi use.
+ *  placeholder usko kisi spacific data type se replace kr deta he.
+ 
+ */
