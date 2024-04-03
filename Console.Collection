@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+
 
 namespace Collection
 {
@@ -6,21 +8,51 @@ namespace Collection
     {
         static void Main(string[] args)
         {
-            int[] myarr = new int[3];
-            myarr[0] = 10;
-            myarr[1] = 20;
-            myarr[2] = 30;
-          
-            myarr.Resize(ref myarr,4);
-            myarr[3] = 30;
-            Console.WriteLine(myarr[1]);
+            //Array List
+            ArrayList MyList = new ArrayList();
+           
+            MyList.Add(10);        
+            MyList.Add(20);           
+            MyList.Add(30);           
+            MyList.Add(40);         
+            MyList.Add(50);         
+            Console.WriteLine(MyList.Capacity);
+            
+            foreach(object obj in MyList)
+            {
+                Console.Write(obj + " ");
+
+            }
+            Console.WriteLine();
+            MyList.Insert(2, 25);
+            foreach (object obj in MyList)
+            {
+                Console.Write(obj + " ");
+
+            }
+            Console.WriteLine();
+            MyList.Remove(40);
+            MyList.RemoveAt(4);
+            foreach (object obj in MyList)
+            {
+                Console.Write(obj + " ");
+
+            }
             Console.ReadLine();
+
+            //Simple Array Resize
+            //int[] myarr = new int[3];
+            //myarr[0] = 10;
+            //myarr[1] = 20;
+            //myarr[2] = 30;        
+            //Array.Resize(ref myarr,4);
+            //myarr[3] = 30;
+            //Console.WriteLine(myarr[0]);
+            //Console.ReadLine();
 
         }
     }
 }
-
-
 
 
 
@@ -48,4 +80,9 @@ namespace Collection
  * 
  * 2 Genric Collection - List<T>, Linked List<T>, Queue<T>, SortedList<T,V>
  *                         System.Collection.Genric namespace have Genric Collection 
- */  
+
+ //capacity 0 se start or double hoti jati he  =>  ArrayList MyList = new ArrayList();
+breaket me daal skte apni mrzi se.
+Remove => value delete
+Remove At =>  index se delete
+ */
