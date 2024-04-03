@@ -1,0 +1,85 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+
+namespace Difference_Genric_NonGenric
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            //Genric
+            //int[] arr = new int[3];
+            //arr[0] = 33;
+            //arr[0] = 34;
+            //arr[0] = 38;
+
+            //Non Genric
+            //ArrayList al = new ArrayList();
+            //al.Add("Abhishek");
+            //al.Add(5);
+            //al.Add(5.10);
+            //Console.WriteLine(al.Capacity); 
+            //al.Add(5);
+            //al.Add(5.10);
+            //Console.WriteLine(al.Capacity);
+
+
+            //Type safe & auto resizing
+            List<int> mynumber = new List<int>();
+            mynumber.Add(20);
+            mynumber.Add(20);
+            mynumber.Add(20);
+            //mynumber.Add("Abhi");
+            Console.WriteLine(mynumber.Capacity);
+            mynumber.Add(20);
+            mynumber.Add(20);
+            Console.WriteLine(mynumber.Capacity);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Genric =>
+ * Array =>  int[] arr = new int[3];
+ * Type Safe.
+ * Fixed Length
+ 
+Non Genric =>
+* Arraylist => Arraylist al = new Arraylist(3);
+* Not Type Safe
+* variable Length (Auto Resize)
+
+Difference =>
+     Non Genric                               Genric
+1   Diffrent Data                            Same Data Type
+2   Store as Object Type                     It reuduce overhad of type conversion
+    value type to ref type conversion        No need of Conversion
+     (Boxing)
+3 loosely type(alg alg data type)            Strongly type
+4 Not type safe                              Type Safe
+5 Not Secure                                 Secure
+
+
+
+
+
+
+ */ 
