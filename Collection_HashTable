@@ -1,0 +1,156 @@
+using System;
+using System.Collections;
+namespace Collection_HashTable
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //1 Syntax   
+            Hashtable ht = new Hashtable();
+            ht.Add("Id", 11);
+            ht.Add("Name", "Abhishek");
+            ht.Add("Age", 27);
+            ht.Add("Salary", 25000.00);
+            ht.Add("Designation", "Manager");
+            ht.Add("IsMarried", false);
+
+            Console.WriteLine(ht["Id"]);
+            Console.WriteLine(ht["Name"]);
+            Console.WriteLine(ht["Age"]);
+            Console.WriteLine(ht["Salary"]);
+            Console.WriteLine(ht["Designation"]);
+            Console.WriteLine(ht["IsMarried"]);
+            Console.WriteLine("-----------------------");
+
+            //2nd Syntax
+            Hashtable ht1 = new Hashtable()
+            {
+                {"Id",2 },
+                {"Name","Abhinav" },
+                {"Salary",50000 },
+                {"Age",27 },
+                {"Designation","Owner" },
+                {"IsMarried",true }
+            };
+
+            Console.WriteLine(ht1["Id"]);
+            Console.WriteLine(ht1["Name"]);
+            Console.WriteLine(ht1["Salary"]);
+            Console.WriteLine(ht1["Designation"]);
+            Console.WriteLine(ht1["IsMarried"]);
+            Console.WriteLine("-----------------------------");
+           
+            
+            //Sare key ek sath get krne ke liye
+            foreach (object key in ht1.Keys)
+            {
+                Console.WriteLine(key);               
+            }          
+            
+            Console.WriteLine("-----------------------------");
+
+            //Sare key value ek sath get krne ke liye 
+            foreach (object key in ht1.Keys)
+            {
+                Console.WriteLine(ht1[key]);
+            }
+            Console.WriteLine("-----------------------------");
+
+            //Sare key value ek sath get krne ke liye 
+            foreach (object value in ht1.Values)
+            {
+                Console.WriteLine(value);
+            }
+            Console.WriteLine("-----------------------------");
+
+            //Keys And Value Both Are Print 
+            foreach (object key in ht1.Keys)
+            {
+                Console.WriteLine(key + " : " + ht[key]);
+            }
+
+            Console.WriteLine("-----------------------------");
+
+            //Remove Method
+            ht1.Remove("Salary");
+            foreach (object key in ht1.Keys)
+            {
+                Console.WriteLine(key + " : " + ht[key]);
+            }
+            Console.WriteLine("-----------------------------");
+
+
+            //Contains
+            Console.WriteLine("Key Availabe He ya Nhi True False ---------------");
+            Console.WriteLine(ht.Contains("Name"));
+            Console.WriteLine(ht.ContainsKey("Nation"));
+
+
+            Console.WriteLine("Value Availabe He ya Nhi True False ---------------");
+            
+            // Contains Value
+            Console.WriteLine(ht.ContainsValue("Abhishek"));
+            Console.WriteLine(ht.ContainsValue("Abhishe"));
+
+            Console.WriteLine("Get Hash Code---------");
+            Console.WriteLine("Abhishek".GetHashCode());
+
+            Console.WriteLine("Get Count 5 Element");
+            Console.WriteLine(ht.Count);
+
+            //Clear Method
+            ht1.Clear();
+            foreach (object key in ht1.Keys)
+            {
+                Console.WriteLine(key + " : " + ht[key]);
+            }
+
+          
+
+            // No Data Clear All
+            Console.WriteLine("-----------------------------");
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hash TAble => key value format me data store krta. (key(index),value dono hoga).
+ * In Array Or Arraylist keys are predefined that index no. explacity define nhi kr skte.
+ * In hash table keys are not predefine.string,float kisi bhi type ki bna skte(UserDefine)
+ * index no yaad rkhne ki need nhi.
+ * non genirc class he, system.collection me.
+ * her key ke liye hash code assign hota he.
+ * value access krne ke liye key pass krni hoti jab index no yaad nhi.
+ * key value pair me data store, item access ke liye key ko call krna padta.
+ 
+ 
+Hash Method =>
+Add
+Remove - Remove Specified Key
+Clear - Remove All the Items From the hash table
+Contains - key he ya nhi 
+Contains Key - key he ya nhi 
+Contain Value = value he ya nhi
+Get Hash Code = return the hash code for the spacified key
+hash code ek intiger value hoti.
+jo key pass kri uske uper hash code hota, hash table hash code ko find kr value deta he.
+
+Hash Table => hashing algo ki vjh se array or arralist se fast. data random retrive hota he kyu ki hash code random hote
+
+Property of hash table=>
+1 Count
+ */
