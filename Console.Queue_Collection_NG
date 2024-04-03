@@ -1,0 +1,75 @@
+using System;
+using System.Collections;
+
+namespace Queue_Collection_NG
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Queue MyQue = new Queue();
+            MyQue.Enqueue("Abhishek");
+            //MyQue.Enqueue(null);
+            //MyQue.Enqueue(null);
+            MyQue.Enqueue('a');
+            MyQue.Enqueue(25);
+            MyQue.Enqueue(true);
+            Console.WriteLine(MyQue.Count);//4
+            foreach (object item in MyQue)
+            {
+                Console.WriteLine(item);
+            }
+           
+
+            Console.WriteLine("Dequeue-------");
+            MyQue.Dequeue();
+            foreach (object item in MyQue)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine(MyQue.Peek());
+            Console.WriteLine(MyQue.Contains("a"));
+
+            Console.WriteLine("clear all----------");
+
+            MyQue.Clear();
+
+            Console.WriteLine("Deque all-------");
+            while (MyQue.Count>0)
+            {
+                Console.WriteLine(MyQue.Dequeue());
+            }
+            Console.WriteLine(MyQue.Count);//0
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Queue => Non Genrics.Hetrogeneous Element,AutoResize 
+Line or Sequence.
+katar ki form me. FIFO
+DAta inserted => Enqueue Method
+Data Retrive => Dequeue
+allow duplicate and null
+
+Property=>
+1 Count => Count
+2 Enquiue => Add 
+3 Dequeue => 1st position item delete and return
+4 peek => return first
+5 Contains => value he ya nhi
+6 clear => all items remove
+ */ 
