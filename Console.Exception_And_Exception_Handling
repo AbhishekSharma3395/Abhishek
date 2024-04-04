@@ -1,0 +1,152 @@
+using System;
+
+namespace Exception_And_Exception_Handling
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Console.WriteLine("Enter First Number");
+            //int num1 = int.Parse(Console.ReadLine());
+
+            //Console.WriteLine("Enter Second Number");
+            //int num2 = int.Parse(Console.ReadLine());
+
+            //int result = num1 / num2;  // 10/0 divide by zero exception
+            //Console.WriteLine("division Result is"+ result);
+
+            //Console.WriteLine("Remianing Statment 1");
+            //Console.WriteLine("Remianing Statment 2");
+            //Console.WriteLine("Remianing Statment 3");
+
+
+            //Console.WriteLine("Enter First Number");
+            //int num1 = int.Parse(Console.ReadLine());
+
+            //Console.WriteLine("Enter Second Number");
+            //int num2 = int.Parse(Console.ReadLine());
+
+            //try
+            //{
+            //    int result = num1 / num2;
+            //    Console.WriteLine("division Result is" + result);
+            //}
+            //catch(DivideByZeroException ex)
+            //{
+            //    Console.WriteLine("You cannot divide a no by zero");
+            //    Console.WriteLine(ex.Message); //Compile Give Msg
+            //}
+            //Console.WriteLine("Remianing Statment 1");
+            //Console.WriteLine("Remianing Statment 2");
+            //Console.WriteLine("Remianing Statment 3");
+
+            // Index Out Of Range 
+
+            //int[] arr = new int[3];
+            //try
+            //{
+            //    arr[0] = 11;
+            //    arr[1] = 12;
+            //    arr[2] = 13;
+            //    arr[3] = 13; // Array Limit 
+            //}
+            //catch(IndexOutOfRangeException ex)
+            //{
+            //    Console.WriteLine("Array Range is exceeded");
+            //    Console.WriteLine(ex);
+            //}
+            //foreach (int i in arr)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+
+            //String is Null
+
+            //try
+            //     {
+            //         string name = null;
+            //         Console.WriteLine(name.Length);
+            //     }
+            // catch (NullReferenceException ex)
+            // {
+            //     Console.WriteLine("String is null..");
+            //     Console.WriteLine(ex);
+            // }
+
+
+            //Format Exception
+            //Console.WriteLine("Enter First Number");
+            //string number = (Console.ReadLine());
+            //try
+            //{
+            //    int num = int.Parse(number);
+            //    Console.WriteLine("Number is " + num);
+            //}
+            //catch(FormatException ex)
+            //{
+            //    Console.WriteLine("String Format Is Invalid");
+            //    Console.WriteLine(ex.Message);
+            //}
+
+           
+            // Parent Class ke ref variable me store
+            //try
+            //{
+            //    string a = null;
+            //    Console.WriteLine(a.Length);
+            //}
+            //catch(Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Exception => Event he program flow ko distrub, terminate. 2/10
+ *  c# object represent an error
+ *  exception handle nhi kri to pro terminate,drowback * 
+ 3 thing happen =>
+1) prog terminate
+2) msg ugly show
+3) statment after exception will not be executed 
+
+Exception => abnormal event.divide by 0
+is a problem that arises during the execution of program.
+
+Exception Handling =>  problem handle krne ke liye.
+sari classes namespace syetem Namspace se belong
+jitni bhi c# me class he vo obj class se derived hui he.
+
+ek property hoti he msg jo particular error batygi.
+
+01 Index Out Of Range Exception => jab array ke sath kaam krte he.
+
+02 Handling Null Refrences Exception => string null
+
+03 Handling Format Exception => int data type le k string value dalna
+
+* Exception Class And Its Use=> apni sari child class ka kaam kr skti.
+* name pata nhi sb me ye use krege.
+
+ */
