@@ -57,6 +57,8 @@ interface cannonot have field. like variable,static variable
 phle se public khud se nhi laga skte public.
 inheriting ke liye colon symbol.
 jab tk child class interface ke sare member ko body nhi degi tb tk run nhi hogi.
+interfaces ke under abstract methd bnte jinki body nhi hoti.
+
  
 
  */
