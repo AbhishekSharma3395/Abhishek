@@ -1,0 +1,90 @@
+using System;
+
+namespace RulesPartialClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ExamplePartial obj = new ExamplePartial();
+            obj.show();
+        }
+    }
+    public class MyClass
+    {
+        public void show()
+        {
+        }      
+    }
+
+    public class MyClass1
+    {
+        public void show1()
+        {
+        }
+    }
+    public interface IMyInterface1
+    {
+        void show1();
+    }
+
+    public interface IMyInterface2
+    {
+        void show2();
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace RulesPartialClass
+{
+    public partial class ExamplePartial : IMyInterface1
+    {
+        private string name="Abhishek";
+        public void show1()
+        {
+            throw new NotImplementedException();
+        }
+        public void show2()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace RulesPartialClass
+{
+    public partial class ExamplePartial : IMyInterface2
+    {
+       public void show()
+        {
+            Console.WriteLine(name);
+        }
+    }
+}
+
+
+
+
+/* Rules  Of Partial Class =>
+1) jitne bhi part banayge same namespace me hone chahiye.
+2) jitne bhi part he sb me same access modifier.
+3) ek class ko abstract krege to dusreme automatic abstract lag jayga. then obj nhi bnega
+4) ek class ko sealed bana liya to dusri me automatic sealed lag jayga no child.
+5) ek class ko inherit krege to dusri classes bhi internally background me inherit ho jaygi.
+6) ek child class ki do different parent class nhi bn skti.
+7) ek class hoti he vo multiple classes ko inherit nhi kr skti. bt multiple interfaces ko inherit kr skti he .
+8) ek part ke under koi member declare krte to dusre me easily access kr skte.
+
+*/
