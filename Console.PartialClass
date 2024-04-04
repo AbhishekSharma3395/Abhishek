@@ -1,0 +1,94 @@
+using System;
+
+namespace Partical_Class
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StudentPartial obj = new StudentPartial();
+            obj.Firstname = "Abhishek";
+            obj.Lastname = "Sharma";
+            Console.WriteLine("Your Complete Name Is " + obj.GetCompleteName());
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Partical_Class
+{
+   public partial class StudentPartial
+    {
+        private string _firstname;
+        private string _lastname;
+
+        public string Firstname
+        {
+            set
+            {
+                _firstname = value;
+            }
+            get
+            {
+                return _firstname;
+            }
+        }
+
+        public string Lastname
+        {
+            set
+            {
+                _lastname = value;
+            }
+            get
+            {
+                return _lastname;
+            }
+        }
+
+      
+
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Partical_Class
+{
+    public partial class StudentPartial
+    {
+        public string GetCompleteName()
+        {
+            return _firstname + " " + _lastname;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+/* Partial Class=>  ek class ka code do files me save krna.jab obj banayge tb parts ek sath combined honge.
+ * single class data store in multiple files.
+ * partial keyword use hoga.
+ * ek class ke under bhut code hoga tb iska use krege taki mange kr ske.
+  
+ * Advantages => Multiple Developeres Work
+ * 
+
+*/
