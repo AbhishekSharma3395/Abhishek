@@ -1,0 +1,33 @@
+using System;
+
+namespace Param_Keywords
+{
+    class Program
+    {
+        public static int add(params int[] num)
+        {
+            int sum=0;
+            foreach (int i in num)
+            {
+                sum = sum + i;
+            }
+            return sum;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Program.add(10,10,10,10));
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+/* Param ->  It is used as a parameter which can take the variable no of argument.
+ * jab pata nhi kitne argu pass krega.
+ * only 1 params variable allow   public static int add(params int[] num,num2) num 2 not allow.
+ * param hamesha last parameter hona chaihye.
+ * the length of param will be zero when no argu pass.
+
+ */ 
