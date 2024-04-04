@@ -1,0 +1,181 @@
+using System;
+using System.Collections.Generic;
+
+namespace Dictionary_Genric_Collection
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, string> MyDict = new Dictionary<string, string>();
+            MyDict.Add("Active","Ready");
+            MyDict.Add("Honest","truthFull");
+            MyDict.Add("Quantirne","Isolation");
+            MyDict.Add("Amazing","Surprise");
+            MyDict.Add("Abhishek",null);
+            //MyDict.Add("Active", "Ready"); // key unique 
+
+            /*MyDict.Add(12,25) Error only acccept string*/
+
+            Dictionary<int, string> MyDict2 = new Dictionary<int, string>();
+            MyDict2.Add(1, "Lucky");
+            Console.WriteLine("-----------------------");
+            Console.WriteLine(MyDict["Active"]);//op ready
+            // or get all
+
+            foreach (KeyValuePair<string,string> item in MyDict)//both
+            {
+                Console.WriteLine("Key is: " +item.Key + " Value is " +item.Value);
+            }
+            Console.WriteLine("-----------------------");
+            foreach (KeyValuePair<int, string> item in MyDict2)//both
+            {
+                Console.WriteLine("Key is: " + item.Key + " Value is " + item.Value);
+            }
+            Console.WriteLine("-----------------------");
+            foreach (string Key in MyDict.Keys)//only keys
+            {
+                Console.WriteLine(Key);
+            }
+            Console.WriteLine("-----------------------");
+            foreach (string Value in MyDict.Values)//only values
+            {
+                Console.WriteLine(Value);
+            }
+            Console.WriteLine("-----------------------");
+            
+            // Property =>
+            Console.WriteLine("Count The Total Elements");
+            Console.WriteLine(MyDict.Count);//4
+            Console.WriteLine("-----------------------");
+            //Method=>
+            
+            Console.WriteLine("Remove Method of Dictionary");
+            //MyDict.Remove("Amazing");
+            Console.WriteLine("-----------------------");
+            
+            Console.WriteLine("Contains Key Method");
+            Console.WriteLine(MyDict.ContainsKey("Quantirne"));//true
+            Console.WriteLine("Through If Else--------------------");
+            
+            if(MyDict.ContainsKey("Abhisek"))
+            {
+                Console.WriteLine("Key Found");
+            }
+            else
+            {
+                Console.WriteLine("Key Not Found");
+            }
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Contains Key Value");
+            Console.WriteLine(MyDict.ContainsValue("Ready"));
+            Console.WriteLine("-----------------------");
+
+            Console.WriteLine("CLEAR Method-------------------");
+            //MyDict.Clear();
+
+            Console.WriteLine("Try Get Value------------------");
+            //TryGet VAlue
+            string value;
+            MyDict.TryGetValue("Active", out value);
+            Console.WriteLine(value);
+            Console.WriteLine("-----------------------");
+
+            if (MyDict.TryGetValue("Amazing", out value))
+            {
+                Console.WriteLine(value);
+            }
+            else
+            {
+                Console.WriteLine("Key Data Not Avialable");
+            }
+
+
+
+            //Another Class
+            Employee emp1 = new Employee()
+            {
+                id = 111,
+                name = "Abhishek",
+                designation = "Manager",
+                salary = 20000
+            };
+
+            Employee emp2 = new Employee()
+            {
+                id = 222,
+                name = "Nikhil",
+                designation = "Developer",
+                salary = 25000
+            };
+
+            Employee emp3 = new Employee()
+            {
+                id = 331,
+                name = "Aditya",
+                designation = "Operator",
+                salary = 8000
+            };
+
+            Dictionary<int, Employee> MyEmployee = new Dictionary<int, Employee>();
+            MyEmployee.Add(emp1.id, emp1);
+            MyEmployee.Add(emp2.id, emp1);
+            MyEmployee.Add(emp3.id, emp1);
+
+            
+            //Console.WriteLine(MyEmployee.Count(emp => emp.value.salary > 10000));
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Genric Collection => EK data type spacify kr diya to usi type ka data dalege.
+ * Auto resize.
+ * Dictionary => 1) esi collection jisme key ke through element access not by index.
+ * 2) data key value format me store, jha key user define ho hashtable jese.
+ * 3) same type ka data type store krna chahte.
+ * 4) jo data type specify krege usi type ka data dalege.
+ * 5) key value dno same data type ki
+ * 6) keyvalue pair use krna shi var ki jgh
+ * 7) hash table non genric dictiornary genric.
+ * 8) advantage genric type, kisi bhi data type ke sath use kr skte.
+ * 9) auto resize.
+ * 10)key is word, value is defination
+ * 11)using System.Collections.Generic; list dictronay stack sb me yhi 
+ * 
+ * Important Property =>
+ * 1) Count => kitne no of elements store
+ * 2) Keys 
+ * 3) Values
+ * 
+ * Important Method=>
+ * 1) Add
+ * 2) Remove
+ * 3) Contains Key => Key Exist krti he ya nhi bollean value
+ * 4) Contains Value => value check krega
+ * 5) Clear=> clear all
+ * 6) Try Get Value => bolean return
+ * 
+ * Important Point
+ * 1) key null nhi ho skti value null ho skti.
+ * 2) duplicate keys not allow
+ * 3) same type of data type
+ * 4) auto resizing
+ */
