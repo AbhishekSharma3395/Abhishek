@@ -89,7 +89,7 @@ namespace Exception_And_Exception_Handling
             //    Console.WriteLine(ex.Message);
             //}
 
-           
+
             // Parent Class ke ref variable me store
             //try
             //{
@@ -102,12 +102,101 @@ namespace Exception_And_Exception_Handling
             //}
 
 
+            // Try With Multiple Catch Box
+            //try
+            //{
+            //    int a = 10;
+            //    int b = 5;
+            //    int c = a / b;//baki ke code ko read hi nhi krega
+            //    //string d = null;
+            //    //Console.WriteLine(d.Length);
 
-            Console.ReadLine();
-        }
-    }
-}
+            //    int[] arr = new int[3];
+            //    arr[0] = 11;
+            //    arr[1] = 12;
+            //    arr[2] = 13;
+            //    arr[3] = 13;
+            //}
 
+            //catch (DivideByZeroException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+            //catch (NullReferenceException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+
+            //}
+
+
+
+            //Finally=>
+            //try
+            //{
+            //    int a = 10;
+            //    int b = 0;
+            //    int c = a / b;
+            //    string d = null;
+            //    Console.WriteLine(d.Length);
+            //    Console.WriteLine(c);
+            //}
+            //catch (DivideByZeroException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+            //catch (NullReferenceException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+            //finally
+            //{
+            //    Console.WriteLine("finally block executed");
+            //}
+
+
+            //Our Throw Default Catch
+            //Console.WriteLine("Enter Your Age");
+            //int age = int.Parse(Console.ReadLine());
+
+            //if(age>18)
+            //{
+            //    Console.WriteLine("Eligiable");
+            //}   
+            //else
+            //{
+            //    throw new Exception("Not Eligable");
+            //}
+
+            //Our Throw Our Catch
+    //        Console.WriteLine("Enter Your Age");
+    //        int age = int.Parse(Console.ReadLine());
+    //        try
+    //        {
+    //            if (age > 18)
+    //            {
+    //                Console.WriteLine("Eligiable");
+    //            }
+    //            else
+    //            {
+    //                throw new Exception("You Are Not Eligable");
+    //            }
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine(ex.Message);
+    //        }
+
+
+
+    //        Console.ReadLine();
+    //        }
+    //}
+    //}
 
 
 
@@ -148,5 +237,20 @@ ek property hoti he msg jo particular error batygi.
 
 * Exception Class And Its Use=> apni sari child class ka kaam kr skti.
 * name pata nhi sb me ye use krege.
+ 
+ 
+* Try With Multiple Catch=> at a time one exeception occered and at a time ek hi catch block chalega.
+* child class top per catch (exception) parent wali last me.
+
+ * Try Catch with Finally Block=> try cathc ke baad likhege exception aay ya naa aay iska code exceuted hoga.
+ * exception handle ho ya na ho exceuted hoga.
+ * connection close ki coding.
+ * sirf try ke baaad bhi likh skte ya catch ke baad bhi
+ * finally block or try block ek honge. catch multiple
+ * agar aapne exception o handle nhi kiya to c# prog ko terminate krne se phle finally block ko execute kr dega.
+ 
+  
+ * Throw => c# ko nhi pata hum denge error
+because we want to send differenr msg.
 
  */
