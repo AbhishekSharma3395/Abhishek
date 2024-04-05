@@ -1,0 +1,41 @@
+using System;
+
+namespace Boxing_Unboxing
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num = 10;
+            object obj1 = num;//implicit con from value type to ref type //boxing
+
+            int num2 = (int)obj1; //explicit conversion// unboxing
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Boxing => value type ko ref type me convert krna boxing khte.
+ * value type => struct int float char.
+ref variable hmesha stack ke under jo obj bnta ,value store heap me.
+
+Unboxing => value type ko ref type me convert kiya tha jo ref tha usko dobara value type me convert krna. explicit krni pdegi
+ 
+
+
+
+
+*/
