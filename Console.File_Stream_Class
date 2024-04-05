@@ -1,0 +1,131 @@
+using System;
+using System.IO;
+using System.Text;
+
+namespace File_Stream_Class
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //File Create With A Char
+            //string path = @"C:\Users\user\source\repos\MyFile.txt";
+            //using(FileStream file = new FileStream(path,FileMode.Create,FileAccess.Write))
+            //{
+            //    file.WriteByte(65); //A
+            //    Console.WriteLine("File Created");
+            //}
+
+
+            //File Update
+            //string path = @"C:\Users\user\source\repos\MyFile.txt";
+            //using (FileStream file = new FileStream(path, FileMode.Append, FileAccess.Write))
+            //{
+            //    file.WriteByte(66); //B
+            //    file.WriteByte(67); //C
+            //    Console.WriteLine("File Written");
+            //}
+            //Console.ReadLine();
+
+
+            //CREATE NEW
+            //string path = @"C:\Users\user\source\repos\MyFile.txt";
+            //using (FileStream file = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
+            //{
+            //    file.WriteByte(66); //B
+            //    file.WriteByte(67); //C
+            //    Console.WriteLine("File Written");
+
+
+            //Open Or create
+            //string path = @"c:\users\user\source\repos\myfile.txt";
+            //using (FileStream file = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+            //{
+            //    file.WriteByte(66); //b
+            //    file.WriteByte(67); //c
+            //    Console.WriteLine("file written");
+            //}
+
+            //Truncate
+            //string path = @"c:\users\user\source\repos\myfile.txt";
+            //using (FileStream file = new FileStream(path, FileMode.Truncate, FileAccess.Write))
+            //{
+
+            //    Console.WriteLine("File Truncate");
+            //}
+
+
+            //File Access-----Data Writtten
+            //string path = @"c:\users\user\source\repos\myfile.txt";
+            //using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write))
+            //{
+            //    string data = "Welcome To My File";
+            //    byte[] write_data = Encoding.UTF8.GetBytes(data);
+            //    file.Write(write_data, 0,data.Length);
+            //    Console.WriteLine("Data Wriiten Successfully");
+            //}
+
+
+            //Apend
+            //string path = @"c:\users\user\source\repos\myfile.txt";
+            //using (FileStream file = new FileStream(path, FileMode.Append, FileAccess.Write))
+            //{
+            //    string data = "My Name is Abhishek";
+            //    byte[] write_data = Encoding.UTF8.GetBytes(data);
+            //    file.Write(write_data, 0, data.Length);
+            //    Console.WriteLine("Data Wriiten Successfully");
+            //}
+
+            //File Share--- Read
+            //string path = @"c:\users\user\source\repos\myfile.txt";
+            //using (FileStream file = new FileStream(path, FileMode.Append, FileAccess.Write,FileShare.Read))
+            //{
+            //    string data = "My Name is Abhishek";
+            //    byte[] write_data = Encoding.UTF8.GetBytes(data);
+            //    file.Write(write_data, 0, data.Length);
+            //    Console.WriteLine("Data Wriiten Successfully");
+            //}
+
+
+            Console.ReadLine();
+
+
+            
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*File Stream=> Txt ko open ya read write krne ke liye obj ke under store kregnge vo obj file stream class ka hoga.
+ * used for read write open.
+ * using System.IO;  
+ * stram class se derived..
+ * files ke sath kaam krne ke liye obj banana hoga.
+ * 4 parameter => Name of the file,filemode,fileaccess,fileshare
+  
+
+File Create => OverWrite Ho jaygi isliye using me likhege
+File Append => update.
+File Mode=> open kese hogi 
+1) Apend=> (apend agar file nhi to create kr k dega)
+2) Create => always create new file.
+3) Create New => throw exception if file exist
+4) open=> open existing file
+5) open or create => bni nhi to bna dega.
+6) truncate => data empty
+7) File Access=>Read Write ReadWrite
+ */ 
