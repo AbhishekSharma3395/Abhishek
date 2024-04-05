@@ -1,0 +1,86 @@
+using System;
+using System.IO;
+using System.Text;
+
+namespace Stream_Writer
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            //Create
+            //string path = @"C:\Users\user\source\repos\FileStream.txt";
+            //using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write))
+            //{
+            //    Console.WriteLine("File Created...");
+            //}
+
+            //Write
+            //string path = @"C:\Users\user\source\repos\FileStream.txt";
+            //using (FileStream file = new FileStream(path, FileMode.Open, FileAccess.Write))
+            //{
+            //    StreamWriter writer = new StreamWriter(file,Encoding.UTF8);
+            //    writer.Write("My Name Is Abhisek");
+            //    writer.Close();
+            //    Console.WriteLine("File Created...");
+            //}
+
+            //Append
+            //string path = @"C:\Users\user\source\repos\FileStream.txt";
+            //using (FileStream file = new FileStream(path, FileMode.Append, FileAccess.Write))
+            //{
+            //    StreamWriter writer = new StreamWriter(file, Encoding.UTF8);
+            //    writer.WriteLine("My Name Is Lucky");
+            //    writer.WriteLine("My Name Is Nikhil");
+            //    writer.Close();
+            //    Console.WriteLine("File Created...");
+            //}
+
+            //Array Creat Apend
+            string path = @"C:\Users\user\source\repos\Array.txt";
+            using (FileStream file = new FileStream(path, FileMode.Append, FileAccess.Write))
+            {
+                using (StreamWriter writer = new StreamWriter(file, Encoding.UTF8))
+                {
+                    int[] arr = { 11, 12, 13 };
+                    char[] arr2 = { 'a', 'b' };
+                    foreach (var item in arr2)
+                    {
+                        writer.Write(item + " " );
+                    }
+                    writer.Close();
+                }
+             
+                Console.WriteLine("File Created...");
+            }
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+//close ka fun use nhi krege iskiye using me 
+
+
+
+
+
+
+
+
+/* Stream Writer => Only Data Write Krne Ke Liye Text File Me.
+ * Char Int String Sb Type Kr Skte. Specified Encoding UTF8
+ * Write Method Use Hoga.
+ * Serval Constructor and provide us many method.
+
+ */ 
