@@ -1,0 +1,83 @@
+using System;
+
+namespace Structure
+{
+    struct Program
+    {
+        public void fun()
+        {
+          
+        }
+        public void fun1()
+        {
+            Console.WriteLine("This is My new Function...");
+        }
+        static void Main(string[] args)
+        {
+            Program p;
+            p.fun1();
+            p.fun();
+            Console.ReadLine();
+            
+        }
+    }
+    //struct MyStruct: Program //No inheritance
+    //{
+
+    //}
+    interface Myinterface
+    {
+        void Show();
+    }
+    struct MyStruct : Myinterface
+    {
+        public void Show()
+        {
+            Console.WriteLine("aaa");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Structure => User Define Data Type. Class is Also A User Define Data Type.
+ * Structure are introduced first because classes.
+ * Structure are introduced in procedural lang.
+ * Classes are introduced after Structure in oop lang.
+ * Structure belongs to procedral lang.
+ * Classes belongs to oops lang.
+ * Method Field Constructor Property Indexes sb strucute ke under bana skte.
+ * class strucute dono blue print he that are useed to create instace of a class
+ * Structure is a value Type.
+ * Structure are store in stack memory.
+ * Class is a ref type store in heap.
+ * stack memory is small in size. while heap memory is big in size.
+ * entites => new data type
+ * apni new data type bana skte class or structue use kre jese student emp.
+ * bhut sare object bnege tb class use krege. large amount of data represent.
+ * strucuture for representing small amount of data.
+ * strucuture are used as light weight obj like color, rectangle,point etc.
+ * string is a class, ref type
+ * int is a struct, value type.
+ * predefine ref types are big in size (string)
+ * predefine value types are small in size(int)
+ * class me new keyword strucute me nhi compalsary ( struct Program ( Program p;
+ * new keyword ke throught obj nhi banya to khud se intialize krna pdega.
+ * class ke under default constructor bn jata he.ek bhi constructor bana lete to default will be gone
+ * strucutre ke case me khud se default constructor nhi bana skte. kyu phle se mojud rhta. only para constructor bana skte.
+ * class support inheritance strucute not
+ * class or strucuture dono interface ko impliment kr skte.
+ */ 
