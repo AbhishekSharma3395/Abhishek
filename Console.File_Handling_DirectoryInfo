@@ -1,0 +1,105 @@
+using System;
+using System.IO;
+
+namespace DirectoryInfoClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Create
+            //string path = @"C:\Users\user\source\repos\My Directory";
+            //DirectoryInfo dir = new DirectoryInfo(path);
+            //dir.Create();
+            //Console.WriteLine("Directory Created");
+
+
+            //Create SubDirectory
+            //dir.CreateSubdirectory("Another Directory");
+            //Console.WriteLine("Directory Created");
+
+
+            //Move To
+            //string path2 = @"C:\Users\user\source\repos\My Directory2";
+            //dir.MoveTo(path2);
+            //Console.WriteLine("Directory Moved");
+
+            //Delete (Empty Directory ko delete krega, forcefully ke liye true)
+            //dir.Delete(true);
+            //Console.WriteLine("Directry Delete");
+
+
+            //Get Directories
+            //string Gpath = @"C:\Users\user\source\repos\My Directory";
+            //string Gpath1 = @"C:\Users\user\source\repos\My Directory2";
+            //string Gpath2 = @"C:\Users\user\source\repos\My Directory3";
+
+            //DirectoryInfo dir = new DirectoryInfo(Gpath);
+            //DirectoryInfo[] dirs = dir.GetDirectories();
+
+            //foreach (var item in dirs)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            //Get Files
+            string Gpath = @"C:\Users\user\source\repos\My Directory";
+            string Gpath1 = @"C:\Users\user\source\repos\My Directory2";
+            string Gpath2 = @"C:\Users\user\source\repos\My Directory3";
+
+            //DirectoryInfo dir = new DirectoryInfo(Gpath);
+            //DirectoryInfo[] dirs = dir.GetDirectories();
+
+            //foreach (var item in dirs)
+            //{
+            //    Console.WriteLine(item.GetFiles().Length);
+            //}
+
+            
+            
+            // Some Property
+            DirectoryInfo dir = new DirectoryInfo(Gpath);
+            Console.WriteLine(dir.Name);
+            Console.WriteLine(dir.FullName);
+            Console.WriteLine(dir.LastAccessTime);
+            Console.WriteLine(dir.CreationTime);
+            Console.WriteLine(dir.Attributes);
+            Console.WriteLine(dir.Parent);
+            Console.WriteLine(dir.Root);
+            Console.WriteLine(dir.LastWriteTime);
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Directory Info => used to create, delete and move.
+method provide krti jiske throuh function perform kr skte.
+its a sealed class.
+directy ya folder ke sath work kregi class DirectoryInfo(system.io).
+directory info => directry se related info
+file info => file k sath work.
+static method nhi he only instance method.
+folder delte, create sub dirrectory create instance method provide krti.
+
+Instance Method=>
+1) Create
+
+*/
