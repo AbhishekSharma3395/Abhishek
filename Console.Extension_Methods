@@ -1,0 +1,92 @@
+using System;
+
+namespace Extension_Methods
+{
+   sealed class Program
+    {
+        public void fun1()
+        {
+            Console.WriteLine("This Is First Function");
+        }
+        public void fun2()
+        {
+            Console.WriteLine("This Is Second Function");
+        }
+        static void Main(string[] args)
+        {
+            Program p1 = new Program();
+            p1.fun1();
+            p1.fun2();
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Extension_Methods
+{
+   static class MyStaticClass
+    {
+        public static void fun3(this Program p,int i)//binding Parameter
+        {
+            Console.WriteLine("This Is Third Function "+ i);
+        }
+        public static void fun2(this Program p)//binding Parameter
+        {
+            Console.WriteLine("Same Method Name Fun2 But NOt Show");
+        }
+
+        public static bool IsGreaterThan(this int i,int value)
+        {
+            return i > value;
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Extension_Methods
+{
+    class TestExtentionMethod
+    {
+        static void Main()
+        {
+            Program p = new Program();
+            p.fun1();
+            p.fun2();
+            p.fun2();
+            p.fun3(3);
+
+            int i = 20;
+            bool result = i.IsGreaterThan(10);
+            Console.WriteLine(result);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+/*Extension Method => addional method inject kr skte without modify class,orginal class ko bina hath lagay . class A ko bina modify kiye or method add krna without inheritance.
+ * Extenstion method ke under binding parameter add krna compalsry.
+ *  public static void fun3(this Program p)
+ * this keyword lagana compalsay.
+ * jab bhi extension method banyge to static method honge. lekin usko bind krte he kisi class ke sath to vo convert ho jayge non static, instance,obj banana.
+ * dono method same honge to extension method wala call nhi hoga
+ * Extension method parameterized ho skta he lekin jo bhi para declare krege vo second position se start krege kyu ki phle parameter binding parameter hoga jo first position pe hoga.(public static void fun3(this Program p,int i))
+ * binding para ignore always but not other para.
+ * ek se jyada binding para nhi bana skte.
+ * selaed class ke sath bhi binding ho jaygi.
+ * extension method are static methods.
+ * extension methods can be added to ur own custome class,third party class,interfaces
+ */
