@@ -1,0 +1,90 @@
+using System;
+using System.IO;
+
+namespace File_Handling
+{
+    class Program
+    {
+      
+
+        static void Main(string[] args)
+        {
+            //Checking File Is Exist Or Not
+            string path = @"C:\Users\user\source\repos\data.txt";
+           
+            if(File.Exists(path))
+            {
+                Console.WriteLine("File Is Exist");
+            }
+            else
+            {
+                Console.WriteLine("File Is Not Exist");
+            }
+
+
+            //Reading Data From Text File
+            string pathr = @"C:\Users\user\source\repos\data.txt";
+
+            if (File.Exists(pathr))
+            {
+                Console.WriteLine("File Found");
+                string data = File.ReadAllText(path);
+                Console.WriteLine(data);
+            }
+            else
+            {
+                Console.WriteLine("File Not Found");
+            }
+
+
+            //File Copy 
+            string pathc = @"C:\Users\user\source\repos\data.txt";
+            string pathc2 = @"C:\Users\user\source\repos\data1.txt";
+            File.Copy(pathc, pathc2);
+            //Ek baar copy hone ke baaad vaps nhi copy hogi overrite nhi hoga
+
+
+            //Copy Method Overwrite Data, 
+            string patho = @"C:\Users\user\source\repos\data.txt";
+            string patho1 = @"C:\Users\user\source\repos\data1.txt";
+            File.Copy(patho, patho1,true);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Memory Allocate tb hoti he jab c# ka pro ram me aata he hardisk se.
+* OP ko permanently store kisi file me hqardisk me
+* File => collection of data store in a disk, specific name,directory path
+* name =>abc
+* directory path => c/pro/abhi/abc.text
+* File Handling => pro ka data file me store kr ske or retrive kr ske.
+* open krege read ya write ke liye vo stream bn jati he
+* stream=> seq of byte jo hd se ram or ram se hd tk  pass ho rhi hoti.
+* 2 main stream
+* 1) input stream=>read operation
+* 2) op stream =>write operation
+* .net freamwork classes provide krta he taki read write sb kr ske.
+* classes system.IO namespace me he. desktop app , web application dono me file handling kr skte.
+* 
+* classes used in filehandling in c#=> 
+* ss liya he 8 he
+* 
+
+ */
