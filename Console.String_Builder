@@ -1,0 +1,72 @@
+using System;
+using System.Text;
+namespace String_Builder
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StringBuilder sb = new StringBuilder("Abhishek");
+            sb.Append("Sharma"); //Concinate
+            sb.AppendLine("Ghodach");//New Line Full Name
+            sb.Append("MCA");//Next Line
+            Console.WriteLine(sb);
+
+
+            StringBuilder sb1 = new StringBuilder();
+            sb1.AppendFormat("{0:C}", 25);//$25.00
+            sb1.AppendFormat("{0:X}", 25);//19 Hexadecimal
+            Console.WriteLine(sb1);
+
+            StringBuilder sb2 = new StringBuilder("Hello World");
+            sb2.Insert(5, "C#");
+            Console.WriteLine(sb2); //HelloC# World
+
+            //Remove World
+            sb2.Remove(6, 5); //6 se start 5 char remove
+            Console.WriteLine(sb2);
+
+            //Replace
+            sb2.Replace("Hello", "Abhishek");
+            Console.WriteLine(sb2);
+
+            //ToString = > Convert again to string
+            StringBuilder sb3 = new StringBuilder("Hello World");
+            string s4 = sb3.ToString();
+            Console.WriteLine(sb);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* String Builder=>
+ * Mutable (Changeable).
+ * value append me jyada fast as compare to string.
+ * 3,4 se jyada value append karani tb use
+ * system.Text namspace (automatic add)
+ * Dynamic Obj,New Obj Nhi bnta,Data Modify Hota Jata He
+ * Initialize same as class.
+ * by default initial char capacity 16. jyada diye to 32 then 64 automatic resize runtime
+ * 
+ * Method=>
+ * 1) Append => add krega
+ * 2) AppendLine =>New line me add
+ * 3) Append Format => formating krne ke baad append
+ * 4) Insert = >(5,"C") 5th index per c# print
+ * 5) Remove => String Remove
+ * 6) Replace
+ * 7) ToString = > Convert again to string
+ */ 
