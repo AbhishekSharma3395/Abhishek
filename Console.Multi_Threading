@@ -1,0 +1,101 @@
+using System;
+using System.Threading;
+
+namespace Multi_Threading
+{
+    class Program
+    {
+        public static void func1()
+        {
+            for (int i =1 ; i <=50; i++)
+            {
+                Console.WriteLine("Function 1 " + i);
+            }
+        }
+        public static void func2()
+        {
+            for (int i = 1; i <= 50; i++)
+            {
+                Console.WriteLine("Function 2 " + i);
+                if(i==25)
+                {
+                    Console.WriteLine("In Function 2 Thread Is Sleep for 8 sec"); 
+                    Thread.Sleep(8000);
+                }
+            }
+        }
+
+        public static void func3()
+        {
+            for (int i = 1; i <= 50; i++)
+            {
+                Console.WriteLine("Function 3 " + i);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            //Main Thread
+            //Thread t = Thread.CurrentThread;
+            //t.Name = "Main Thread";
+            //Console.WriteLine("Current Executing Thread Is"+Thread.CurrentThread.Name);
+          
+            //Single Thread Work One By One
+            //Program.func1();
+            //Program.func2();
+            //Program.func3();
+            
+            //Multiple Thread
+            Thread t1 = new Thread(func1);
+            Thread t2 = new Thread(func2);
+            Thread t3 = new Thread(func3);
+
+            t1.Start();
+            t2.Start();
+            t3.Start();
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Multi Tasking => seprate process her app ke liye, c# ka sara code ek single thread execute krta he,
+ * jo bhi app banate us k sath single thread bn jati by default jise main thread khte.
+ * every app follow single threaded model.
+
+Multi -Thrading=> Os Provide Krta, ek se jyada thread bana skte same time.
+multitasking os chahiye.
+it save time because multiple task are being executed at same time
+Process ke under app hoti he jo executed hoti he, process thread ko use krta he,app k under ka code,logic thread exexute krta he.
+ * thread light weight resourse.
+ * code ko execute krne ke liye multiple thread banana
+    using System.Threading;
+By default single thread kaam krti jiska koi name nhi hota. annonyms thread hoti.
+ 
+thred 1 -> func1 (2sec)
+thred 2 -> func2 (2sec)
+thred 3 -> func3 (2sec)
+equal priority
+
+Time sharing ka concept use hoga control OS krega
+thodi der thread1 ,thodi der thread2 thodi der thread3 
+defined as the execution path pof a program.
+
+ thread ko currentthrad property ke through access
+current thread => gives a refrence to the currently executing thread.
+thread.sleep =>stop krne k liye
+ */ 
