@@ -1,0 +1,207 @@
+using System;
+
+namespace Constructor_Injection
+{
+
+    //Tight Coupling
+
+    //class CurrentAccount
+    //{
+    //    public void PrintDetails()
+    //    {
+    //        Console.WriteLine("Details Of Current Account");
+    //    }
+    //}
+    //class SavingAccount
+    //{
+    //    public void PrintDetails()
+    //    {
+    //        Console.WriteLine("Details Of Saving Account");
+    //    }
+    //}
+
+    //class Account
+    //{
+    //    CurrentAccount ca = new CurrentAccount();
+    //    SavingAccount sa = new SavingAccount();
+    //    public void PrintDetails()
+    //    {
+    //        ca.PrintDetails();
+    //        sa.PrintDetails();
+    //    }
+    //}
+
+
+
+
+
+    //Dependcy Injection Using Constructor Injection=>
+    //interface IAccount
+    //{
+    //    void PrintDetails();
+    //}
+
+    //class CurrentAccount : IAccount
+    //{
+    //    public void PrintDetails()
+    //    {
+    //        Console.WriteLine("Details Of Current Account");
+    //    }
+    //}
+
+    //class SavingAccount : IAccount
+    //{
+    //    public void PrintDetails()
+    //    {
+    //        Console.WriteLine("Details Of Saving  Account");
+    //    }
+    //}
+
+    //class Account
+    //{
+    //    private IAccount account;
+
+    //    public Account(IAccount account) //para
+    //    {
+    //        this.account = account;
+    //    }
+
+    //    public void PrintAccounts()
+    //    {
+    //        account.PrintDetails();
+    //    }
+    //}
+
+
+
+    //Dependcy Injection Using Property/Setter Injection=>
+    //interface IAccount
+    //{
+    //    void PrintDetails();
+    //}
+
+    //class CurrentAccount : IAccount
+    //{
+    //    public void PrintDetails()
+    //    {
+    //        Console.WriteLine("Details Of Current Account");
+    //    }
+    //}
+
+    //class SavingAccount : IAccount
+    //{
+    //    public void PrintDetails()
+    //    {
+    //        Console.WriteLine("Details Of Saving  Account");
+    //    }
+    //}
+    //class Account
+    //{
+    //    public IAccount account { get; set; }
+
+    //    public void PrintAccounts()
+    //    {
+    //        account.PrintDetails();
+    //    }
+    //}
+
+
+
+    //Dependcy Injection Using Method Injection=>
+    interface IAccount
+    {
+        void PrintDetails();
+    }
+
+    class CurrentAccount : IAccount
+    {
+        public void PrintDetails()
+        {
+            Console.WriteLine("Details Of Current Account");
+        }
+    }
+
+    class SavingAccount : IAccount
+    {
+        public void PrintDetails()
+        {
+            Console.WriteLine("Details Of Saving  Account");
+        }
+    }
+    class Account
+    {
+        public void PrintAccounts(IAccount account)
+        {
+            account.PrintDetails();
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Tight Coupling
+            //Account a = new Account();
+            //a.PrintDetails();
+
+
+
+            //Dependcy Injection Using Constructor Injection=>
+
+            //IAccount ca = new CurrentAccount();
+            //Account a = new Account(ca);
+            //a.PrintAccounts();
+
+            //IAccount sa = new SavingAccount();
+            //Account a2 = new Account(sa);
+            //a2.PrintAccounts();
+
+
+            //Dependcy Injection Using Property/Setter Injection=>
+            //Account sa = new Account();
+            //sa.account = new SavingAccount();
+            //sa.PrintAccounts();
+
+            //Account ca = new Account();
+            //ca.account = new CurrentAccount();
+            //ca.PrintAccounts();
+
+
+
+            //Dependcy Injection Using Method Injection
+            Account sa = new Account();
+            sa.PrintAccounts(new SavingAccount());
+
+            Account ca = new Account();
+            sa.PrintAccounts(new CurrentAccount());
+
+
+            Console.ReadLine();
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Tight Coupling => class a dependence on class b and c,highly dependence ek dusre pe
+ * 
+ * ,Loose Coupling=> no independence any class
+ * Injection (SS liye)
+ * Interface hamara injector he vo hi inject krega.
+ * Dependency Injection me hum object proviede krte.
+ * DI ke through losly coupled code.
+ * IAccount provide krega jis class k obj mi need hogi vo provide krega.
+ * loosley type achieve krne ke liye di krte.
+ * Method Injection => direct obj nhi bannaa rhe method ke through
+ */ 
