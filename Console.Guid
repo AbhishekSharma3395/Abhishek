@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+namespace GUID
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Guid g = Guid.NewGuid();
+            Console.WriteLine(g.ToString());
+            //op 82f8c746-e197-4221-88d9-b1a51e939685
+            //Remove Hifin
+            Guid f = Guid.NewGuid();
+            Console.WriteLine(f.ToString("N"));
+            //op bf42eb7835994cca9d0f323695591f63
+            Guid j = Guid.NewGuid();
+            Console.WriteLine(j.ToString("N").Substring(0,15));
+            //op e7ca3b83416648a                      (15 char)
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Guid => Globally Unique Identifer.
+ * Use for => unique value return.esi id milegi jo unique hogi. 
+ * every time unique value return krega.no duplicate .
+ * random strong password ke liye use.
+ * ek value kabhi conflicit nhi hogi dusri guid ki value se.
+ * it has 36 char including hyphens.
+ * 36 char 16 byte leta he. jyada space consume
+ 
+ 
+ */ 
