@@ -1,0 +1,72 @@
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace Serialization
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Serialization
+            string path = @"C:\Users\user\source\repos\Abhishek New\sample.png";
+            Employee emp = new Employee(241, "Abhishek");
+            FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+            // File Create
+
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(stream, emp);
+            stream.Close();
+            Console.WriteLine("File Created Sussesfully" + path);
+
+
+            // DeSerialization 
+            string path = @"C:\Users\user\source\repos\Abhishek New\sample.txt";
+            FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+            BinaryFormatter bf = new BinaryFormatter();
+            Employee emp = (Employee)bf.Deserialize(stream);
+            Console.WriteLine("Employee Id " + emp.Id);
+            Console.WriteLine("Employee Name " + emp.Name);
+            stream.Close();
+
+            Console.ReadLine();
+
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Serialization =>obj ko convert krte stram of bytes me.(then store kara skte memory,file,database)
+ * jis class ka obj serialize karvana chahte us class ke uper attribute lagana = [seriazable].
+ * jab bhi kisi class ko seriazable krege vo inheritaed nhi hogi.
+ * obj ke behaviour ko permanently store karva skte . then recreate.
+ * using System.Runtime.Serialization.Formatters.Binary;
+ * Genral Steps=>1)object create.
+ * 2) stream obj me store.
+ * 3) binary formater ka instance method. (obj ke sath us so)
+ * 4) serilazation method ko call then stream pass obj pass.
+ * uses for serilazation=>
+ * 1) obj store, recreate,data exchange.
+ * 2) obj ko pass kr skte jo dusri location per ho.
+ * 3) maintian security purpose info
+ 
+ DeSerialization=>  Convert => File -> Stream Of Bytes -> Object
+Reverse Process Of Serialization
+data lete or rebuild krte apne obj ke under.
+obj ko states ki help se dobara recreate krte.
+ */ 
