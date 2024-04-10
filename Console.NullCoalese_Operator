@@ -1,0 +1,40 @@
+using System;
+
+namespace NullCoalesce_Operator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //01
+            string name = null;
+            string result = "";
+            if(name != null)
+            {
+                result = name;
+                Console.WriteLine(result);
+            }
+            // No OP
+
+            // 02 With Null Coalesce Operator
+            string names = null;
+            string results = name ?? "Anonyomous";
+            Console.WriteLine(results);
+            // Op => Anonyomous 
+
+            // 03 Another Example
+            string fruit1 = null;
+            string fruit2 = "banana";
+            string fruit3 = "mango";
+            string resulte = fruit1 ?? fruit2 ?? fruit3;
+            Console.WriteLine(resulte);
+            // OP=>Bananna
+        }
+    }
+}
+
+
+/* Null Coalese Operator=> ?? is known as null coalese operator. 
+ * left ki value return krega agar value null nhi hogi nhi to right wali.
+ * chain ke under jo bhi non null value hogi vo pick krega.
+ */ 
