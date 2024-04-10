@@ -1,0 +1,80 @@
+using System;
+
+namespace IS_Vs_As_Keyword
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Is 
+
+            object a = 25;
+            bool check = a is string;
+            Console.WriteLine(check);//false
+
+            Console.WriteLine("--------------------------------");
+
+            object b = "Sharma";
+            if(b is string)
+            {
+                Console.WriteLine("Yes It's String");//true
+            }
+            else
+            {
+                Console.WriteLine("No is Not");
+            }
+
+            Console.WriteLine("--------------------------------");
+
+
+            //As Kwyword
+            object c = "Abhinav";
+            string str = c as string;
+            Console.WriteLine(str);
+
+            Console.WriteLine("--------------------------------");
+
+            object d = 25;
+            string ss = d as string;
+            Console.WriteLine(ss);
+            Console.WriteLine("Type Conversion nhi hoga to null value print kr dega");
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Is Keyword => Obj ki data type check krne ke liye.
+ * type conversion me is keyword ko use kr k uski type check kr lete.
+ * it return bollean.
+ * agar data type same he to true nhi to false.
+ * 
+ * As Keyword=>
+*  type conversion me galt data type me convert ho nhi skti to InvalidCastException error aati. is error ko solved krne k liye as keyword.
+* use for data type convert
+*  null value milegi ya ref type.
+*  compability check krta sb se phle then convrsion , agar posible he converstion to kr dega nhi to null value return krega exception nhi dega.
+*  
+
+Difference Is VS AS =>
+is-> object ki data type check 
+as-> data type ki conversion krne me use.
+is->bollean value return
+as-> no boolean. ref ya  null value return.
+is-> 2 object same data type true result
+as-> 2 object same to null ya ref return.
+is-> 2 obj same nhi to false return
+as-> 2 obj ki conversion possible nhi to null.
+is-> refrence,boxing,unboxing me use.
+as-> nullable, reference, boxing conversion
+ */ 
