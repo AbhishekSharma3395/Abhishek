@@ -1,0 +1,39 @@
+using System;
+
+namespace Concrete_Class
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Concrete Class => jiske under sare method ki implimentaion(body) mojud hoti he.
+ * All methods have their body {}
+ * interface ,abstract class ka opposite he.
+ * they cannot have unimplement methods(methods without body)
+ * void show(); ese method nhi bana skte.
+ * Concrete Class abstract class ko extend kr skti he. inherit kr skti he.
+ * Concrete Class ka parent abstract class ho skta he.
+ * Concrete Class ka parent interface ho skta he.
+ * it is a complete class and can be instantiated(obj bana skte).
+ * Concrete Class has a conditiion there must be an implementation for each and every method.
+ * its a normal class. we can use a base class or may not.
+ * variable ,method,property sb honge obj banyge to vo useful honge.
+ * any class which is not abstract is a concrete class.
+ */
