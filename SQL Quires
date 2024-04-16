@@ -1,5 +1,4 @@
-01 Create Simple Table
-
+/* Create Table */
 Create Table First (
 Id int,
 FirstName varchar(255),
@@ -9,6 +8,27 @@ City varchar(255),
 Designation varchar(255),
 Salary int
 );
+
+/* Insert Data Into Table */
+INSERT INTO First (Id, FirstName,LastName, Address, City, Designation, Salary)
+VALUES ('1', 'Abhishek', 'Sharma', 'Bedla', 'Udaipur', '.Net Developer','40000'),
+('2', 'Abhinav', 'Sharma', 'Ahmdabad', 'Gujrat', 'Hotel Management','70000');
+
+/* Show Table Data */
+select * from First
+
+/* Copy Table */
+select * into First1 from  First
+
+/* Drop Table */
+drop table First1
+
+/* Alter Table Add Column */
+alter table First1
+Add Country varchar(255)
+
+
+
 
 
 
