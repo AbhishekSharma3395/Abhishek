@@ -1,0 +1,73 @@
+using System;
+
+namespace Enum
+{
+    enum Days
+    {
+        Sunday,//0
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday//6
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //color provide from enum =consolecolor
+            Console.BackgroundColor = ConsoleColor.Yellow;//background Color Where Text
+            Console.ForegroundColor = ConsoleColor.Red;//Text Color
+            Console.WriteLine("My Name Is Abhishek");
+
+            Console.WriteLine(Days.Sunday);
+            Days BirthDay = Days.Friday;
+            Console.WriteLine(BirthDay);
+
+            //Expilcit Typecast int ko enum 
+            Days MyDay = (Days)1;
+            Console.WriteLine(MyDay);
+
+            //enum ko int
+            int value = (int)Days.Saturday;
+            Console.WriteLine(value);
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Enum => Set Of Constants.
+ * Enum is a special class that represent a group of constants(unchangeable).
+ * Enum is short for "Enumrations" . (Specifically Listed) Like Best Friend.
+ * To create enum use the Enum Keyword.
+ * numeric integer ko assign hote he backend me. 
+ * namespace,structure, class ke under enum bana skte.
+ * sare constant name {} me separeted by comma.
+ * default underlying data type is int.
+ * default value is 0 and increment by 1
+ * enum are value type.
+ * more readable and maintainable.
+ * enum is converted into abstract class behind the scenes,
+ 
+C# Enum Values=>
+* value assign nhi kar rhe agar hum to compiler khud int de dega 0 se.
+* sunday = 2 aage ,monday 3 then ++
+* the first member of enum is 0 the incresed by 1.
+* diffrent value assign kr skte bt hogi int hi.
+
+Enum Conversion=> Explicit Casting Is reuired to convert from an enum type 
+
+ */ 
