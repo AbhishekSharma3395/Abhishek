@@ -12,20 +12,75 @@ Salary int
 /* Insert Data Into Table */
 INSERT INTO First (Id, FirstName,LastName, Address, City, Designation, Salary)
 VALUES ('1', 'Abhishek', 'Sharma', 'Bedla', 'Udaipur', '.Net Developer','40000'),
+('2', 'Abhinav', 'Sharma', 'Ahmdabad', 'Gujrat', 'Hotel Management','70000'),
 ('2', 'Abhinav', 'Sharma', 'Ahmdabad', 'Gujrat', 'Hotel Management','70000');
-
-/* Show Table Data */
-select * from First
 
 /* Copy Table */
 select * into First1 from  First
 
+/* Show Table Data */
+select * from First1
+
 /* Drop Table */
 drop table First1
 
+create table First1
+(
+Id int,
+FirstName varchar(255),
+LastName varchar(255),
+Address varchar(255),
+City varchar(255),
+Designation varchar(255),
+Salary int,
+);
+
 /* Alter Table Add Column */
 alter table First1
-Add Country varchar(255)
+Add Country varchar(255);
+
+/* Insert Data From First1 */
+INSERT INTO First1 (Id, FirstName,LastName, Address, City, Designation, Salary,Country)
+VALUES ('1', 'Abhishek', 'Sharma', 'Bedla', 'Udaipur', '.Net Developer','40000','India'),
+('2', 'Abhinav', 'Sharma', 'Ahmdabad', 'Gujrat', 'Hotel Management','70000','India'),
+('3', 'Nikhil', 'Kumawat', 'Surjpol', 'Udaipur', 'Wordpress','20000','India');
+
+/*Unioun
+Ignore  Duplicate Value*/ 
+SELECT City FROM First
+UNION 
+SELECT City FROM First1
+ORDER BY City;
+
+/* For Duplicate Value Union All */
+SELECT City FROM First
+UNION All
+SELECT City FROM First1
+ORDER BY City;
+
+/* Unique  */
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    UNIQUE (ID)
+);
+/*To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:*/
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+);
+
+select * from First1
+select * from First
+
+SELECT COUNT (Address),Address
+FROM First1
+GROUP BY Country;
 
 
 
@@ -33,3 +88,42 @@ Add Country varchar(255)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Join 
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+*/
+
+
+/*The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL:
+*/
