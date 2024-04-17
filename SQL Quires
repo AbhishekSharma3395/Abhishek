@@ -75,32 +75,208 @@ CREATE TABLE Persons (
     CONSTRAINT UC_Person UNIQUE (ID,LastName)
 );
 
-select * from First1
+/* Join  */
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+INNER JOIN First1
+ON First.Id=First1.Id;
+
+/* Left Join  */
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+LEft JOIN First1
+ON First.Id=First1.Id;
+
+/*  Right Join  */
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+Right JOIN First1
+ON First.Id=First1.Id;
+
+/* Full Join  */
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+Full JOIN First1
+ON First.Id=First1.Id;
+
+/* Self Join  */
+Select * from First1
+Select T1.FirstName As FirstName, T2.LastName As Lastname
+From First1 as T1
+Join First1 As T2
+on T1.City=T2.Address
+
+
+
+
+ALTER TABLE First1
+ADD CONSTRAINT PK_First1  PRIMARY KEY (Id,LastName);
+
+
+/*Piot Row To Coloumn  */
+CREATE TABLE demo_table(
+NAME varchar(30),
+COLLEGE varchar(30),
+EXAM_DATE DATE,
+SUBJECTS varchar(30),
+MARKS int);
+
+INSERT INTO demo_table VALUES ('ROMY', 'BVCOE', 
+'12-OCT-2021', 'DBMS', 90),
+('ROMY', 'BVCOE', '12-OCT-2021', 'NETWORKING', 50),
+('ROMY', 'BVCOE', '12-OCT-2021', 'GRAPHICS', 60),
+('ROMY', 'BVCOE', '12-OCT-2021', 'CHEMISTRY', 78),
+('ROMY', 'BVCOE', '12-OCT-2021', 'MATHEMATICS', 88),
+('PUSHKAR', 'MSIT', '14-OCT-2021', 'NETWORKING' , 47),
+('PUSHKAR', 'MSIT', '14-OCT-2021', 'GRAPHICS', 55),
+('PUSHKAR', 'MSIT', '14-OCT-2021', 'CHEMISTRY', 89),
+('PUSHKAR', 'MSIT', '14-OCT-2021', 'MATHEMATICS', 25),
+('PUSHKAR', 'MSIT', '14-OCT-2021', 'DBMS', 75);
+
+select * from demo_table
+
+SELECT * FROM demo_table  
+ PIVOT
+(AVG(MARKS) FOR SUBJECTS IN (DBMS,NETWORKING, 
+GRAPHICS, CHEMISTRY, MATHEMATICS)) AS PivotTable;
+
+
+
+/* Having  */
+SELECT COUNT(MARKS), SUBJECTS
+FROM demo_table
+GROUP BY SUBJECTS
+HAVING COUNT(MARKS) > 50;
+
+
+
+/* And All Conditions Must Be True  */
+SELECT * FROM First1
+WHERE Country = 'India' AND FirstName LIKE 'A%';
+
+SELECT * FROM First1
+WHERE Country = 'India'
+AND City = 'Udaipur'
+AND Salary > '40000';
+
+SELECT * FROM First1
+WHERE Country = 'India'
+AND (FirstName LIKE 'N%' OR FirstName LIKE 'D%');
+
+
+/* OR  */
+SELECT * FROM First1
+WHERE City = 'Uadaipur'
+OR FirstName LIKE 'D%'
+OR Country = 'India'; 
+
+
+/* Exists */
+SELECT FirstName
+FROM First
+WHERE EXISTS (SELECT FirstName FROM First1 WHERE First.Id = First1.Id  AND Salary < 20000);
+
+/*All */
+SELECT All FirstName
+FROM First
+WHERE Salary>20000;
+
+/*Any*/
+SELECT FirstName
+FROM First
+WHERE Id = Any (SELECT Id FROM First1 WHERE  Salary < 20000);
+
+/*Not*/
+Select FirstName from First1
+WHERE NOT Country = 'India';
+
+SELECT * FROM First1
+WHERE NOT Salary < 20000;
+
+/*Not Between*/
+SELECT * FROM First1
+WHERE Id NOT BETWEEN 3 AND 5;
+
+/*Avg */
+SELECT AVG(Salary)
+FROM First1;
+
+
+/* Error */
+ALTER TABLE First1
+ADD PRIMARY KEY (Id);
+
+select LEN (FirstName) as FirstName from First1
+
+/* Update */
+update First1 set country = 'China' where id = 4
+
+/* Upper */
+Select UPPER (FirstName) from First1
+/* SUBSTRING */
+select SUBSTRING (FirstName,2,4) FirstName from First1 
+/* CONCAT */
+select CONCAT (FirstName,Country),FirstName From First1
+/* Replace */
+select Replace (FirstName,'Dev','Mohan')Firstname,LastName from First1
+
+/* Group By */
+Select City, sum(Salary) as total
+from First1
+Group By City
+Order by city ASC
+
+/* Having */
+Select City, sum(Salary) as total
+from First1
+Group By City
+having count(salary) > = 20000 and (salary) < 40000
+Order by total DESC
+
+SELECT SUM(Salary), City FROM First1 GROUP BY City HAVING SUM(salary)>5000;  
+
+/*Count */
+SELECT COUNT(*) 
+FROM First1 
+WHERE salary = '20000';
+
+
+/*Exist */
+SELECT *  FROM First
+WHERE EXISTS (SELECT * FROM First1 WHERE First1.Salary = First.Salary ) 
+         
+
+/* Case */
+SELECT Id, FirstName,  
+CASE FirstName  
+    WHEN 'Aditya' THEN 'SQL is developed by IBM'  
+    WHEN 'Aakansha' THEN 'Java Java was created at Sun Microsystems Inc.'  
+    WHEN 'Nikhil' THEN 'MS-SQL is developed by Microsoft Corporation.' 
+	WHEN 'Devanshu' THEN 'MS-SQL is developed by Microsoft Corporation.' 
+    WHEN 'Mohit' THEN 'MS-SQL is developed by Microsoft Corporation.'  
+	WHEN 'Dev' THEN 'MS-SQL is developed by Microsoft Corporation.' 
+    ELSE 'Do not Know.'  
+END AS Description  
+FROM First1; 
+
+
+SELECT Id, FirstName,Salary  
+ FROM First1  
+ ORDER BY CASE  
+WHEN Salary>25000 THEN salary End DESC,  
+CASE WHEN Salary<20000 THEN salary    
+END  
+
+
+SELECT Id, FirstName, Age,  
+CASE  
+ WHEN Age>22 THEN 'Mature'  
+ WHEN Age>=17 AND age<22 THEN 'Immature'  
+ ELSE 'Child'  
+END AS Maturity FROM First;  
+
+select * from First1 
 select * from First
-
-SELECT COUNT (Address),Address
-FROM First1
-GROUP BY Country;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -122,8 +298,19 @@ GROUP BY Country;
 LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
 RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
 FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+Self Join = > is a regulare join which a table is joined to itself,comparing values in a colum of rows with the same table.
 */
 
 
-/*The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL:
+/*The UNION operator selects only distinct values by default. 
+ To allow duplicate values, use UNION ALL:
+
+OR => The OR operator displays a record if any of the conditions are TRUE.
+AND => The AND operator displays a record if all the conditions are TRUE.
+
+where=> select ke sath
+Group By => same value ko group 
+Having => group by ke sath,baad me
+Order By = > he ORDER BY keyword is used to sort the result-set in ascending or descending order.
+Exist => COmmon value Find Kr K dega 2 tables me
 */
