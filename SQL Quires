@@ -219,6 +219,9 @@ select SUBSTRING (FirstName,2,4) FirstName from First1
 select CONCAT (FirstName,Country),FirstName From First1
 /* Replace */
 select Replace (FirstName,'Dev','Mohan')Firstname,LastName from First1
+/* Null If */
+SELECT NULLIF(25, 25) AS Result;  
+
 
 /* Group By */
 Select City, sum(Salary) as total
@@ -292,20 +295,35 @@ CREATE TABLE SALES(
     CONSTRAINT FK_Sales FOREIGN KEY 
     (Customer_id)REFERENCES Customer(id)
 )
-
+/* Both Key Join */
 SELECT Customer.Id, Customer.Customer_name,Customer_Address,SALES.Item_id
 FROM Customer
 INNER JOIN Sales
 ON Customer.Id=SALES.Customer_id
-order by Id;
-
-select * from Customer
-select * from Sales
-select * from First1 
-select * from First
+order by Id; 
 
 
 
+/* While LOOP */
+DECLARE @i INTEGER;
+SET @i = 1;
+ 
+WHILE @i <= 10
+BEGIN
+   PRINT CONCAT('Pass...', @i);
+   SET @i = @i + 1;
+END;
+
+/* While LOOP Continue */
+DECLARE @j INTEGER;
+SET @j = 1;
+ 
+WHILE @j <= 10
+BEGIN
+   PRINT CONCAT('Pass...', @j);
+   IF @j = 9 CONTINUE;
+   SET @j = @j + 1;
+END;
 
 
 
