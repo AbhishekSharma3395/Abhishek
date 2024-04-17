@@ -275,6 +275,32 @@ CASE
  ELSE 'Child'  
 END AS Maturity FROM First;  
 
+
+/* Primary Key */
+CREATE TABLE Customer(
+    Id int primary key not null identity(1,1),
+    Customer_name varchar(20),
+    Customer_Address varchar(20),
+)
+
+/* Foriegn Key */
+CREATE TABLE SALES( 
+    id int,
+    Item_id int,
+    Payment_Mode varchar(20),
+    Customer_id int
+    CONSTRAINT FK_Sales FOREIGN KEY 
+    (Customer_id)REFERENCES Customer(id)
+)
+
+SELECT Customer.Id, Customer.Customer_name,Customer_Address,SALES.Item_id
+FROM Customer
+INNER JOIN Sales
+ON Customer.Id=SALES.Customer_id
+order by Id;
+
+select * from Customer
+select * from Sales
 select * from First1 
 select * from First
 
@@ -313,4 +339,5 @@ Group By => same value ko group
 Having => group by ke sath,baad me
 Order By = > he ORDER BY keyword is used to sort the result-set in ascending or descending order.
 Exist => COmmon value Find Kr K dega 2 tables me
+Foreign Key = > 2 table ko merge, 
 */
