@@ -45,8 +45,13 @@ VALUES ('1', 'Abhishek', 'Sharma', 'Bedla', 'Udaipur', '.Net Developer','40000',
 ('2', 'Abhinav', 'Sharma', 'Ahmdabad', 'Gujrat', 'Hotel Management','70000','India'),
 ('3', 'Nikhil', 'Kumawat', 'Surjpol', 'Udaipur', 'Wordpress','20000','India');
 
+/* DISTINCT Ignore Duplicate Value */
+SELECT DISTINCT salary  
+FROM First1
+WHERE salary > 15000;  
+
 /*Unioun
-Ignore  Duplicate Value*/ 
+Ignore Duplicate Value*/ 
 SELECT City FROM First
 UNION 
 SELECT City FROM First1
@@ -74,40 +79,6 @@ CREATE TABLE Persons (
     Age int,
     CONSTRAINT UC_Person UNIQUE (ID,LastName)
 );
-
-/* Join  */
-SELECT First.Id, First.FirstName, First1.LastName
-FROM First
-INNER JOIN First1
-ON First.Id=First1.Id;
-
-/* Left Join  */
-SELECT First.Id, First.FirstName, First1.LastName
-FROM First
-LEft JOIN First1
-ON First.Id=First1.Id;
-
-/*  Right Join  */
-SELECT First.Id, First.FirstName, First1.LastName
-FROM First
-Right JOIN First1
-ON First.Id=First1.Id;
-
-/* Full Join  */
-SELECT First.Id, First.FirstName, First1.LastName
-FROM First
-Full JOIN First1
-ON First.Id=First1.Id;
-
-/* Self Join  */
-Select * from First1
-Select T1.FirstName As FirstName, T2.LastName As Lastname
-From First1 as T1
-Join First1 As T2
-on T1.City=T2.Address
-
-
-
 
 ALTER TABLE First1
 ADD CONSTRAINT PK_First1  PRIMARY KEY (Id,LastName);
@@ -303,7 +274,6 @@ ON Customer.Id=SALES.Customer_id
 order by Id; 
 
 
-
 /* While LOOP */
 DECLARE @i INTEGER;
 SET @i = 1;
@@ -326,23 +296,281 @@ BEGIN
 END;
 
 
+/*Identity */
+CREATE TABLE person (  
+    Fullname VARCHAR(100) NOT NULL,  
+    Occupation VARCHAR(50),  
+    Gender VARCHAR(10) NOT NULL  
+);   
+ALTER TABLE person    
+ADD PersonID INT IDENTITY(10,1) PRIMARY KEY NOT NULL;
+
+SELECT MAX(PersonID) AS maxidentity FROM person;  
+  
+INSERT INTO person(Fullname, Occupation, Gender)  
+VALUES('Brian Lara', 'Cricket', 'Male');  
+ 
+
+ /* MERGE Table1 */
+CREATE TABLE Products(  
+    ID INT,  
+    Product_Name VARCHAR(65),  
+    Price DECIMAL(9,2)  
+)  
+      
+INSERT INTO Products(ID, Product_Name, Price) VALUES   
+(1, 'Table', 150), (2, 'Desk', 100),  
+(3, 'Chair', 75), (4, 'Computer', 225); 
+
+ /* MERGE Table 2 */
+CREATE TABLE TargetProducts(  
+    ID INT,  
+    Product_Name VARCHAR(65),  
+    Price DECIMAL(9,2)  
+)  
+      
+INSERT INTO TargetProducts(ID, Product_Name, Price) VALUES  
+(1, 'Table', 150),  
+(2, 'Desk', 150),  
+(5, 'Bed', 100),  
+(6, 'Cupboard', 350);  
+
+SELECT * FROM Products  
+SELECT * FROM TargetProducts
+
+/* MERGE Both Table Quiery */
+MERGE TargetProducts AS Target  
+USING Products  AS Source  
+ON Source.ID = Target.ID  
+WHEN NOT MATCHED BY Target THEN  
+    INSERT (ID, Product_Name, Price)   
+    VALUES (Source.ID, Source.Product_Name, Source.Price);  
+
+
+
+/* Join  */
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+INNER JOIN First1
+ON First.Id=First1.Id;
+
+/* Left Join  */
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+LEft JOIN First1
+ON First.Id=First1.Id;
+
+/*  Right Join  */
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+Right JOIN First1
+ON First.Id=First1.Id;
+
+/* Full Join  */
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+Full JOIN First1
+ON First.Id=First1.Id;
+
+/* Self Join  */
+Select T1.FirstName As FirstName, T2.LastName As Lastname
+From First1 as T1
+Join First1 As T2
+on T1.City=T2.Address
+
+/* Cross Join  */
+SELECT *    
+FROM First  
+CROSS JOIN First1; 
+
+/* Cross Join 2nd Example */
+SELECT First.FirstName, First.LastName, First.Address,   
+First1.Salary, First1.Country    
+FROM First    
+CROSS JOIN First1;  
 
 
 
 
 
+/* Store Procedure */
+SELECT 
+	FirstName, 
+	LastName,
+	Salary,
+	Designation
+FROM 
+	First1
+ORDER BY 
+	FirstName;
+
+/* Create Procedure */
+CREATE PROCEDURE First1Procedure
+AS
+BEGIN
+  SELECT 
+	FirstName, 
+	LastName,
+	Salary,
+	Designation,
+	Country
+
+FROM 
+	First1
+ORDER BY 
+	FirstName;
+END;
+
+/* ALTER Procedure */
+ALTER PROCEDURE [dbo].[First1Procedure]
+AS
+BEGIN
+  SELECT 
+	FirstName, 
+	LastName,
+	Salary,
+	Designation,
+	Country
+FROM 
+	First1
+ORDER BY 
+	FirstName;
+END;
 
 
+
+/* Execute Procedure */
+EXECUTE First1Procedure ;
+
+/*Deleting a stored procedure */
+DROP PROCEDURE sp_name;
+
+
+/* ALTER Procedure Condition Salary */
+ALTER PROCEDURE [dbo].[First1Procedure](@min_Salary AS DECIMAL)
+AS
+BEGIN
+  SELECT 
+	FirstName,
+	Salary
+FROM 
+	First1
+	where
+	   salary >= @min_Salary
+ORDER BY 
+	FirstName;
+END;
+
+/* show salary >20000 */
+EXEC First1Procedure 20000;
+
+
+/* ALTER Procedure Condition Salary Between*/
+ALTER PROCEDURE First1Procedure(
+    @min_Salary AS DECIMAL,
+    @max_Salary AS DECIMAL
+)
+AS
+BEGIN
+    SELECT
+       FirstName,
+	   Salary
+    FROM 
+       First1
+    WHERE
+        Salary >= @min_Salary AND
+        Salary <= @max_Salary
+    ORDER BY
+       Salary;
+END;
+
+EXECUTE First1Procedure 10000, 20000;
+
+EXECUTE First1Procedure 
+    @min_Salary = 10000, 
+    @max_Salary = 50000;
+
+
+
+/* Creating Text Parameter */
+ALTER PROCEDURE First1Procedure(
+      @min_Salary AS DECIMAL
+    ,@max_Salary AS DECIMAL
+    ,@name AS VARCHAR(max)
+)
+AS
+BEGIN
+    SELECT
+           FirstName,
+	        Salary
+    FROM 
+        First1
+    WHERE
+        Salary >=  @min_Salary  AND
+        Salary <= @max_Salary AND
+        FirstName LIKE '%' + @name + '%'
+    ORDER BY
+        Salary;
+END;
+
+
+EXECUTE First1Procedure 
+    @min_Salary = 10000, 
+    @max_Salary = 20000,
+    @name = 'Nikhil';
+
+/* Creating Optional Parameters */
+ALTER PROCEDURE First1Procedure(
+        @min_Salary AS DECIMAL = 0
+    ,  @max_Salary AS DECIMAL = 999999
+    ,@name AS VARCHAR(max)
+)
+AS
+BEGIN
+    SELECT
+           FirstName,
+	        Salary
+    FROM 
+        First1
+    WHERE
+        Salary >=  @min_Salary  AND
+        Salary <= @max_Salary AND
+        FirstName LIKE '%' + @name + '%'
+    ORDER BY
+        Salary;
+END;
+
+
+EXECUTE First1Procedure 
+    @name = 'A';
+
+EXECUTE First1Procedure 
+    @min_Salary = 20000,
+    @name = 'A';
+
+select * from First1
+
+Drop procedure First1Procedure 
+
+
+
+/* Declaring a variable */
+
+DECLARE
+		@Country varchar(50);
+
+SET @Country = 'India';
 
 
 
 
 /* Join 
-(INNER) JOIN: Returns records that have matching values in both tables
+(INNER) JOIN: Returns records that have matching values in both tables.
 LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
 RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
 FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
 Self Join = > is a regulare join which a table is joined to itself,comparing values in a colum of rows with the same table.
+Cross Join => Multiply by other table
 */
 
 
@@ -357,5 +585,14 @@ Group By => same value ko group
 Having => group by ke sath,baad me
 Order By = > he ORDER BY keyword is used to sort the result-set in ascending or descending order.
 Exist => COmmon value Find Kr K dega 2 tables me
-Foreign Key = > 2 table ko merge, 
+Foreign Key = > 2 table ko merge,
+DISTINCT => clause is used to remove duplicates from the table
+
+Study=>
+Aggricate 
+View
+Join
+Sp
+Functions
+
 */
