@@ -561,6 +561,37 @@ DECLARE
 
 SET @Country = 'India';
 
+/* Create Procedure To Find Particular Value */
+
+CREATE PROCEDURE First1Procedure
+@Country Nvarchar(100)
+AS
+BEGIN
+Select * from First1 where Country=@Country
+end
+
+exec First1Procedure @Country= 'India'
+
+/*  View  */
+CREATE VIEW First1View
+as
+SELECT First.Id, First.FirstName, First1.LastName
+FROM First
+INNER JOIN First1
+ON First.Id=First1.Id;
+
+select * from First1View
+
+DROP VIEW First1View
+
+
+
+
+
+
+
+
+
 
 
 
@@ -588,11 +619,15 @@ Exist => COmmon value Find Kr K dega 2 tables me
 Foreign Key = > 2 table ko merge,
 DISTINCT => clause is used to remove duplicates from the table
 
+View => Does Not Store Data, Only Store Structure of this view. Advanatage Security,Cimpiffy Complex Sql Quiry.
+
+
 Study=>
 Aggricate 
 View
 Join
 Sp
 Functions
+Trigger
 
 */
