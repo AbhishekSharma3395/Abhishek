@@ -548,8 +548,6 @@ EXECUTE First1Procedure
     @min_Salary = 20000,
     @name = 'A';
 
-select * from First1
-
 Drop procedure First1Procedure 
 
 
@@ -583,6 +581,142 @@ ON First.Id=First1.Id;
 select * from First1View
 
 DROP VIEW First1View
+
+
+/*  Triggers  */
+/* Create Trigger */
+create trigger tr_first_forinsert
+on First1 
+after insert
+as
+begin
+print 'Something Happend To The First1 Table'
+end
+
+select * from First1
+INSERT INTO First1 (Id, FirstName,LastName, Address, City, Designation, Salary,Country)
+VALUES ('8', 'Komal', 'Sharma', 'Sec11', 'Udaipur', 'Manager','30000','Australiya');
+
+/* OP => Something Happend To The First1 Table */
+
+
+/* Alter Trigger */
+Alter trigger tr_first_forinsert
+on First1 
+after insert
+as
+begin
+         select * from Inserted
+end
+
+INSERT INTO First1 (Id, FirstName,LastName, Address, City, Designation, Salary,Country)
+VALUES ('9', 'Jaya', 'Sonava', 'Pratapnagar', 'Udaipur', 'Head','50000','Ploand'),
+('10', 'Aardhya', 'Solanki', 'Badgav', 'Udaipur', 'Peon','5000','NewYork'),
+('11', 'Chris', 'Ronaldo', 'Arena', 'US', 'Football','50000','Brazil');
+/* Inserted Row Show */
+
+
+/* For Delete Trigger */
+
+Create trigger tr_first_forDelete
+on First1 
+after Delete
+as
+begin
+         select * from deleted
+end
+
+delete from First1 where id =9
+
+/* Deleted Row Show */
+
+/* For Information  Insert Data */
+create table first1_Details
+(Details_ID Int primary key identity, Details_Info varchar(max));
+
+select * from first1_Details
+/* Get Data Through ID */
+Create trigger tr_Details_forinsert
+on First1 
+after insert
+as
+begin
+         declare @id int
+		 select @id= id from inserted
+		 insert into first1_Details 
+		 values('Name With Id ' + Cast(@id as varchar (50)) + ' is added at '+ Cast(GETDATE()as varchar))
+end
+
+INSERT INTO First1 (Id, FirstName,LastName, Address, City, Designation, Salary,Country)
+VALUES ('9', 'Jaya', 'Sonava', 'Pratapnagar', 'Udaipur', 'Head','50000','Ploand');
+
+
+/* Get Data Through Name */
+Create trigger tr_Details_forinsertN
+on First1 
+after insert
+as
+begin
+         declare @name varchar(50)
+		 select @name= FirstName from inserted
+		 insert into first1_Details 
+		 values('Name Add ' + Cast(@name as varchar (50)) + ' is added at '+ Cast(GETDATE()as varchar))
+end
+
+/* For Information Delete Data */
+Create trigger tr_Details_forDelete
+on First1 
+after delete
+as
+begin
+         declare @name varchar(50)
+		 select @name= FirstName from deleted
+		 insert into first1_Details 
+		 values('Existing Name With' + Cast(@name as varchar (50)) + ' is Deleted at '+ Cast(GETDATE()as varchar))
+end
+delete from First1 where id=9
+
+
+/* Update Trigger */
+
+create trigger tr_first_forUpdate
+on First1 
+after Update
+as
+begin
+select * from inserted;
+select * from deleted;
+end
+
+update First1 set FirstName='Kaushal' ,city = 'Nathdwara' where id=9
+
+/* Triger Ki Query Dekhne Ke Liye */
+sp_helptext tr_first_forUpdate
+sp_helptext tr_first_forDelete
+
+select * from First
+select * from First1
+select * from first1_Details
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -620,6 +754,18 @@ Foreign Key = > 2 table ko merge,
 DISTINCT => clause is used to remove duplicates from the table
 
 View => Does Not Store Data, Only Store Structure of this view. Advanatage Security,Cimpiffy Complex Sql Quiry.
+
+Trigger => sp he khud execute hota he jab koi event chalta he.
+3 Type=>
+1)DML=>insert update delete(automatically fired)
+  
+  2 Types DML Triger=>
+  a) After Trigers(also called for triggeers)
+  b) Instead for Trigers=> Types-> Instead of insert,update,delete triger
+
+2)DDL=> create alter
+
+3)LOGON
 
 
 Study=>
