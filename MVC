@@ -32,6 +32,25 @@ Role-> Work With User IP. jab bhi koi request client se app server per aati he t
 
 
 
+<!--kisi bhi controller ke under jo method hota he use action method khte.
+Default actionresult
+access krne ke liye public hona jaruri.
+by default all action method are get.
+action method can return view ,file,partial view,jason,file,etc
+
+Make Call From Browser=>
+yourdomain/controlername/Action method 
+
+RouteConfig file ke under default Home Or index visible hote he
+
+Parameter In Acton Method=> to get data which is sent in the url.
+ex=> need to feth emp profile based on their id
+
+? then & 
+Employee/Address?id=2&department=tech
+
+New/Existing Controller=>
+
 
 
 
