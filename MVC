@@ -90,3 +90,19 @@ data aane ke baad controler ke pass then return view ke paas.
 
 
 
+<!--View Engine=> view ke uper only html show hota he jo convert krta he vo view engine.
+responsible for creating html for view.
+find corresponsing view for action method.
+to find view from shared folder.
+used to write # code.
+used for html helpers.
+
+Razor=> is a view Engine.
+not a programing lang.kese use kr skte c# ko.
+availabe in system.Web.Razor
+view file extension for razor is .cshtml.
+view client side, controler server side, controler me c# use, 
+rajor ki help se hum c# ka code view ke uper bhi use kr skte he.
+Rajor Syntax begins with @
+
+
