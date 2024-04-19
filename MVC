@@ -1,0 +1,37 @@
+  
+    @*
+      User -> Controler
+    Controler-> model
+    Model-> view
+
+    ASP.Net MVC=> Only used for web development.
+    MVC => Design pattern. tarika he kaam krne ka.
+    1) App Data -> jitna bhi data appke liye chahiye read or write krne ke liye 
+    2) App Start -> URL File Manage, Route Confi. Bundle Config,
+    3) Content -> Css, Image Other Script
+    4) Controller-> Put All The Controllers.
+    5) Fonts -> Cusstome Fonts Used By Bootstrap 
+    6) Model -> All The Models. 
+    7) Script -> Put All the Script.
+    8) Views -> Html Files.
+    9) Favicon -> Browers Ke tab ke uper small icon
+    10) Global.asax-> Sbse Phle App Start Per Yhi File Run Hoti
+    11) Packages-> Install Sb Yaha Uska Name Or Version Sb Details
+    12) Web Config-> Database, 404 PAge, Error All
+    13) Refrences -> Jitni bhi dll Use sb yha show
+
+
+
+
+Controller=> Cs file hoti he. Inherted hoti he controler class ki.
+Role-> Work With User IP. jab bhi koi request client se app server per aati he to sbse 
+        phle us req ko controler handel krta he.jese kya return krna he koi html file ,
+        jason , string. page se redirect dusre page per sb kaam yhi krta.
+        get data from model.
+        provide data to corresponding view or req. 
+
+
+
+
+
+
