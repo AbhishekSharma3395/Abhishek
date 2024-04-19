@@ -747,6 +747,163 @@ select * from first1_Details
 
 
 
+/* Secure Trigger */ 
+
+select * from first1_Details
+
+alter Trigger tr_first_InsteadOf_Delete
+on First1
+with encryption
+Instead Of Delete
+as
+begin
+insert into First1_Details values('Someone Try TO Delete Data From First1_Details')
+end
+
+sp_helptext tr_first_InsteadOf_Delete
+/* Encripted */ 
+
+/* Remove Encripted */
+alter Trigger tr_first_InsteadOf_Delete
+on First1
+Instead Of Delete
+as
+begin
+insert into First1_Details values('Someone Try TO Delete Data From First1_Details')
+end
+sp_helptext tr_first_InsteadOf_Delete
+/* Decripted */
+
+
+/* Using Instead Of Triggers with Views */
+select * from Employee_Person_Details
+select * from Employee_Salary_Details
+
+create view Vw_Employess
+as
+select A.EmpId,A.FirstName,A.LastName,
+b.Designation, B.Salary
+from Employee_Person_Details as A
+inner join Employee_Salary_Details as B
+on A.EmpID=B.EmpId
+
+select * from Vw_Employess
+
+delete from Vw_Employess where EmpId= 4
+/* not delete */
+
+/* view Single Table */
+create view Vw_Employess1
+as
+select * from Employee_Person_Details
+
+select * from Vw_Employess1
+
+delete from Vw_Employess1 where EmpId= 4
+/* delete Succesfull */
+
+
+/* Delete Instead Of Triger */
+select * from Vw_Employess
+
+delete from Vw_Employess where EmpId= 4
+/* 3 row delete hogi vw or dono table */
+
+create trigger tr_InsteadOf_EmployeeDetails
+on Vw_Employess
+instead of delete
+as
+Begin
+    delete from Employee_Person_Details where EmpId in (select Empid from deleted)
+	delete from Employee_Salary_Details where EmpId in (select Empid from deleted)
+end
+
+
+/* DDL Triger */
+create trigger tr_ddl_table_create
+on database 
+for Create_Table
+as
+begin 
+     print 'New Table Created';
+end
+
+create table test_tbl(id int);
+
+/*Alter*/
+Create trigger tr_ddl_table_Alter
+on database 
+for Alter_Table
+as
+begin 
+     print 'You Have Just Alter A Table';
+end
+
+Alter table test_tbl add name varchar(50);
+
+/*Drop*/
+
+Create trigger tr_ddl_table_Drop
+on database 
+for Drop_Table
+as
+begin 
+     print 'You Have Just Dropeed A Table';
+end
+
+drop table test_tbl;
+
+
+/*All 3 Action Perform*/
+Create trigger tr_ddl_table
+on database 
+for Create_Table,Alter_Table,Drop_Table
+as
+begin 
+     print 'You Have Just Create Alter Or Dropeed A Table' ;
+end
+
+create table test_tbl(id int);
+Alter table test_tbl add name varchar(50);
+drop table test_tbl;
+
+
+/*For Strore Procedure*/
+
+Create trigger tr_ddl_SP_Create
+on database 
+with encryption
+for Create_Procedure
+as
+begin 
+     rollback
+     print 'You Are Not Allowed To Create A Store Procedure' ;
+end
+
+create procedure sp_Myprocedure
+as
+begin
+print 'This is my Store Procedure'
+end
+
+/*Restriction for create table*/
+
+create trigger tr_ddl_table_create
+on database 
+for Create_Table
+as
+begin 
+rollback
+     print 'You Cannot Create A Table In This Database';
+end
+
+create table Test_Table(id int);
+
+drop table Test_Table
+
+
+
+
 
 
 
@@ -812,12 +969,16 @@ Trigger => sp he khud execute hota he jab koi event chalta he.
 3)LOGON
 
 
-Study=>
-Aggricate 
-View
-Join
-Sp
-Functions
-Trigger
+/* Using Instead Of Triggers with Views => many operation perfrom of views.
+view me se delete to table me bhi delete. 
+view me delete nhi hoga agar 2 table me se join kr k view banaya
+ek table se banaya to delete ho jayga.
+
+DDL Trigers=> Create ALter Drop
+modification krne se bacha skte.
+notification de skte ki ne kya kiya
+Programability ke under Database Triger ke undr show honge
+*/
+
 
 */
