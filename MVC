@@ -81,5 +81,12 @@ Then it goes to shared folder.
 
 
 
+<!--Model => Responsible For Data, .csfile
+Data Model Ke Through Aata he. model controler ko dete he jo baad me view ke pass jata he.
+Controler ka jo action method view or model dono ko return kr skta he.
+kisi model ko view ke uper use krne ke liye @ or class ka name.
+data aane ke baad controler ke pass then return view ke paas.
+
+
 
 
