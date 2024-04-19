@@ -694,6 +694,50 @@ update First1 set FirstName='Kaushal' ,city = 'Nathdwara' where id=9
 sp_helptext tr_first_forUpdate
 sp_helptext tr_first_forDelete
 
+
+/* Instead OF Triggers */
+/* 1st => Instead OF Insert Triggers*/
+
+create Trigger tr_first_InsteadOf_Insert
+on First1
+Instead Of Insert
+as
+begin
+print 'You Are Not Allowed To Data In This Table!!'
+end
+
+INSERT INTO First1 (Id, FirstName,LastName, Address, City, Designation, Salary,Country)
+VALUES ('10', 'Jaya', 'Sonava', 'Pratapnagar', 'Udaipur', 'Head','50000','Ploand');
+/* Not Insert*/
+
+
+/* 2nd => Instead OF Update Triggers*/
+
+create Trigger tr_first_InsteadOf_Update
+on First1
+Instead Of Update
+as
+begin
+print 'You Are Not Allowed To Update Data In This Table!!'
+end
+
+update First1 set FirstName ='Jaya' where id=9
+/*not update*/
+
+/* 3rd => Instead OF Delete Triggers*/
+create Trigger tr_first_InsteadOf_Delete
+on First1
+Instead Of Delete
+as
+begin
+print 'You Are Not Allowed To Delete Data In This Table!!'
+end
+
+
+delete from First1 where id=5
+/*not delete*/
+
+
 select * from First
 select * from First1
 select * from first1_Details
