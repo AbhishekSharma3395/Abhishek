@@ -49,7 +49,36 @@ ex=> need to feth emp profile based on their id
 ? then & 
 Employee/Address?id=2&department=tech
 
-New/Existing Controller=>
+
+
+
+
+<!--View => cshtml file Hoti he (c shrap + html).
+Html css.
+support Pure Html.
+ActionResult sb ki parent class hoti he.parital view view result all
+Action method ka result type ya to viewresult ya actionresult agar view return kr rhe to
+
+jo aap ke controller ke name hote he vo folder ke name hona chahiye.
+jo aap ke action method ke name hote vo view ka name hona chahiye.
+
+
+call view from browser=>
+controler ke throuth call hoga.
+jese bhi action result kaam krta vese hi info chali jati.
+domain->controller->Actionmethod
+
+controller ke under jitne action method honge uske pass utne view honge.
+
+Share folder=> sabhi controller ke liye common name shared hi hona chahiye.
+view shared folder ke under hote he vo available hote he her controller 
+ke action method ke liye.
+share me ese view rkho jo sb ke liye common.jinko partial view bolte.
+
+How controler find a view=>
+First It Search in corresponsing view folder(same name as controller)
+Then it goes to shared folder.
+
 
 
 
