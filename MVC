@@ -128,6 +128,11 @@ dusre controller per jana he to text->action mehod-> controller name
 textbox ka name or id same hoti he.
 
 
-B)Strongly Html Helpers
+B)Strongly Html Helpers->
+Strongly Html Helpers=>
+  Model(Property)+View Html => Strongly Type View
+  It uses lambda experssions -> @html.textboxfor(model => model.property)
+Controlerr se View Ke uper data bhejte.Reverse view se controller per laa pa rhe
+
 C)Templated Html Helpers 
 
