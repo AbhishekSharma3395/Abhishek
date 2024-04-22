@@ -173,3 +173,28 @@ we can assign any name to prop.
 Ex => ViewBag.MyProperty =Value
 
 View Data=> We can assign any name to key,works as a dictonary.
+
+
+<!--TempData=> How to pass data from one controller action method to another or same controller
+action method.
+* (Controller)TempData -> <- Controller
+* works as a dictonary(same view data syntax)
+* used to store data for next subsequently req. only.(index wala only index 2 me copy 3 me nhi)
+* we can assign any name to key
+* internally uses session to store data.
+* ex=> TempDAta["myKey"] = Value;
+
+Keek()=> To save data for next http use keek method
+* to save data of all TempData we use keek(); 
+* to save daa for a particular key use keep("Key")
+ex=> TempDta.Keep();
+TempData.Keep("Key")
+
+multiple temp data use kr skte uske liye keep.
+
+
+Peek()=>data ko read or save dono krna.
+
+Session.Abandon()=> krne se next method me data show nhi hoga
+
+
