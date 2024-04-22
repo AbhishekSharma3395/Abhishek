@@ -134,5 +134,24 @@ Strongly Html Helpers=>
   It uses lambda experssions -> @html.textboxfor(model => model.property)
 Controlerr se View Ke uper data bhejte.Reverse view se controller per laa pa rhe
 
-C)Templated Html Helpers 
+C)Templated Html Helpers ->
+Show Complete Model Data On View With One HTML Helper.
+IP or edit ka kaam. apme aap html genreate.
+used for data display and ip
+it genrate html auctomatically as per model prop.
+only use with model.
+
+Display=> @html.DisplayName()-used to disply only the name of the model prop
+@Html.DisplayText()-> only the balue of the model prop.
+@html.DisplayForModel() - Used to Display Complete Model Data.
+@html.Editor()-> ek single pro ke liye edit krne ka kaam
+
+3) Custome HTML Helper=>
+ jo built-in provide nhi karata he.
+ helpers ko apne requiement ke uper banana.
+For ex. @html.Image() , @html.AddresssFormat()
+
+How To create->
+1 Using Static Class And Static Method=>
+2 Using Extenfion Method
 
