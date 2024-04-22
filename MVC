@@ -105,7 +105,8 @@ view client side, controler server side, controler me c# use,
 rajor ki help se hum c# ka code view ke uper bhi use kr skte he.
 Rajor Syntax begins with @
 
---HTML Heplers=> are method jo html string ko return krte he.
+--HTML Heplers=> HTML helpers(C# Method) .cshtml file -> Pure Html(Browser) 
+are method jo html string ko return krte he.
 inka use only view per krte he.
 html hepers you can render a text box, an area ,image tag etc.
 mvc ke pass phle se hi helper hote, modify kr skte.
