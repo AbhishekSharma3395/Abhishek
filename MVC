@@ -198,3 +198,13 @@ Peek()=>data ko read or save dono krna.
 Session.Abandon()=> krne se next method me data show nhi hoga
 
 
+
+<!--HTTP => server client ke bich communication.
+HTTP verbs=> jab hum koi req clint se server ke pass bhejte he to usko batate kis trh ka method he
+us method ko bolte verbs. kesa action perform.
+Mainly 4 method use->
+1)GET-> koi data le k aana,data travels in url only
+2)Post-> naya record banane ke liye data travel in URL and body
+3)Put-> record bana hua change krna usme kuch tb use(update)
+4)Delete-> delete record
+
