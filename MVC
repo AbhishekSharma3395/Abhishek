@@ -206,5 +206,21 @@ Mainly 4 method use->
 1)GET-> koi data le k aana,data travels in url only
 2)Post-> naya record banane ke liye data travel in URL and body
 3)Put-> record bana hua change krna usme kuch tb use(update)
-4)Delete-> delete record
+4)Delete-> delete record.
 
+Routing=> url wala kaam, url likh kr enter krte, kya return hoga vo sb.
+* pattern matching system.
+* jo url aaya he vo konse controller ke uper bhejna konsa action method perfom.
+* req phle controller ke pass na jaa kr router ke pass jaygi.
+* req->url konsa->find matching url(Routing Table)
+
+Route Table=>we drfine route for each action method.
+*sare url ko ek jgh define krne ko route table kehte.
+* each incomming req is mappeed to this route table
+* if a url match found then req goes to related controoler action method.
+* agar nhi mili to 404 error.
+
+There are 2 types use routing in mvc->
+1) tradinal way
+2) attribute routing
+-->
