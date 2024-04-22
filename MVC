@@ -155,3 +155,21 @@ How To create->
 1 Using Static Class And Static Method=>
 2 Using Extenfion Method
 
+
+<!--View Bag And View Data=> Dono ka use controler se view ke pass data send krne ke liye.
+Advantages->
+easy to use 
+less code
+do not depend on other class.
+Disadvantage->
+No complile time checking.
+key or prop name can be missplled
+Need to cast while using view
+cant send data from view to controller
+
+
+View Bag=>Dynamic property, kuch bhi prop assign kr skte he.
+we can assign any name to prop.
+Ex => ViewBag.MyProperty =Value
+
+View Data=> We can assign any name to key,works as a dictonary.
