@@ -224,3 +224,18 @@ There are 2 types use routing in mvc->
 1) tradinal way
 2) attribute routing
 -->
+
+<!--Tradional Way Of Routing=>
+* Routes ko ek file ke under manage.
+* Routing controller or browser ke bich me kaam krta.
+* Action method ka new name rkhna.
+* sare routes RouteConfig File ke under save krte
+* App start folder ke under RouteConfig.
+* phle route ko register krna pdta he.
+* simple cs file hoti he jisme pattern bana k rkh dete ki ye url aayga to ye action method call.
+* url kesa aana chahiye.
+
+* name->patttern-> default values->constrants 
+* same url 2 action method ko hit nhi kr skta.
+* 1 route 2 action method ke liye he to error aaygi
+* 1 action metdod ke 2 routes he to chalega
