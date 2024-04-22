@@ -115,8 +115,19 @@ view ke uper genrate kr skte.
 
 
 1)Inline Html Helpers
-2)Built-In Html Helpers
-A)Standard Html Helpers
+2)Built-In Html Helpers->
+<!--Bilit-In Html Helpers-> These Are Already Created By Asp.Net MVC.
+her ek html helpers ke bhut sare overite mehtod bhi hote he, to jo use krna he usko
+use kr skte.
+
+A)Standard Html Helpers->
+1) HTML Action Link()=> Used to create link on html page.
+same controler action method to controller ka name dene ki need nhi,
+dusre controller per jana he to text->action mehod-> controller name
+2) HTML Text Box()=> used to create texr box.
+textbox ka name or id same hoti he.
+
+
 B)Strongly Html Helpers
 C)Templated Html Helpers 
 
