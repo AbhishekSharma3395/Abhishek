@@ -270,3 +270,16 @@ using System.ComponentModel.DataAnnotations;  => add krne se sare validation mil
 Validation In STrongly Binding=> x.x=>Property
 Validation Summary tag=> sare msg ek sath use only one tag use  =>   @Html.ValidationSummary()
 Custome Validation => implement ValidationAttribute Class.
+
+
+
+<!--Layout = > same cheez sbhi page me use.Like Master page, kuch bhi cheez page per common banani 
+vo yha.
+
+ routes.MapMvcAttributeRoutes(); -> Link add new
+ jaha common page deikhana vha use @render body, jo bhi common page hoga is ki jgha aa kr render hoga
+
+view start file=> jo view ke liye common hoti he vo view start me defin kr dete he, vo her view me
+alag alag mil jaygi.
+ek esi file hoti he jis ke under ka code sbhi vieww ke liye avaialbe hota he
+
