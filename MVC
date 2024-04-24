@@ -281,5 +281,19 @@ vo yha.
 
 view start file=> jo view ke liye common hoti he vo view start me defin kr dete he, vo her view me
 alag alag mil jaygi.
-ek esi file hoti he jis ke under ka code sbhi vieww ke liye avaialbe hota he
+ek esi file hoti he jis ke under ka code sbhi vieww ke liye avaialbe hota he.
+
+
+
+
+<!--Section=> child or layout page ke liye communication krne ke liye. 
+data ko render body ke scope se bahar agar data ko dikhana he to
+
+Syntax=>
+@RenderSection("sectionName",requird:true)
+
+@section sectionName
+{
+}
+
 
