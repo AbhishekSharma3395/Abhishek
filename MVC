@@ -304,3 +304,11 @@ class library type ka new project add kiya db vali sari cheeze alg rkhne ke liye
 
 <!--Render Page = > ek view ke uper dusre view ka use krne ke liye use krte
 
+
+Entity Framwork->
+<!--ek solution ke uper multiple projects banay ja skte he
+class library type ka new project add kiya db vali sari cheeze alg rkhne ke liye.
+refrense ke under ja ke add.
+ADO .net entity data model select krna then first select
+MyModel.Edmx.diagram bn jayga conn. bnne ke baaad
+
