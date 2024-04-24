@@ -250,3 +250,16 @@ route map se
 * same url 2 action method ko hit nhi kr skta.
 * 1 route 2 action method ke liye he to error aaygi
 * 1 action metdod ke 2 routes he to chalega
+
+
+
+<!--Pass data from View To Controller
+1 Using Parameter
+2 Using Request 
+3 Using FormCollection
+4 Strongly Binding
+5 Using JS etc
+
+HTTPGET -> Data Url Me travel
+
+HTTPPOST -> Data BOdy Me travel
