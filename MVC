@@ -235,6 +235,17 @@ There are 2 types use routing in mvc->
 * simple cs file hoti he jisme pattern bana k rkh dete ki ye url aayga to ye action method call.
 * url kesa aana chahiye.
 
+
+
+<!--Attribute Routing=> route config file ka use nhi krege, only action method ya controller me 
+change.
+* Route Prefix=?> common part ko bar bar likhne ki need nhi.
+* Overwrit krne ke liye tild sign ka use.
+* 1 action method ke liye 1 se jyada route use kr skte he
+* ek route ek se jyada action method ke liye nhi use kr skte.
+* routes.MapMvcAttributeRoutes(); ye liknha pdta. is se mvc ke attribute route ko map kr deta
+route map se
+
 * name->patttern-> default values->constrants 
 * same url 2 action method ko hit nhi kr skta.
 * 1 route 2 action method ke liye he to error aaygi
