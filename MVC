@@ -263,3 +263,10 @@ route map se
 HTTPGET -> Data Url Me travel
 
 HTTPPOST -> Data BOdy Me travel
+
+
+<!--Validation=>
+using System.ComponentModel.DataAnnotations;  => add krne se sare validation mil jate as a attribute
+Validation In STrongly Binding=> x.x=>Property
+Validation Summary tag=> sare msg ek sath use only one tag use  =>   @Html.ValidationSummary()
+Custome Validation => implement ValidationAttribute Class.
