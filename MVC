@@ -350,3 +350,15 @@ Ajax Helper=> @ajax ised to access
 * ajax helper me aax option hote he. like confirm,onfailure,onsucess etc.
 * ajax jquery ke sath hi use kiya jata he.ajax ek function hota he
 
+<!--Partial View=> View He but Not Complete View
+* Partial View Can Have C# and HTL code Also.
+* Common code.
+* how to use -> 
+1) @html.partial("viewName")
+2)@html.RenderPartial("viewName")
+* kisi bhi view ke uper use kr skte jab same code ek se jyada jgh use krte share folder ke under banate
+
+Partial ka return type MvcHtmlString hota he, var me assign  kr skte.
+Render PArtial Ka Return type Void hota he. var me assign nhi kr skte, fast he cause op direct op string pe likha jata
+he nd return void so
+
