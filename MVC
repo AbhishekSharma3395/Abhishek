@@ -362,3 +362,31 @@ Partial ka return type MvcHtmlString hota he, var me assign  kr skte.
 Render PArtial Ka Return type Void hota he. var me assign nhi kr skte, fast he cause op direct op string pe likha jata
 he nd return void so
 
+
+<!--Filter=>
+Action method se phle baad me or jab execute ho rha he us time pe kuch logic lagnana.
+Req->Routing->controller->action method se phle.
+Filter Are Attributes. Action method or controller ke upper likh skte.
+used to perform some logic before and after a action method is called.
+Ex => Caching , Error Handling, Logging,Permission Etc.
+
+Types Of Filter=>
+1 Authentication
+2 Authorization
+3 Action
+4 Result
+5 Exception
+
+Predefine Filter->
+1 Authorize
+2 HandleError
+3 ValidateIp
+4 OP Cache
+Etc..
+
+We can create Own Custome Filter.
+
+kisi bhi filter ko action method(
+,controler per use kr skte.(particular all action method) 
+global laga skte global.aspx sare action method per lag jayga.
+
