@@ -426,4 +426,8 @@ XSS Attack=> is a security attack in which user enter a malicious code when entr
 data in the ip form. this code is JS or any other scripting lang code.
 and when this code runs on browser then it attack on the data.
 
+<!--Employee class me -> using System.Web.Mvc; -> [AllowHtml]
+[AllowHtml]->ek prop ke uper use kiya jata jo ki filter nhi he.
+[ValidateInput]->filter he jo pure action method ke uper work krta.
+
 
