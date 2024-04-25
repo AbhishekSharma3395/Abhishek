@@ -431,3 +431,19 @@ and when this code runs on browser then it attack on the data.
 [ValidateInput]->filter he jo pure action method ke uper work krta.
 
 
+Authentication=> user ko validate krte data ke accodrding.
+Authoeization=> security system user ke pass particular access he ya nhi .
+
+Authentication mode->
+1 Forms
+2 Windows
+3 Passport
+4 Federated
+5 None
+
+WAy to Implement Authentication
+1 Forms Authentication
+2 Asp .net Identity
+etc
+
+
