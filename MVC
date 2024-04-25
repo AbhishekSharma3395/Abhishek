@@ -401,3 +401,16 @@ Location Property-> caching kha hone wali he server per client per
 3) server
 4) none etc
 
+<!--HandleError =>Built In Filter Is HandleError
+iska use kr k try catch nhi lkihna pdega.
+action method or controoler or global per use.
+1) enable custome error in web.config file.
+2) view add share folder ke under Error.cshtml
+3) use handleerror at action/Controller/Global Level
+
+    // puri app per kaam kr dega
+    GlobalFilters.Filters.Add(new HandleErrorAttribute());
+HandleError Limitaion=>
+1)Url glt point kiya to shi nhi chalega.
+2)cannot log errror using using HandleError attribute.
+
