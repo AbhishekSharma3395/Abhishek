@@ -325,3 +325,20 @@ Video 32 to 35 Crud operation
 Entity State=> Entiry framwork ki feature hoti he.
 sb kaam ek hit me . delete update record in one database hit
 
+
+JQuery=> is a library,js library hoti he jo browser ke uper hi chalti he.
+operation perfom bt page not refresh.no load on server. secure nhi hoti
+id = #
+class => .
+
+Json => Javascript Object Notaion=> client se server ke bich data transfer. data travel
+lightweight, alternate xml jo heavy tha. json fast.
+
+JsonResult=> ek result type phle se bana hua he
+Newtonsoft.json package install-> json ko obj, obj ko jason ke under convert krne ka kaam.
+
+Ajax=> page load krne ke baaad kuch data mangvana controler se,ajax ki help se page ko bina refresh kiye hi background
+me hi data ko server se manga skte. background me hi data ko apne page se controoler ke pass bhej skte ho bina refresh
+kiye huy.
+* ajax jquery ke sath hi use kiya jata he.ajax ek function hota he
+
