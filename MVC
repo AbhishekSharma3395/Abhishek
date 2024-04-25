@@ -325,7 +325,6 @@ Video 32 to 35 Crud operation
 Entity State=> Entiry framwork ki feature hoti he.
 sb kaam ek hit me . delete update record in one database hit
 
-
 JQuery=> is a library,js library hoti he jo browser ke uper hi chalti he.
 operation perfom bt page not refresh.no load on server. secure nhi hoti
 id = #
@@ -340,5 +339,14 @@ Newtonsoft.json package install-> json ko obj, obj ko jason ke under convert krn
 Ajax=> page load krne ke baaad kuch data mangvana controler se,ajax ki help se page ko bina refresh kiye hi background
 me hi data ko server se manga skte. background me hi data ko apne page se controoler ke pass bhej skte ho bina refresh
 kiye huy.
+* ajax jquery ke sath hi use kiya jata he.ajax ek function hota he
+
+Post Data Using Ajax=> ajax ki help se post kese data kre view se controller ke uper. 
+
+Ajax Helper=> @ajax ised to access
+* ajax helper are used in view.
+* ajax functin alg se nhi likna fir bhi cheezo ko asyncronus chalana.
+* update wirhout refreshing entire page.
+* ajax helper me aax option hote he. like confirm,onfailure,onsucess etc.
 * ajax jquery ke sath hi use kiya jata he.ajax ek function hota he
 
