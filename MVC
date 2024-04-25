@@ -390,3 +390,14 @@ kisi bhi filter ko action method(
 ,controler per use kr skte.(particular all action method) 
 global laga skte global.aspx sare action method per lag jayga.
 
+Output Cache=> mvc ne kuch filter phle se hi bana rkhe jiska name op cache.
+action filter type ka attribute he,
+kisi bhi action filter ka data kuch sec ke liye store. 
+Catching ka use performance improve krne ke liye.
+
+Location Property-> caching kha hone wali he server per client per
+1) any
+2) client
+3) server
+4) none etc
+
