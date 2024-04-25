@@ -414,3 +414,16 @@ HandleError Limitaion=>
 1)Url glt point kiya to shi nhi chalega.
 2)cannot log errror using using HandleError attribute.
 
+
+@HTML.Raw()=>
+ek helper hota he,
+IhtmlString return krta
+html markup ko return krta he bina encode kiye huy, 
+used to render a valid html for ascii value,
+
+
+XSS Attack=> is a security attack in which user enter a malicious code when entring
+data in the ip form. this code is JS or any other scripting lang code.
+and when this code runs on browser then it attack on the data.
+
+
