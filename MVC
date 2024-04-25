@@ -312,3 +312,14 @@ refrense ke under ja ke add.
 ADO .net entity data model select krna then first select
 MyModel.Edmx.diagram bn jayga conn. bnne ke baaad
 
+
+
+<!--ek solution ke uper multiple projects banay ja skte he
+class library type ka new project add kiya db vali sari cheeze alg rkhne ke liye.
+refrense ke under ja ke add.
+ADO .net entity data model select krna then first select
+MyModel.Edmx.diagram bn jayga conn. bnne ke baaad
+Data save Throuh Forein KEy.
+MVCAppwithDb Project Name
+Video 32 to 35 Crud operation
+
