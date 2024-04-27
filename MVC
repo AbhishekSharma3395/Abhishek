@@ -490,6 +490,19 @@ khud ki table bana skte, rename, role provider,clam based(id,info)save,social lo
 Conformaion password bhejna sb email per,OWin integration.
 nuget package se download kr skte. ya phle hi mvc create krte time.
 
+
+<!--Custom Authentication Filter=>
+* action filter hamesa authentication filter ke baad exeute hota he.
+
+Action Filter Attribute=> base class he sare attribute filter ki.
+* it provide the 4 method to execute a specific logic after and before the controoler action
+execution.
+1) OnActionExeuting => action method ke call hone se phle ye call hoga.
+2) OnActionExcuted=> view render hone se phle
+3) OnResultExecuting=> just before the result is executed(before view render)
+4) OnResultExecuted=> after the result is executed.
+
+
 Area=>
 * small unit of mvc web app. which has same folder structure(Model,view,cont.).
 * provide partition of large mvc project into smaller function groupings.
