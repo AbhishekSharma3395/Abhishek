@@ -512,3 +512,30 @@ Area=>
 * can have different layout page of each area.
 
 
+
+
+<!--Bundling=>
+* to improve performance by reducing the no. of req to the server.
+* like 5 css file ko ek bundle me bandh de dena or ek browser per ek req jaygi. 
+* we can create for css and js in mvc 5
+* app performance ko improve krna.
+* App start folder me bundle config file
+* system.we,.optimization
+* add a new method we user bundleConfig file.
+* iske under method hote jese add to add new bundle.
+* bundle ko global file me register krna hota he.
+* js ka bundle banane ke liye  @ Scriptbundle.
+* css ka bundle banane ke liye @stylebundle.
+* to create js bundle we use @Scripts.Render(path)
+* to create css bundle we use @Styles.Render(path)
+* jitne mrzi utne bundle bana skte.
+* web config me namespace add
+Minification=> process of removing unncecssory data without changing its funcationality.
+* this inculdes removing-> comments,extra spaces,convert large variable name to small.etc
+
+Model Binder=> Http req ke or action method ke bich me kaam. jo data bheja he us data ko match krta he
+action parameter ke sath me.
+* Routing->Model Binder->Action Method.
+*
+-->
+
