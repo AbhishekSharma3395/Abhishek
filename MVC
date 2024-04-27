@@ -491,4 +491,11 @@ Conformaion password bhejna sb email per,OWin integration.
 nuget package se download kr skte. ya phle hi mvc create krte time.
 
 Area=>
+* small unit of mvc web app. which has same folder structure(Model,view,cont.).
+* provide partition of large mvc project into smaller function groupings.
+* can have any no. of area or sb ke alg (model view controller)
+* support multiple controoler with the same name as long as they have differnt areas.
+* can have same name of controllr in multiple area.
+* can have different layout page of each area.
+
 
