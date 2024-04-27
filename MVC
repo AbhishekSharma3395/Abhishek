@@ -537,5 +537,9 @@ Model Binder=> Http req ke or action method ke bich me kaam. jo data bheja he us
 action parameter ke sath me.
 * Routing->Model Binder->Action Method.
 *
--->
+Asp .net Life Cycle=> 1) Application Start(Global.asax) Like area,route,bundel,filter
+sare configration yha start.
+2)* then req jati routing ke pass
+* route table konsi req kis vale resource se map.
+3) MVC Handler(request handle bhi krta he or baad me response ko genrate)
 
