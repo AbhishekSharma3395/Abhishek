@@ -543,3 +543,22 @@ sare configration yha start.
 * route table konsi req kis vale resource se map.
 3) MVC Handler(request handle bhi krta he or baad me response ko genrate)
 
+
+<!--Unit Testing=>
+* Its a component of Test Divn Development(TDD). (testing bhi sath me include)
+* used to check is working fine or not.
+* jo bhi problem aaap compile Time per nhi pkd skte vo iski help se resolve kr skte. 
+* change value of any parameter. etc
+* unit test cases for each lang c# jquery mvc java.
+* for each frawewoek concept is same.
+
+Unit test=> small picee of code which is written for a particular method to test a 
+particular situation.
+ek metgod ke liye ek se jyada unit test bana skte.
+unit test 3 chezzo se milkr bana hota he.. 
+1 arrange= setup the test data 
+2 act= prrform actual test 
+3 asset= verify the result.
+
+
+
