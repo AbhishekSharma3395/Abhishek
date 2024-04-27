@@ -459,4 +459,22 @@ use formsauthentication.signout for logout
 AllowAnnonumus => sb kuch autorize kr rakha he bt kuch part bina login kr ke dekh skte 
 vha ye use.
 [AllowAnonymous] controller per and global.asax
--->
+
+Roles=> permission hoti he, multiple resources he to sabhi resource ko access krne ki permisiion nhi hoti he jese client
+ko km admin ko jyada.
+* provide security to the system.
+* ek ke pass ek se jyada role ho skte he.
+web config me <roleManager>
+
+identity=>.net web based framwork.
+* provide security to website.
+* authentication or authoraziation ko support kene ke liye usko banae ka framework he.
+* sare feature iske under apne aap phle se ho jate like data base create, query all.
+* nuget package ke throuhg available he.
+* pura page he ye jiski help se authentication or authoraziation ke skte.
+identity benfit=>
+sari website per single framework.
+data store , full access.
+khud ki table bana skte, rename, role provider,clam based(id,info)save,social login provider
+Conformaion password bhejna sb email per,OWin integration.
+nuget package se download kr skte. ya phle hi mvc create krte time
