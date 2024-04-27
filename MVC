@@ -21,6 +21,17 @@
     13) Refrences -> Jitni bhi dll Use sb yha show
 
 
+Area=> small unit of mvc app. jiske under same structure hota he.
+* konse feature kis group me rkhne, seprate code rhta he iski help se.
+* MVC features he used to organie releated functionality into group  as a seprate namespace.
+* jab high level functionaliy ho tb use 
+* maintian krne ka feature deta he.
+* unlimeted area bana skte.
+* its area has its own controller, model and views.
+* Bdi mvc project ko chote part me divide.
+* suppose multiple same controller ke under same name controller nhi bana skte bt area ke under dono same name se bana skte
+
+
 
 
 Controller=> Cs file hoti he. Inherted hoti he controler class ki.
@@ -477,4 +488,7 @@ sari website per single framework.
 data store , full access.
 khud ki table bana skte, rename, role provider,clam based(id,info)save,social login provider
 Conformaion password bhejna sb email per,OWin integration.
-nuget package se download kr skte. ya phle hi mvc create krte time
+nuget package se download kr skte. ya phle hi mvc create krte time.
+
+Area=>
+
