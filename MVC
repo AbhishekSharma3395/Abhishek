@@ -447,3 +447,16 @@ WAy to Implement Authentication
 etc
 
 
+
+<!--Forms Authentication=>
+Available in System.Web.Security
+set mode in webconfig file
+use formsauthentication.setauthcookie for login
+use formsauthentication.signout for logout
+
+[authorizwe] filter use
+
+AllowAnnonumus => sb kuch autorize kr rakha he bt kuch part bina login kr ke dekh skte 
+vha ye use.
+[AllowAnonymous] controller per and global.asax
+-->
