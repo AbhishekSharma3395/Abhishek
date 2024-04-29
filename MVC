@@ -613,3 +613,7 @@ Choose Async When=>
 * performnce improve, pareele work karvana tb. 
 
 MVC Conepept Project => Dropdown List  , Image Upload
+
+Non Action Attribute=> kisi bhi method ko call na kr pana.
+1st tarika private kr do
+2nd [NonAction] Attribute
