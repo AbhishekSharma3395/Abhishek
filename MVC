@@ -592,6 +592,24 @@ More Readable code
 * Kisi Other Lang. ki api other lang me chal skti.(independent of platform).
 * Web Mobile IOs ETc same API.
 
+<!--Async Controller=> use only improve app performance server
+* controoler ke under jo action method hote he unko async banate.
+* multiple sever ko handle kr skte web server per.
 
+Thread Starvation Problem=> thread available nhi hota dusri req pe bust tb aati ye pro.
+
+Synchonus me single thread hi req or response ke liye responsible.
+Asynchronous ke liye thred kisi or se response kisi or thread se.wait nhi krte.
+same no of threads ek se jyada req ko handle kr skte easily.
+
+Choose Sync When=>
+* The Operation is simple or short runing.
+* Simplicity is more important then eficiency.
+* The Operation are primally cpu operation.
+* Only small work.
+
+Choose Async When=>
+* The Operation are network bound or I/O bound, big file read,
+* performnce improve, pareele work karvana tb. 
 
 
