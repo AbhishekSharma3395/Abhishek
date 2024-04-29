@@ -562,3 +562,30 @@ unit test 3 chezzo se milkr bana hota he..
 
 
 
+
+<!--Dipendency Injection=>
+* Tightly Coupled
+* Controller know where thecode is written, they can access all.
+Resolve=> Interface Banayge,
+Kha pe Interface Use Kr SKte, 3 Way 
+1)Constructor
+2)Method 
+3)Property
+
+pakage install unity.mvc5
+
+Controller ko koi bhi information nhi he ki konsi claasss ke under data ko use kiya.
+iske under only contract he.
+
+Benifits=>
+Losely Coupled
+Redeuce dependency
+No revealing of code
+testable code
+More Readable code
+
+
+
+
+
+
