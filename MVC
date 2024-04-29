@@ -585,6 +585,12 @@ testable code
 More Readable code
 
 
+<!--Web API => API stands for "Application Programming Interface".
+* uses Particular resorce ko access krne ke liye using HTTP Protocol.
+* Resorce(login krna data get,connection bnana)
+* Microsoft Created a frameworkd for web API called ASp.Net Web API.
+* Kisi Other Lang. ki api other lang me chal skti.(independent of platform).
+* Web Mobile IOs ETc same API.
 
 
 
