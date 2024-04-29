@@ -617,3 +617,10 @@ MVC Conepept Project => Dropdown List  , Image Upload
 Non Action Attribute=> kisi bhi method ko call na kr pana.
 1st tarika private kr do
 2nd [NonAction] Attribute
+
+
+<!--Partial View=>
+url se accesss na kr paay bt index page ke uper render kr skte vo kese krege => vo krege
+childactiononly se..
+https://localhost:44334/Home/Abhishek accces nhi hoga.
+bahar se acces nhi hoga childaction banane se secure hoga
