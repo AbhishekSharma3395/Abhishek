@@ -624,3 +624,9 @@ url se accesss na kr paay bt index page ke uper render kr skte vo kese krege => 
 childactiononly se..
 https://localhost:44334/Home/Abhishek accces nhi hoga.
 bahar se acces nhi hoga childaction banane se secure hoga
+
+
+<!--To apply server side Validation=>
+01 Add html validation helper
+02 add requried attribute
+03 Add modelstate is valid
