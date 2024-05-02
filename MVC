@@ -630,3 +630,38 @@ bahar se acces nhi hoga childaction banane se secure hoga
 01 Add html validation helper
 02 add requried attribute
 03 Add modelstate is valid
+
+
+Project Demo1
+<!-- 01 Stylesheet
+02 Layout 
+
+03 ViewStart=> kis layout ko run krna vo batayge yaha. 
+04 Action Link & UrlAction
+
+Link Krne Ke Method=>
+1 a anchor tag=> "/Controller/View"
+2 url action=> "View/Controller"
+3 html action link=> "Text/View/Controller"
+
+05 HTTPGET=> jab section ke sath view atteach krrna ho tb,hab html page ko display karana ho tb
+   HTTPPosT=> When database Work
+
+
+06 Controler se view per data bhejne ke liye 3 property hoti he
+1 View Data 
+2 View Bag
+3 View Temp
+
+07 Database Approch->
+A) Database Approch -> ad.net entity data model.
+koi bhi change database me hi change krege
+visual studio me diragrm me right click kr k update model from database
+
+
+Strongly Type Helper=> iske under puri class assign krte he.
+
+B) Code first 
+
+
+* Multi Layout Work
