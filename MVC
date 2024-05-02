@@ -666,6 +666,17 @@ B) Code first
 
 * Multi Layout Work
 
+
+
+
 <!--Search 
 Exact Match -> exact match hona chahiye kuch nhi lagana
 Equal Match ->lagane se exact nhi hoga to bhi show likely
+
+Sorting=>
+form ke throgh paas krte he to post ke method me pass
+kisi bhi element ko link banate he to or html action ke throgh pass krte to get ka action hit krega 
+
+//Paging
+user = user.Take(5).ToList();  top 5 record show
+ user = user.Skip(10).Take(5).ToList();skip 10
