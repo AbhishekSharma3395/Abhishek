@@ -1,0 +1,66 @@
+
+
+//API => Aplication Programin Interface
+//  bane bany function rules and regulation and tools hote jinke throgh sw app ko build.
+// data accesss kr skte alag alag software alg application ke under.
+// her client ke uper alg se apni api ki functionality implement krne ki jarurt nhi pdti.
+// Some example Of API=> whether reports,app, desktop same screen.multiple diveces implement,
+// login through fb linkdin to other website
+// pay with paypal
+// free or paid both avaialble
+// web api url hota he jisko apni sw se hit krte or uske baad vo data provide krta he.
+// web api ke sath ek uska database connect hota he jisme data store or retrive kr skte.
+// db -><- WebAPi -> Mobile app, desktop app,browser,solor panel etc.
+// different client se access ho skta he, store ho skta he.
+// client data transfer xml or json me ho skta he. lightweght json
+
+// data access krne ke liye http(protocol)Or (Verbs) get ka use
+// insert post req
+// update put req
+// delete delete req
+
+// web api ko restful api bhi kh skte he.
+// ek hi baar banani or db ek bar hi atach then use.
+// webapi related to -> school,coronavirus(all data)
+// data chahiye to get req. 
+// used to communication or interaction with sw component and each other.
+// enhance(upgraded) version he jo lapi mobile sb ko provide
+// set of endpoints ,multiple url hote he, communicate each other over the internet.
+// Asp .net Core Web API=> framwrok he jiske through restful api create krna allow krta.
+// koi resoruce return krta he jisko get post req ke through acces kr skte.
+// in .net microsoft created a framework for web api called  asp.net core web api
+// web api ka koi view nhi hota only url hota jisko hit krte vo return me data deta.
+// Restful Architecture=> Rest(Representational State Transfer) Asp .net core weeb follow the principl of rest.
+// it uses http method(get,post,put,delete)
+// Rest Server(Jha web api mojud hoti) resource provide krta he rest client ko.
+// data access, data access krna to urls/globalid given hote.
+// Resource is any information that has name like image, entity, doc etc.
+// jab bhi client api ke sath interact krta he or data transfer hota he vo json,text,xml form me ho skta he
+// A restfull system is consist of 
+// A) client - who req for the resources
+// B) Server - who has the resources
+// Resfull arccgitecutre ke kuch rules he jo follow krke api banate usko rest api khte.
+// 1) uniform Interface-> sare clicnt ke liye same tarika
+// 2) client server->
+// 3) stateless-> http protocol data khi store nhi,client pr state manintain.
+// 4) cashable-> 100 record access liye vhi dobara chahiye to req vaps servr per nhi jaygi, clint se hi access
+// 5) layered system->MVC
+// 6) code on demand-> spacifc data jo clint demand vo hi data provide.
+
+// New Project-> 
+// User Interface nhi dega no view folder
+//Swager-> api ko test krne ka by default tool.
+// used to describe restful api, ui genrate kr k deta he jisme sari api ki documantion hota. response kya milega,sb handel krega. 
+// allow developer to allow interactive api create then human readable format me.
+// use to test api
+
+// weatherforecat by default model class he, jisko delte bhi kr skte
+
+// Controlerbase class-> is a base class for controller in ap ,net core that handle http req.
+// isme bhut sare common property and method hote jo controller use krtta uske under ke action method use krte,use to handle http req and genrate response.
+
+// API Controller Attribute-> feature include krta like attribute routing,automatic model validation and 
+// binding source parameter inference
+
+// launchSetting.json-> jo bhi info hoti vo clint ke sepeicfic hoti he, jiske under kya coding kr rhe kya url hoga kya port hoga.
+// ye sirf client machine ke uper work krti
